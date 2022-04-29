@@ -1,7 +1,7 @@
 <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-10">
-                    <p class="headings">Course Dashboard</p>
+                    <p class="headings">Training Dashboard</p>
                 </div>
                 <div class="col-lg-2">
                     <p class="count">Count: {{count}}</p>
@@ -25,7 +25,7 @@
                     </select> -->
                 </div>
                 <div class="col-lg-5">
-                        <input type="search" class="form-control search" placeholder="Search for Course"  [(ngModel)]="search">
+                        <input type="search" class="form-control search" placeholder="Search for Training"  [(ngModel)]="search">
                 </div>
             </div><br>
         </div> <br>
@@ -44,8 +44,8 @@
                             <table class="table"  *ngIf="(result | filter: search).length > 0; else noResults">
                             <thead>
                                 <tr>
-                                    <th>Category Name</th>
-                                    <th>Course Name</th>
+                                    <th>Category</th>
+                                    <th>Training Name</th>
                                     <th>Description</th>
                                     <th>Photo</th>
                                     <th>Duration</th>

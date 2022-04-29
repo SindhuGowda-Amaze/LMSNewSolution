@@ -198,6 +198,10 @@ export class CatalogComponent implements OnInit {
     this.show1 = 1;
   }
 
+  // public resetcourse(name:any){
+  //   name.reset();
+  // }
+
   public filtercourse(name: any,value:any) {
     debugger
     this.LearningService.GetCoursesByUserID(this.userid).subscribe(
@@ -217,7 +221,7 @@ export class CatalogComponent implements OnInit {
         }
       })
     this.show1 = 1;
-
+   
     // if(value==1)
     // {
     //   if (this.course1 == true) {
