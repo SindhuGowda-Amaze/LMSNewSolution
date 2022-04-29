@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-10">
-            <p class="headings">Chapter Dashboard</p>
+            <p class="headings">Topic Dashboard</p>
         </div>
         <div class="col-lg-2">
             <p class="count">Count: {{coursedetails.length}}</p>
@@ -16,7 +16,7 @@
             </div>
             <div class="col-lg-3">
                 <select class="form-control" name="cars" id="Duration" (change)="getcourseid($event)">
-                    <option value="0">Select Course</option>
+                    <option value="0">Select Training</option>
                     <option style="color:#0C275A" *ngFor="let details of courselist" value="{{details.id}}">
                         {{details.name}}</option>
                     <!-- <option style="color:#0C275A" *ngFor="let details of coursedetails" value="{{details.id}}">
@@ -41,12 +41,12 @@
                 <table class="table" *ngIf="(coursedetails | filter: search).length > 0; else noResults">
                     <thead>
                         <tr>
-                            <th>Course Name</th>
-                            <th>Chapter Name</th>
+                            <th>Training Name</th>
+                            <th>Topic Name</th>
                             <th>Description</th>
-                            <th style="width:15%">Chapter Photo</th>
+                            <th style="width:15%">Topic Photo</th>
                             <th>Attachment</th>
-                            <th>Chapter Text</th>
+                            <th>Topic Text</th>
                             <th>Actions</th>
                         </tr>
                         <tr *ngFor="let details of coursedetails | filter: search">

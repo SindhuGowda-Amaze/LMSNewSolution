@@ -1,22 +1,22 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-2">
-            <p class="headings">Chapter Details </p>
+            <p class="headings">Topic Details </p>
         </div>
     </div>
     <div class="card">
         <div class="row column">
             <div class="col-lg-2">
-                <p>Course Name <span style="color: red;">*</span></p>
+                <p>Training Name <span style="color: red;">*</span></p>
             </div>
             <div class="col-lg-2">
-                <p>Chapter Name <span style="color: red;">*</span></p>
+                <p>Topic Name <span style="color: red;">*</span></p>
             </div>
             <div class="col-lg-3">
                 <p>Description <span style="color: red;">*</span></p>
             </div>
             <div class="col-lg-2">
-                <p>Chapter Photo</p>
+                <p>Topic Photo</p>
             </div>
             <div class="col-lg-3" *ngIf="show==0">
                 <p>Attachment</p>
@@ -25,12 +25,12 @@
         <div class="row">
             <div class="col-lg-2">
                 <select class="form-control" name="courseID" [(ngModel)]="courseID" (change)="getCourseID($event)">
-                    <option value="0">Course Name</option>
+                    <option value="0">Training Name</option>
                     <option *ngFor="let details of courselist" value="{{details.id}}">{{details.name}}</option>
                 </select>
             </div>
             <div class="col-lg-2">
-                <input class="form-control" placeholder="Chapter Name" [(ngModel)]="name" name="name">
+                <input class="form-control" placeholder="Topic Name" [(ngModel)]="name" name="name">
             </div>
             <div class="col-lg-3">
                 <textarea class="form-control" placeholder="Description" [(ngModel)]="description"></textarea>
@@ -62,7 +62,7 @@
         </div> <br>
         <div class="row">
             <div class="col-lg-3">
-                <p>Chapter Text</p>
+                <p>Topic Text</p>
             </div>
             <div class="col-lg-5"></div>
             <div class="col-lg-3">
