@@ -75,7 +75,7 @@ this.categoryid=list[1];
   Save(){
     debugger 
    var json = {  
-      "categoryName": this.categoryName,
+    "categoryName":this.categoryName,
       "name": this.name,
       "description":this.description,  
       "photo": this.Course_Photo,
@@ -103,7 +103,7 @@ this.categoryid=list[1];
      debugger
      var json = {
       'ID': this.id,
-      "categoryName": this.categoryName,
+      "categoryName":  this.categoryName,
       "name": this.name,
       "description":this.description,  
       "photo": this.Course_Photo,
