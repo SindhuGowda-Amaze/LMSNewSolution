@@ -79,7 +79,7 @@ this.categoryid=list[1];
       "fee":this.fee,
       "entryCriteria":this.entryCriteria,
       "exitCriteria":this.exitCriteria,    
-      "CategoryID":this.categoryid
+      "CategoryID":this.categoryid,
     };
     this.LearningService.InsertCourse(json).subscribe(
       data => {
