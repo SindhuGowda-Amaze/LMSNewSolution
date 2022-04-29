@@ -58,6 +58,7 @@ export class CourseComponent implements OnInit {
     this.userName=this.result[0].userName;
     this.password=this.result[0].password;
     this.venue=this.result[0].venue;
+    this.trainingType=this.result[0].trainingType;
       }
     ) 
   }
@@ -86,7 +87,8 @@ this.categoryid=list[1];
       "trainingLink":this.trainingLink,
       "userName":this.userName,
       "password":this.password,
-      "venue":this.venue
+      "venue":this.venue,
+      "trainingType":this.trainingType
     };
     this.LearningService.InsertCourse(json).subscribe(
       data => {
@@ -112,7 +114,8 @@ this.categoryid=list[1];
       "trainingLink": this.trainingLink,
       "userName":this.userName,
       "password":this.password,
-      "venue":this.venue
+      "venue":this.venue,
+      "trainingType":this.trainingType
       };
     
       this.LearningService.UpdateCourse(json).subscribe(
