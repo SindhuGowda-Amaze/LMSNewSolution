@@ -14,11 +14,11 @@ export class CourseComponent implements OnInit {
   id:any;
   venue:any;
   password:any;
-  username:any;
-  traininglink:any
+  userName:any;
+  trainingLink:any
   ngOnInit(): void {
     this.categoryName=0;
-    this.trainingtype=0;
+    this.trainingType=0;
   this.GetCategoryMaster();
 
     this.ActivatedRoute.params.subscribe(params => {
@@ -38,7 +38,7 @@ export class CourseComponent implements OnInit {
   fee:any;
   entryCriteria:any;
   exitCriteria:any;
-  trainingtype:any;
+  trainingType:any;
 
   public GetCourse(){
   this.LearningService.GetCourse().subscribe(
@@ -54,7 +54,10 @@ export class CourseComponent implements OnInit {
     this.fee=this.result[0].fee;
     this.entryCriteria=this.result[0].entryCriteria;
     this.exitCriteria=this.result[0].exitCriteria;
-
+    this.trainingLink=this.result[0].trainingLink;
+    this.userName=this.result[0].userName;
+    this.password=this.result[0].password;
+    this.venue=this.result[0].venue;
       }
     ) 
   }
@@ -80,6 +83,10 @@ this.categoryid=list[1];
       "entryCriteria":this.entryCriteria,
       "exitCriteria":this.exitCriteria,    
       "CategoryID":this.categoryid,
+      "trainingLink":this.trainingLink,
+      "userName":this.userName,
+      "password":this.password,
+      "venue":this.venue
     };
     this.LearningService.InsertCourse(json).subscribe(
       data => {
@@ -101,7 +108,11 @@ this.categoryid=list[1];
       "duration": this.duration,
       "fee":this.fee,
       "entryCriteria":this.entryCriteria,
-      "exitCriteria":this.exitCriteria          
+      "exitCriteria":this.exitCriteria ,
+      "trainingLink": this.trainingLink,
+      "userName":this.userName,
+      "password":this.password,
+      "venue":this.venue
       };
     
       this.LearningService.UpdateCourse(json).subscribe(

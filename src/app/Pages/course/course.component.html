@@ -52,7 +52,7 @@
             </div>
             <div class="col-lg-2">
                 <!-- name="categoryName" [(ngModel)]="categoryName"  -->
-                <select class="form-control" (change)="GetCategoryid($event)" id="trainingtype" name="trainingtype" [(ngModel)]="trainingtype">
+                <select class="form-control" (change)="GetCategoryid($event)" id="trainingType" name="trainingType" [(ngModel)]="trainingType">
                     <option value="0">Select Type</option>
                     <option value="1">Internal online</option>
                     <option value="2">External online</option>
@@ -71,31 +71,31 @@
         </div> <br>
 
         <div class="row ">
-            <div class="col-lg-2" *ngIf="trainingtype==2">
-                <p>Taining Link</p>
+            <div class="col-lg-2" *ngIf="trainingType==2">
+                <p>Training Link</p>
             </div>
-            <div class="col-lg-2" *ngIf="trainingtype==2">
+            <div class="col-lg-2" *ngIf="trainingType==2">
                 <p>UserName</p>
             </div>
-            <div class="col-lg-2" *ngIf="trainingtype==2">
+            <div class="col-lg-2" *ngIf="trainingType==2">
                 <p>Password</p>
             </div>
-            <div class="col-lg-3" *ngIf="trainingtype==3">
+            <div class="col-lg-3" *ngIf="trainingType==3">
                 <p>Venue</p>
             </div>               
         </div>
 
         <div class="row ">
-            <div class="col-lg-2"*ngIf="trainingtype==2">
-                <input class="form-control" placeholder="link" [(ngModel)]="traininglink" name="traininglink">
+            <div class="col-lg-2"*ngIf="trainingType==2">
+                <input class="form-control" placeholder="link" [(ngModel)]="trainingLink" name="trainingLink">
             </div>
-            <div class="col-lg-2" *ngIf="trainingtype==2">
-                <input class="form-control" placeholder="Username" [(ngModel)]="username" name="username">
+            <div class="col-lg-2" *ngIf="trainingType==2">
+                <input class="form-control" placeholder="Username" [(ngModel)]="userName" name="userName">
             </div>
-            <div class="col-lg-2" *ngIf="trainingtype==2">
+            <div class="col-lg-2" *ngIf="trainingType==2">
                 <input class="form-control" placeholder="Password" [(ngModel)]="password" name="password">
             </div>
-            <div class="col-lg-3" *ngIf="trainingtype==3">
+            <div class="col-lg-3" *ngIf="trainingType==3">
                 <textarea class="form-control" placeholder="Venue" rows="5" [(ngModel)]="venue" name="venue"></textarea>
                 <!-- <input class="form-control" placeholder="Venue" [(ngModel)]="venue" name="venue"> -->
             </div>
