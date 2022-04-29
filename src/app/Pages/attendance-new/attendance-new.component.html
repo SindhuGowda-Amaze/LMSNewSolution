@@ -32,13 +32,13 @@
                                 <tr>
                                     <th>Employee Name</th>
                                     <th>Login Date</th>
-                                    <th>Login Time</th>
-                                    <th>Logout Time</th>
+                                    <th>Punch In Time</th>
+                                    <th>Punch Out Time</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let details of Attendance | filter: search">
-                                    <td>{{details.employeename}}</td>
+                                    <td>{{userName}}</td>
                                     <td>{{details.loginDate}}</td>
                                     <td>{{details.loginTime}}</td>
                                     <td>{{details.logoutDate}}</td>

@@ -1,8 +1,6 @@
 .card1{
-    margin: 10px;
     background-color:#F3F8FF;
-    color: #0C275A ;
-   
+    color: #0C275A ; 
 }
 button{
     padding:10px;
@@ -22,8 +20,9 @@ button{
 .chapter{
    
     text-decoration: none;
-    margin: 20px;
+    margin-bottom: 20px;
     text-align: justify;
+    
     
 }
 .image{

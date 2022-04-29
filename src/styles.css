@@ -4,7 +4,7 @@
 @import '~ng-wizard/themes/ng_wizard_theme_circles.min.css';
 @import '~ng-wizard/themes/ng_wizard_theme_dots.min.css';
 
-
+/* 
 @font-face {
     font-family: 'DIN Regular';
     src: 
@@ -26,7 +26,7 @@
       
       url('assets/DIN Medium.otf') 
       format('opentype');
-  }
+  } */
   body,button,p{
     font-family: 'Poppins';
     font-size: 14px;
@@ -209,4 +209,12 @@
         
           background-color: #F2F2F2 !important
         
+        }
+
+        .card {
+          padding: 20px;
+          background: #ffffff;
+          box-shadow: 1px 1px 15px 3px rgba(0, 0, 0, 0.12);
+          border-radius: 12px;
+          width: 100%;
         }

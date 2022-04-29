@@ -68,7 +68,13 @@ export class ViewCourseComponent implements OnInit {
   };
 
   public PreviewPdf() {
-    window.open('assets/Images/JAVA-Stack-Brochure.pdf', "blank")
+    // window.open('assets/Images/JAVA-Stack-Brochure.pdf', "blank")
+     window.open('assets/Images/JAVA-Stack-Brochure.pdf', "_blank")
+  }
+
+  public Previewvideo(vedioUrl:any) {
+    
+    window.open(vedioUrl, "_blank")
   }
 
   chapterdetails: any;

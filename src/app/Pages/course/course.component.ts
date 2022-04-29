@@ -12,8 +12,13 @@ export class CourseComponent implements OnInit {
   constructor(public LearningService: LearningService,private ActivatedRoute: ActivatedRoute) { }
   result: any;
   id:any;
+  venue:any;
+  password:any;
+  username:any;
+  traininglink:any
   ngOnInit(): void {
     this.categoryName=0;
+    this.trainingtype=0;
   this.GetCategoryMaster();
 
     this.ActivatedRoute.params.subscribe(params => {
@@ -33,6 +38,7 @@ export class CourseComponent implements OnInit {
   fee:any;
   entryCriteria:any;
   exitCriteria:any;
+  trainingtype:any;
 
   public GetCourse(){
   this.LearningService.GetCourse().subscribe(
