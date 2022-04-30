@@ -72,6 +72,10 @@ this.categoryName=list[0]
 this.categoryid=list[1];
   }
 
+  GetTrainingType(even:any){
+
+  }
+
   Save(){
     debugger 
    var json = {  

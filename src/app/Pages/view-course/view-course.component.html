@@ -76,7 +76,7 @@
                 </div>
                 <div>
                     <div class="card chapter" *ngFor="let details of chapterdetails">
-                        <div class="row">
+                        <div class="row" >
                             <div class="col-lg-10 chapter">
                                 <a href="" class="chapter" style="font-size: 18px;" (click)="GetDetails(details.name)">
                                     <u>{{details.name}}</u> </a>
@@ -93,6 +93,7 @@
                                     <div class="col-lg-4" style="margin-left: 50px;">
                                         <br>
                                         <p (click)=" ShowAttachments(details.id)"><u>Training Material</u></p> <br>
+
                                         <!-- <img class="image" src="assets/Images/pdf.jpg" style="width:20%; height: auto;"
                                             (click)="PreviewPdf()"> &nbsp; &nbsp;
 
@@ -100,33 +101,42 @@
 
                                         <img class="image" src="assets/Images/Video_lcon.png"
                                             style="width: 20%; height: auto;" (click)="PreviewPdf()"><br> -->
+                                            <div *ngIf="details.id==attachmentId">
+                                                <div *ngFor="let details of Attachmentlist" >
+                                                
+                                                    <img class="icon" style="height:30px;width:30px"
+                                                        *ngIf="details.attachmentType=='video'"
+                                                        src="assets/Images/Video_lcon.png" alt="video_icon"
+                                                        (click)="PreviewVideo(details.photo)">
+                            
+                                                    <img class="icon" style="height:30px;width:30px"
+                                                        *ngIf="details.attachmentType=='Pdf'" src="assets/pdf.jpg"
+                                                        alt="video_icon" (click)="PreviewPdf(details.photo)">
+                            
+                                                    <img class="icon" style="height:30px;width:30px"
+                                                        *ngIf="details.attachmentType=='Image'" src="assets/Images/image.png"
+                                                        alt="video_icon" (click)="PreviewIMG(details.photo)">
+                            
+                                                    <img class="icon" style="height:30px;width:30px"
+                                                        *ngIf="details.attachmentType=='Ppt'" src="assets/Images/files.png"
+                                                        alt="video_icon" (click)="PreviewPPT(details.photo)">
+                            
+                                                    <img class="icon" style="height:30px;width:30px"
+                                                        *ngIf="details.attachmentType=='Document'" src="assets/Images/word.png"
+                                                        alt="video_icon" (click)="PreviewMSword(details.photo)">
+                                                </div>    
+                                            </div>
+                                          
 
 
-                                        <img class="icon" style="height:30px;width:30px"
-                                            *ngIf="details.attachmentType=='video'" src="assets/Images/Video_lcon.png"
-                                            alt="video_icon" (click)="PreviewVideo(details.photo)">
-
-                                        <img class="icon" style="height:30px;width:30px"
-                                            *ngIf="details.attachmentType=='Pdf'" src="assets/pdf.jpg" alt="video_icon"
-                                            (click)="PreviewPdf(details.photo)">
-
-                                        <img class="icon" style="height:30px;width:30px"
-                                            *ngIf="details.attachmentType=='Image'" src="assets/Images/image.png"
-                                            alt="video_icon" (click)="PreviewIMG(details.photo)">
-
-                                        <img class="icon" style="height:30px;width:30px"
-                                            *ngIf="details.attachmentType=='Ppt'" src="assets/Images/files.png"
-                                            alt="video_icon" (click)="PreviewPPT(details.photo)">
-
-                                        <img class="icon" style="height:30px;width:30px"
-                                            *ngIf="details.attachmentType=='Document'" src="assets/Images/word.png"
-                                            alt="video_icon" (click)="PreviewMSword(details.photo)">
                                     </div>
                                     <div class="col-lg-7"></div>
                                 </div> <br>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
             <div class="col-lg-5">

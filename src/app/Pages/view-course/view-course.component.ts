@@ -90,7 +90,7 @@ export class ViewCourseComponent implements OnInit {
     
   //   window.open(vedioUrl, "_blank")
   // }
-
+attachmentId:any;
   ShowAttachments(id: any) {
     debugger
     this.showvideo = 0;
@@ -98,6 +98,7 @@ export class ViewCourseComponent implements OnInit {
     this.showPdf = 0;
     this.showDocument = 0;
     this.showPpt = 0;
+    this.attachmentId =id;
 
     this.LearningService.GetChapterAttachmentByChapterID(id).subscribe(data => {
       debugger
@@ -271,6 +272,7 @@ export class ViewCourseComponent implements OnInit {
         this.count = this.chapterdetails.length;
         this.ShowAttachments(this.chapterdetails[0].id)
         this.show = 1
+
       })
   }
 
