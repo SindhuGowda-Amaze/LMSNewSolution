@@ -3,8 +3,9 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-9">
-                    <h1>{{coursedetails[0].courseName}}</h1><hr>
-                        <p style="background-color: white; padding: 10px;">{{coursedetails[0].courseDescription}}</p>
+                    <h1>{{coursedetails[0].courseName}}</h1>
+                    <hr>
+                    <p style="background-color: white; padding: 10px;">{{coursedetails[0].courseDescription}}</p>
                     <hr>
                     <div class="row">
                         <div class="col-lg-2">
@@ -90,14 +91,36 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4" style="margin-left: 50px;">
-                                        <br><p><u>Training MATERIAL</u></p> <br>
-                                        <img class="image" src="assets/Images/pdf.jpg" style="width:20%; height: auto;"
+                                        <br>
+                                        <p (click)=" ShowAttachments(details.id)"><u>Training Material</u></p> <br>
+                                        <!-- <img class="image" src="assets/Images/pdf.jpg" style="width:20%; height: auto;"
                                             (click)="PreviewPdf()"> &nbsp; &nbsp;
 
                                             <img src="assets/Images/pdf.png" style="width: 30px;" (click)="Previewvideo(details.vedioUrl)">
 
                                         <img class="image" src="assets/Images/Video_lcon.png"
-                                            style="width: 20%; height: auto;" (click)="PreviewPdf()"><br>
+                                            style="width: 20%; height: auto;" (click)="PreviewPdf()"><br> -->
+
+
+                                        <img class="icon" style="height:30px;width:30px"
+                                            *ngIf="details.attachmentType=='video'" src="assets/Images/Video_lcon.png"
+                                            alt="video_icon" (click)="PreviewVideo(details.photo)">
+
+                                        <img class="icon" style="height:30px;width:30px"
+                                            *ngIf="details.attachmentType=='Pdf'" src="assets/pdf.jpg" alt="video_icon"
+                                            (click)="PreviewPdf(details.photo)">
+
+                                        <img class="icon" style="height:30px;width:30px"
+                                            *ngIf="details.attachmentType=='Image'" src="assets/Images/image.png"
+                                            alt="video_icon" (click)="PreviewIMG(details.photo)">
+
+                                        <img class="icon" style="height:30px;width:30px"
+                                            *ngIf="details.attachmentType=='Ppt'" src="assets/Images/files.png"
+                                            alt="video_icon" (click)="PreviewPPT(details.photo)">
+
+                                        <img class="icon" style="height:30px;width:30px"
+                                            *ngIf="details.attachmentType=='Document'" src="assets/Images/word.png"
+                                            alt="video_icon" (click)="PreviewMSword(details.photo)">
                                     </div>
                                     <div class="col-lg-7"></div>
                                 </div> <br>
@@ -121,11 +144,12 @@
                         <div class="col-lg-3">
                             <p style="font-weight: 600;">Count : {{count}}</p>
                         </div>
-                    </div><hr>
+                    </div>
+                    <hr>
                     <div class="row">
                         <div class="col-lg-12 chapter">
                             <ul *ngFor="let details of chapterdetails">
-                               <li>{{details.name}}</li> 
+                                <li>{{details.name}}</li>
                             </ul>
                         </div>
                     </div>

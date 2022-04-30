@@ -196,11 +196,24 @@ export class CatalogComponent implements OnInit {
 
       })
     this.show1 = 1;
+  
   }
 
   // public resetcourse(name:any){
   //   name.reset();
   // }
+
+
+  public uncheck() {
+    debugger
+    this.GetCourse();
+    for(let i=0;i<this.categorylist.length;i++)
+    
+    {
+      debugger
+        this.categorylist[i]["checked"]=false; 
+    }
+  }
 
   public filtercourse(name: any,value:any) {
     debugger
@@ -288,7 +301,7 @@ export class CatalogComponent implements OnInit {
     //   }
     // }
   
-
+   
   }
 }
 function Save() {

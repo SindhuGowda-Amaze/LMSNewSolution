@@ -8,6 +8,8 @@ import Swal from 'sweetalert2'
   styleUrls: ['./view-course.component.css']
 })
 export class ViewCourseComponent implements OnInit {
+  sanitizer: any;
+  chapterphoto: any;
 
   constructor(private ActivatedRoute: ActivatedRoute, private LearningService: LearningService) { }
 
@@ -16,6 +18,16 @@ export class ViewCourseComponent implements OnInit {
   manager:any;
   stafflist:any;
   count: any;
+
+  Attachmentlist: any;
+  dummAttachmentlist: any;
+  showvideo: any;
+  showimage: any;
+  showPdf: any;
+  showDocument: any;
+  showPpt: any;
+  show: any;
+  noattachments: any;
   ngOnInit(): void {
     
     this.userid = sessionStorage.getItem('userid')
@@ -25,6 +37,8 @@ export class ViewCourseComponent implements OnInit {
       this.courseid = params['id'];
       this.GetTrainerCourseMapping();
       this.GetChapter()
+    
+      this.show = 1
     })
 
 
@@ -67,14 +81,183 @@ export class ViewCourseComponent implements OnInit {
     }
   };
 
-  public PreviewPdf() {
-    // window.open('assets/Images/JAVA-Stack-Brochure.pdf', "blank")
-     window.open('assets/Images/JAVA-Stack-Brochure.pdf', "_blank")
+  // public PreviewPdf() {
+  //   // window.open('assets/Images/JAVA-Stack-Brochure.pdf', "blank")
+  //    window.open('assets/Images/JAVA-Stack-Brochure.pdf', "_blank")
+  // }
+
+  // public Previewvideo(vedioUrl:any) {
+    
+  //   window.open(vedioUrl, "_blank")
+  // }
+
+  ShowAttachments(id: any) {
+    debugger
+    this.showvideo = 0;
+    this.showimage = 0;
+    this.showPdf = 0;
+    this.showDocument = 0;
+    this.showPpt = 0;
+
+    this.LearningService.GetChapterAttachmentByChapterID(id).subscribe(data => {
+      debugger
+      this.Attachmentlist = data;
+      this.dummAttachmentlist = data;
+      this.show = 1
+      if (this.dummAttachmentlist.length != 0) {
+        var list = this.dummAttachmentlist.filter((x: { attachmentType: string; }) => x.attachmentType == 'video')
+        var list1 = this.dummAttachmentlist.filter((x: { attachmentType: string; }) => x.attachmentType == 'Pdf')
+        var list2 = this.dummAttachmentlist.filter((x: { attachmentType: string; }) => x.attachmentType == 'Image')
+        var list3 = this.dummAttachmentlist.filter((x: { attachmentType: string; }) => x.attachmentType == 'Document')
+        var list4 = this.dummAttachmentlist.filter((x: { attachmentType: string; }) => x.attachmentType == 'Ppt')
+        if (list.length != 0) {
+          this.showvideo = 1
+        }
+        if (list1.length != 0) {
+          this.showPdf = 1
+        }
+        if (list2.length != 0) {
+          this.showimage = 1
+        }
+        if (list3.length != 0) {
+          this.showDocument = 1
+        }
+        if (list4.length != 0) {
+          this.showPpt = 1
+        }
+      }
+    })
   }
 
-  public Previewvideo(vedioUrl:any) {
-    
-    window.open(vedioUrl, "_blank")
+
+
+  public PreviewVideo(photo: any) {
+    debugger
+    this.show = 2;
+   // this.chapterphoto = photo;
+   window.open(photo, "_blank")
+       if (this.Attachmentlist.length != 0) {
+      this.Attachmentlist = this.dummAttachmentlist.filter((x: { attachmentType: string; }) => x.attachmentType == 'video')
+      if (this.Attachmentlist.length != 0) {
+        // this.show = 2
+
+      }
+      else {
+        this.noattachments = "No Videos Found"
+        this.show = 5
+      }
+
+    }
+    else {
+      this.noattachments = "No Videos Found"
+      this.show = 5
+    }
+    location.reload();
+
+  }
+
+
+
+  public PreviewPdf(photo: any) {
+    this.show = 3
+  //  this.chapterphoto = this.sanitizer.bypassSecurityTrustResourceUrl(photo);
+    window.open(photo, "_blank")
+    if (this.Attachmentlist.length != 0) {
+      this.Attachmentlist = this.dummAttachmentlist.filter((x: { attachmentType: string; }) => x.attachmentType == 'Pdf')
+      if (this.Attachmentlist.length != 0) {
+        //  this.show=3
+        window.open(this.Attachmentlist[0].photo, "_blank")
+      }
+      else {
+        this.noattachments = "No Pdf Available"
+        this.show = 5
+      }
+
+    }
+    else {
+      this.noattachments = "No Pdf Available"
+      this.show = 5
+    }
+    location.reload();
+  }
+  domSanitizer: any;
+  ppt: any
+  public PreviewPPT(photo: any) {
+    this.show = 4;
+  //  this.chapterphoto = "https://docs.google.com/gvie" + photo;
+    window.open(photo, "_blank")
+     this.ppt=this.sanitizer.bypassSecurityTrustResourceUrl(photo);
+    window.open(photo, "_blank")
+    if (this.Attachmentlist.length != 0) {
+      this.Attachmentlist = this.dummAttachmentlist.filter((x: { attachmentType: string; }) => x.attachmentType == 'Ppt')
+      if (this.Attachmentlist.length != 0) {
+        //  this.show=3
+      }
+      else {
+        this.noattachments = "No Ppt Available"
+        this.show = 5
+      }
+
+    }
+    else {
+      this.noattachments = "No Ppt Available"
+      this.show = 5
+    }
+    location.reload();
+  }
+
+
+
+  public PreviewMSword(photo: any) {
+    debugger
+    this.show = 5;
+  //  this.chapterphoto = this.sanitizer.bypassSecurityTrustResourceUrl(photo);
+     this.show=4;
+    this.chapterphoto=photo;
+    this.chapterphoto=this.sanitizer.bypassSecurityTrustResourceUrl(photo);
+    window.open(photo, "_blank")
+    if (this.Attachmentlist.length != 0) {
+      this.Attachmentlist = this.dummAttachmentlist.filter((x: { attachmentType: string; }) => x.attachmentType == 'Document')
+      if (this.Attachmentlist.length != 0) {
+      }
+      else {
+        this.noattachments = "No Document Available"
+        this.show = 5
+      }
+
+    }
+    else {
+      this.noattachments = "No Document Available"
+      this.show = 5
+    }
+    location.reload();
+
+  }
+
+  public PreviewIMG(photo: any) {
+    this.show = 1;
+  //  this.chapterphoto = photo;
+    window.open(photo, "_blank")   
+    // this.ActivatedRoute.
+    if (this.Attachmentlist.length != 0) {
+      debugger
+      this.Attachmentlist = this.dummAttachmentlist.filter((x: { attachmentType: string; }) => x.attachmentType == 'Image')
+      if (this.Attachmentlist.length != 0) {
+        this.show = 4
+        debugger
+      }
+      else {
+        this.noattachments = "No Image Available"
+        this.show = 5
+      }
+      location.reload();
+
+    }
+    else {
+      this.noattachments = "No Image Available"
+      this.show = 5
+    }
+    location.reload();
   }
 
   chapterdetails: any;
@@ -86,6 +269,8 @@ export class ViewCourseComponent implements OnInit {
         debugger
         this.chapterdetails = data.filter(x => x.courseID == this.courseid);
         this.count = this.chapterdetails.length;
+        this.ShowAttachments(this.chapterdetails[0].id)
+        this.show = 1
       })
   }
 

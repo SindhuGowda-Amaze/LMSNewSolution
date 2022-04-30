@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   temp: any;
   showpassword: any;
   companycode: any;
+  loader: boolean | undefined;
   constructor(public LearningService: LearningService, private router: Router) { }
   ngOnInit(): void {
     this.temp = sessionStorage.getItem('temp');
@@ -99,7 +100,7 @@ export class LoginComponent implements OnInit {
         let temp: any = data.filter(x => (x.emailID == this.userName || x.phoneNo == this.userName) && x.password == this.password);
         this.result = temp[0];
         debugger;
-        // this.loader = true;
+         this.loader = true;
         if (this.result != undefined || this.result != null) {
           debugger
           sessionStorage.setItem('UserName', this.result.name);
@@ -113,7 +114,8 @@ export class LoginComponent implements OnInit {
           debugger
           sessionStorage.setItem('roleid', '2');
           localStorage.setItem("clickname", "Admin Dashboard")
-          this.Insertattdnace(this.result.id)
+       //   location.href = "#/AdminDashboard";
+           this.Insertattdnace(this.result.id)
       
         }
         else {
@@ -130,7 +132,7 @@ export class LoginComponent implements OnInit {
         let temp: any = data.filter(x => (x.emailID == this.userName || x.phoneNo == this.userName) && x.password == this.password);
         this.result = temp[0];
         debugger;
-        // this.loader = true;
+         this.loader = true;
         if (this.result != undefined || this.result != null) {
           sessionStorage.setItem('UserName', this.result.name);
           sessionStorage.setItem('userid', this.result.id);
@@ -198,6 +200,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('loginid',datay);
       
           location.href = "#/AdminDashboard";
+          this.loader = false;
           location.reload();
         }
    
