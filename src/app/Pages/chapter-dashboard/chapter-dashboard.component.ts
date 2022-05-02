@@ -66,10 +66,10 @@ export class ChapterDashboardComponent implements OnInit {
     window.open('assets/Images/JAVA_PPT.ppt')
   }
 
-  edit(id: any) {
-    debugger
-    location.href = "/#/Chapter/" + id;
-  }
+  // edit(id: any) {
+  //   debugger
+  //   location.href = "#/Chapter/" + id;
+  // }
 
   public Ondelete(id:any) {
     Swal.fire({

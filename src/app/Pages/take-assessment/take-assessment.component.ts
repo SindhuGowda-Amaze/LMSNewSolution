@@ -222,17 +222,22 @@ export class TakeAssessmentComponent implements OnInit {
           else{
             this.wrongansers= this.wrongansers + 1;
           }
+          if (this.marks >= this.totalmarks/2) {
+            this.testResult = 'Pass'
+          } else {
+            this.testResult = 'Fail';
+          }
         }
         else if(this.questionList[i].questionID==2){
-          
+          if (this.marks >= this.totalmarks/2) {
+            this.testResult = 'Pass'
+          } else {
+            this.testResult = 'Subjective Result Pending';
+          }
         }
       
       }
-      if (this.marks >= this.totalmarks/2) {
-        this.testResult = 'Pass'
-      } else {
-        this.testResult = 'Fail';
-      }
+     
       var Entityy = {
         'TestResult': this.testResult,
         'UserID': this.userid,
@@ -267,7 +272,8 @@ export class TakeAssessmentComponent implements OnInit {
           this.show = 0;
           this.startTest = "";
         //  this.router.navigate(['/AssessmentResult', this.testResponseID]);
-        this.router.navigate(['#/MyCourseDashboard']);
+        // this.router.navigate(['#/MyCourseDashboard']);
+         location.href="#/MyCourseDashboard";
         }
        
       })

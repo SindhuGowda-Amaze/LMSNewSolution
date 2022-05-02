@@ -215,7 +215,16 @@
             <span [ngClass]="active == 'ASSIGNCourse' ? 'Active1' : 'Active3'"> ASSIGN TRAINING </span>
 
         </a>
-        <a *ngIf="roleid==3" routerLink="/EmployeeAssessmentResult" class="tablinks" (click)="highlight($event)" (click)="results()">
+        <a *ngIf="roleid==3" routerLink="/FinalResult" class="tablinks" (click)="highlight($event)" (click)="results()">
+            <img src="assets/Images/1 (1).png" style="width:13% ;margin-right: 17px;"
+                [ngClass]="active == 'result' ? 'Active1' : 'Active2'" />
+            <img [ngClass]="active != 'result' ? 'Active1' : 'Active2'" src="assets/Images/New folder/1 (1)1.png"
+                style="width:13%; margin-right: 17px;">
+            &nbsp;
+            <span [ngClass]="active == 'result' ? 'Active1' : 'Active3'"> RESULTS </span>
+
+        </a>
+        <a *ngIf="roleid==4" routerLink="/FinalResult" class="tablinks" (click)="highlight($event)" (click)="results()">
             <img src="assets/Images/1 (1).png" style="width:13% ;margin-right: 17px;"
                 [ngClass]="active == 'result' ? 'Active1' : 'Active2'" />
             <img [ngClass]="active != 'result' ? 'Active1' : 'Active2'" src="assets/Images/New folder/1 (1)1.png"
@@ -232,6 +241,27 @@
                 style="width:13%; margin-right: 17px;">
             &nbsp;
             <span [ngClass]="active == 'submitest' ? 'Active1' : 'Active3'"> Test Submitted </span>
+        </a>
+
+
+        <a routerLink="/Help" class="tablinks" (click)="highlight($event)" (click)="help()">
+            <img src="assets/Images/homework (1).png" style="width:13% ;margin-right: 17px;"
+                [ngClass]="active == 'help' ? 'Active1' : 'Active2'" />
+            <img [ngClass]="active != 'help' ? 'Active1' : 'Active2'" src="assets/Images/New folder/homework.png"
+                style="width:13%; margin-right: 17px;">
+            &nbsp;
+            <span [ngClass]="active == 'help' ? 'Active1' : 'Active3'">HELP</span>
+            &nbsp;
+        </a>
+
+         <a routerLink="/SupportTicketDashboard" class="tablinks" (click)="highlight($event)" (click)="SupportTickets()">
+            <img src="assets/Images/homework (1).png" style="width:13% ;margin-right: 17px;"
+                [ngClass]="active == 'SupportTickets' ? 'Active1' : 'Active2'" />
+            <img [ngClass]="active != 'SupportTickets' ? 'Active1' : 'Active2'"
+                src="assets/Images/New folder/homework.png" style="width:13%; margin-right: 17px;">
+            &nbsp;
+            <span [ngClass]="active == 'SupportTickets' ? 'Active1' : 'Active3'">SUPPORT TICKETS</span>
+            &nbsp;
         </a>
     </div>
 </div>

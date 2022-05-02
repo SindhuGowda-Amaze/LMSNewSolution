@@ -19,7 +19,7 @@ export class SubmitedtestsComponent implements OnInit {
 
     this.staffid = localStorage.getItem('userid');
 
-    this.LearningService.GetTestResponse().subscribe(
+    this.LearningService.GetTestResponsenew().subscribe(
       data => {
         debugger
         this.result = data.filter(x => x.checked == 1);

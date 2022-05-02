@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-lg-9">
                             <h1 class="cardlabel"
-                                style="color: #555;font-size: 22px;margin-top: 0px; margin-left: 10px;"
+                                style="color: white;font-size: 22px;margin-top: 0px; margin-left: 10px;"
                                 *ngFor="let item of stafflist">
                                 {{item.name}}</h1>
                             <h4 style="color:white; margin-left: 10px;">Happy Learning!!
@@ -24,8 +24,11 @@
         </div>
         <div class="col-lg-3">
             <div class="card1" style="background-color: white; height:290px;width: 290px; border-radius: 10px;">
-                <img class="card-img-top" style="width: 95%; height: 125px; margin-left: 7px; margin-top: 5px;"
-                     src="{{latestcoursedetails.photo}}" alt="Card image cap">
+                <img *ngIf="show==1" class="card-img-top" style="width: 95%; height: 125px; margin-left: 7px; margin-top: 5px;"
+                     src="{{latestcoursedetails.photo}}" alt="Not yet assigned">
+                     
+                     <img *ngIf="show==0" class="card-img-top" style="width: 95%; height: 125px; margin-left: 7px; margin-top: 5px;"
+                     src="../../../assets/Images/125.png" alt="Not yet assigned"> 
                 <div class="card-body">
                     <div class="row">
                         <p class="lastassigned">Last Assigned</p> <br>
@@ -275,7 +278,7 @@
     </div>
 </div> 
 <ng-template #noResults>
-    <p class="NoResultShow"> No results found for "{{search}}" </p>
+    <p class="NoResultShow"> No results found  </p>
 </ng-template>
 </div> 
 <div id="enroll" class="modal fade" role="dialog">

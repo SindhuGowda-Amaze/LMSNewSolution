@@ -81,13 +81,13 @@ export class MyCourseDashboardComponent implements OnInit {
    else if (value == 3) {
     this.LearningService.GetCourse().subscribe(data => {
       debugger
-      this.coursedetails = data.filter(x=> x.staffID!=this.userid && x.completed!=1 && x.notStarted!=1);
+      this.coursedetails = data.filter(x=> x.staffID==this.userid && x.completed!=1 && x.notStarted!=1);
     });
     }
     else if (value == 4) {
       this.LearningService.GetCourse().subscribe(data => {
         debugger
-        this.coursedetails = data.filter(x=> x.staffID=this.userid &&x.completed==1);
+        this.coursedetails = data.filter(x=> x.staffID==this.userid &&x.completed==1);
       });
       }
   }
@@ -107,9 +107,11 @@ export class MyCourseDashboardComponent implements OnInit {
       this.latestcoursedetails = data[0];
       if(this.latestcoursedetails.length=0){
         this.lastassigned=0;
+        this.show=0
       }
       else{
         this.lastassigned=1;
+        this.show=1
       }
 
       debugger

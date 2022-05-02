@@ -10,9 +10,12 @@ export class FinalResultComponent implements OnInit {
 
   constructor(private LearningService:LearningService) { }
    search:any;
+   roleid:any;
+   userid:any;
   ngOnInit(): void {
-    this.GetTestResponse();
-
+    this.roleid = sessionStorage.getItem('roleid');
+    this.userid = sessionStorage.getItem('userid');
+    this.GetTestResponsenew();
   }
 
 
@@ -29,12 +32,18 @@ export class FinalResultComponent implements OnInit {
 
     
   Marks:any;
-  public GetTestResponse() {
+  public GetTestResponsenew() {
     debugger
-    this.LearningService.GetTestResponse().subscribe(
+    this.LearningService.GetTestResponsenew().subscribe(
       data => {
         debugger
-        this.Marks = data;
+        if(this.roleid==4){
+          this.Marks = data.filter(x=>x.trainerID==this.userid);
+        }
+        else{
+          this.Marks = data;
+        }
+       
         
       })
   }
