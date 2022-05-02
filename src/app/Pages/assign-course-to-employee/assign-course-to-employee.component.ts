@@ -67,46 +67,68 @@ export class AssignCourseToEmployeeComponent implements OnInit {
   }
 name123:any;
 
-  enroll() {
-    debugger
+  // enroll() {
+  //   debugger
 
-    Swal.fire({
-      title: 'Enroll Confirmation',
-      text: "Please click on OK to Assign Course To Employee",
-      icon: 'warning',
-      // icon: 'success',
-      showCloseButton: true,
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'OK'
-    }).then((result) => {
+  //   Swal.fire({
+  //     title: 'Enroll Confirmation',
+  //     text: "Please click on OK to Assign Course To Employee",
+  //     icon: 'warning',
+  //     // icon: 'success',
+  //     showCloseButton: true,
+  //     showCancelButton: true,
+  //     confirmButtonColor: '#3085d6',
+  //     cancelButtonColor: '#d33',
+  //     confirmButtonText: 'OK'
+  //   }).then((result) => {
 
-      if (result.isConfirmed) {
+  //     if (result.isConfirmed) {
+  //       debugger
+  //       var json = {
+  //         "staffid": this.staffId,
+  //         "manager": this.manager,
+  //         "courseid": this.courseid,
+  //         "status": 'Manager Assign',
+  //         "employeeName": this.name123,
+  //         "phoneNo": this.mobile,
+  //         "email": this.emailID,
+  //         "type": "Manager Assign"
+  //       };
+  //       this.LearningService.InsertEnroll(json).subscribe(
+  //         data => {
+  //           debugger
+  //           let id = data;
+  //         })
+  //       Swal.fire(
+  //         'Cousre Assigned Successfully!!!',
+  //         'success'
+  //       );
+  //       location.href = "#/AssignCourseDashboard";
+  //     }
+  //   });
+  // }
+
+  enroll(){
+    debugger 
+    if(this.name123==undefined || this.courseid==undefined)
+    {
+      Swal.fire("Please fill all the fields");
+    }
+  else{
+    var json = {
+      "Name": this.name123,
+      "Description": this.courseid,     
+    };
+    this.LearningService.InsertEnroll(json).subscribe(
+      data => {
         debugger
-        var json = {
-          "staffid": this.staffId,
-          "manager": this.manager,
-          "courseid": this.courseid,
-          "status": 'Manager Assign',
-          "employeeName": this.name123,
-          "phoneNo": this.mobile,
-          "email": this.emailID,
-          "type": "Manager Assign"
-        };
-        this.LearningService.InsertEnroll(json).subscribe(
-          data => {
-            debugger
-            let id = data;
-          })
-        Swal.fire(
-          'Cousre Assigned Successfully!!!',
-          'success'
-        );
+        let id = data;
+        Swal.fire("Saved Successfully");
         location.href = "#/AssignCourseDashboard";
-      }
-    });
+      })
   }
+  }
+
 }
 
 

@@ -34,13 +34,26 @@ count:any;
   }
   
   public Ondelete(id:any) {
+    Swal.fire({
+      title: 'Are You Sure ',
+      text: "Do you want to delete the Selected Record",
+      showCloseButton: true,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'OK'
+    }).then((result) => {
+      if (result.value == true) {
     this.LearningService.DeleteTrainerCourseMapping(id).subscribe(
       data => {
         debugger
-        Swal.fire('Successfully Deleted...!');
         this.GetTrainerCourseMappingDashboard();
       }
     )
+    Swal.fire('Successfully Deleted...!');
+    this.ngOnInit();
+      }
+    });
   }
 
 

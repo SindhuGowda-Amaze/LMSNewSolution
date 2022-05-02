@@ -150,6 +150,12 @@ export class AssessmentFormComponent implements OnInit {
   assessmenrArray: any = [];
   ADd() {
     debugger
+    if(this.courseid==undefined || this.chapterid==undefined || this.questionid==undefined || this.Question==
+      undefined|| this.Weightage==undefined || this.CorrectAnswer==undefined || this.CorrectAnswer=="")
+    {
+      Swal.fire("Please fill all the fields");
+    }
+  else{
     this.tablecout = 1;
     var json = {
       "CourseID": this.courseid,
@@ -164,6 +170,7 @@ export class AssessmentFormComponent implements OnInit {
       "weightage": this.Weightage,
       "AssessmentName": this.AssessmentName
     };
+  
     this.assessmenrArray.push(json)
     this.Question="";
     this.Option1="";
@@ -172,7 +179,8 @@ export class AssessmentFormComponent implements OnInit {
     this.Option4="";
     this.Weightage="";
     this.AssessmentName="";
-
+    Swal.fire("Saved Successfully");
+  }
  
 
     // this.LearningService.InsertAssessments(json).subscribe(

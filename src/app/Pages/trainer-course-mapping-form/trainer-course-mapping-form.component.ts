@@ -81,22 +81,28 @@ export class TrainerCourseMappingFormComponent implements OnInit {
 
   Submit(){
     debugger 
-   var json = {  
-     "trainerID":this.TrainerID,
-     "courseID":this.CourseID,
-      // "emailID": this.EmailID,
-      "startDate": this.StartDate,
-      "endDate": this.EndDate,
-      "batchID": this.BatchName,
-      "noOfStudentsEnrolled": this.AllowedStudents
+    if(this.TrainerID==undefined || this.CourseID==undefined || this.StartDate==undefined || this.EndDate==
+      undefined || this.BatchName==undefined || this.AllowedStudents==undefined)
+    {
+      Swal.fire("Please fill all the fields");
+    }
+  else{
+    var json = {
+      "trainerID":this.TrainerID,
+      "courseID":this.CourseID,
+       "startDate": this.StartDate,
+       "endDate": this.EndDate,
+       "batchID": this.BatchName,
+       "noOfStudentsEnrolled": this.AllowedStudents   
     };
     this.LearningService.InsertTrainerCourseMapping(json).subscribe(
       data => {
         debugger
         let trainerlist = data;
-    alert("Successfully Submitted...!")
-      location.href="#/TrainerCourseMapping";
+        Swal.fire("Saved Successfully");
+        location.href="#/TrainerCourseMapping";
       })
+  }
   }
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LearningService } from 'src/app/learning.service';
-import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-chapter-dashboard',
@@ -71,16 +71,27 @@ export class ChapterDashboardComponent implements OnInit {
     location.href = "/#/Chapter/" + id;
   }
 
-
-  public Ondelete(id: any) {
-    this.LearningService.DeleteChapter(id).subscribe(
+  public Ondelete(id:any) {
+    Swal.fire({
+      title: 'Are You Sure ',
+      text: "Do you want to delete the Selected Record",
+      showCloseButton: true,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'OK'
+    }).then((result) => {
+      if (result.value == true) {
+        this.LearningService.DeleteChapter(id).subscribe(
       data => {
         debugger
         this.GetChapter();
-        swal.fire('Sucessfully Deleted');
       }
     )
-
+    Swal.fire('Successfully Deleted...!');
+    this.ngOnInit();
+      }
+    });
   }
 
   Attachmentlist: any;

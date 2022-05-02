@@ -80,13 +80,26 @@ export class CourseDashboardComponent implements OnInit {
   }
 
   public Ondelete(id:any) {
-    this.LearningService.DeleteCourse(id).subscribe(
+    Swal.fire({
+      title: 'Are You Sure ',
+      text: "Do you want to delete the Selected Record",
+      showCloseButton: true,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'OK'
+    }).then((result) => {
+      if (result.value == true) {
+        this.LearningService.DeleteCourse(id).subscribe(
       data => {
         debugger
-        Swal.fire('Successfully Deleted...!');
         this.GetCourse();
       }
     )
+    Swal.fire('Successfully Deleted...!');
+    this.ngOnInit();
+      }
+    });
   }
 
   dummcoursedetails:any;

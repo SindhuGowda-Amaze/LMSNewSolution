@@ -106,7 +106,7 @@ export class ChapterComponent implements OnInit {
       this.file = res;
       this.Attachment.push(this.file);
       console.log("Attchaments",this.Attachment);
-      alert("ATTACHMENT UPLOADED");
+      Swal.fire("ATTACHMENT UPLOADED");
     })
   }
 
@@ -162,7 +162,9 @@ export class ChapterComponent implements OnInit {
 
   Save() {
     debugger
-    if(this.courseID==undefined || this.name==undefined||this.description==undefined || this.ChapterPhoto==undefined|| this.chapterText==undefined)
+    if(this.courseID==undefined || this.name==undefined||this.description==undefined || this.ChapterPhoto==
+      undefined|| this.chapterText==undefined || this.generalInstructions==undefined || this.assessmentName
+      ==undefined || this.assessmentName=="" || this.generalInstructions=="")
     {
       Swal.fire("Please fill all the fields");
     }
@@ -222,7 +224,7 @@ export class ChapterComponent implements OnInit {
     this.LearningService.AttachmentsUpload(this.files).subscribe(res => {
       debugger
       this.ChapterPhoto = res;
-      alert("ATTACHMENT UPLOADED");
+      Swal.fire("ATTACHMENT UPLOADED");
     })
   }
 
@@ -319,7 +321,7 @@ export class ChapterComponent implements OnInit {
       debugger
       this.photourl = res;
       console.log("Attchaments",this.Attachment);
-      alert("ATTACHMENT UPLOADED");
+      Swal.fire("ATTACHMENT UPLOADED");
     })
   }
 
