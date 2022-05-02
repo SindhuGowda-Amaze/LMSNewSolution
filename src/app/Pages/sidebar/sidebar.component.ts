@@ -46,7 +46,7 @@ export class SidebarComponent implements OnInit {
   }
 
   chapterdashboard() {
-    this.active = 'Chapter';
+    this.active = 'Topic';
     localStorage.setItem("clickname", "Chapter  Dashboard")
   }
 
@@ -67,7 +67,7 @@ export class SidebarComponent implements OnInit {
 
   course() {
     this.active = 'course'
-    localStorage.setItem("clickname", "COURSE")
+    localStorage.setItem("clickname", "Training")
   }
 
   chapter() {
@@ -138,6 +138,14 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem("clickname", "Trainee Report")
   }
 
+  help() {
+    this.active = 'help'
+    localStorage.setItem("clickname", "HELP")
+  }
 
+  SupportTickets() {
+    this.active = 'SupportTickets'
+    localStorage.setItem("clickname", "support tickets")
+  }
 
 }

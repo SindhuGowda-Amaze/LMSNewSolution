@@ -19,8 +19,8 @@ export class ManagerDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.Showcards(2);
     this.show = 2;
-    this.staffid = localStorage.getItem('userid');
-    this.manager = localStorage.getItem('manager');
+
+    this.manager = sessionStorage.getItem('userid');
    // this.GetCandidateReg()
     // this.insertdetails()
     //this.GetEnroll();
@@ -50,8 +50,8 @@ export class ManagerDashboardComponent implements OnInit {
     this.LearningService.GetEnroll().subscribe(
       data => {
         debugger
-        // this.result = data.filter(x => x.manager == this.manager );
-        this.result = data
+         this.result = data.filter(x => x.manager == this.manager );
+      //  this.result = data
         this.dummemployeedetails=data
         this.count = this.result.length;
 
@@ -135,7 +135,7 @@ export class ManagerDashboardComponent implements OnInit {
           data => {
             debugger
             // this.result = data.filter(x => x.manager == this.manager );
-            this.result = data.filter(x => x.status == 'Manager Approved' );
+            this.result = data.filter(x => x.status == 'Manager Approved' && x.manager == this.manager );
             this.count = this.result.length;
           })
         // this.GetCourse();
@@ -145,7 +145,7 @@ export class ManagerDashboardComponent implements OnInit {
           data => {
             debugger
             // this.result = data.filter(x => x.manager == this.manager );
-            this.result = data.filter(x => x.status == 'Manager Pending' );
+            this.result = data.filter(x => x.status == 'Manager Pending' && x.manager == this.manager );
             this.count = this.result.length;
           })
         // this.GetApproveCourse();
@@ -155,7 +155,7 @@ export class ManagerDashboardComponent implements OnInit {
           data => {
             debugger
             // this.result = data.filter(x => x.manager == this.manager );
-            this.result = data.filter(x => x.status == 'Manager Rejected' );
+            this.result = data.filter(x => x.status == 'Manager Rejected' && x.manager == this.manager );
             this.count = this.result.length;
           })
         // this.GetApproveCourse();

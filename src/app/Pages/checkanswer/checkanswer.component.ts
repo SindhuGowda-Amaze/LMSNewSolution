@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, ElementRef, AfterViewInit } from '@angular/core';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-checkanswer',
   templateUrl: './checkanswer.component.html',
@@ -51,6 +52,7 @@ export class CheckanswerComponent implements OnInit {
   Totalmarks: any;
   ObtainedMarks: any;
   userSubAnswer: any;
+  testResult:any;
   public UpdateResult() {
     debugger
     this.AmazeService.GetTestResponseDetails().subscribe(data => {
@@ -67,11 +69,17 @@ export class CheckanswerComponent implements OnInit {
         total1 += Number(x.marks);
       });
       this.ObtainedMarks = total1;
+      if (this.ObtainedMarks >= this.Totalmarks/2) {
+        this.testResult = 'Pass'
+      } else {
+        this.testResult = 'Fail';
+      }
       var ett = {
         'ID': this.id,
         'Totalmarks': this.Totalmarks,
         'ObtainedMarks': this.ObtainedMarks,
-        'Checked': 1
+        'Checked': 1,
+        'TestResult':this.testResult
       }
 
       this.AmazeService.UpdateTestResponse(ett).subscribe(data => {
@@ -79,9 +87,6 @@ export class CheckanswerComponent implements OnInit {
         location.href = '#/FinalResult'
       });
     });
-
-
-
   }
 
   public getdetailslist(list: any) {
@@ -94,16 +99,31 @@ export class CheckanswerComponent implements OnInit {
   }
 
 
-  
-  Marks:any;
+
+  Marks: any;
   public GetTestResponse() {
     debugger
     this.AmazeService.GetTestResponse().subscribe(
       data => {
         debugger
         this.Marks = data;
-        
+
       })
+  }
+  total2: any
+  public updatemarks(list: any) {
+    debugger
+    this.total2 = 0;
+
+    var ett = {
+      'ID': list.id,
+      'Marks': list.marks, 
+    }
+
+    this.AmazeService.UpdateTestResponseDetails(ett).subscribe(data => {
+
+    });
+
   }
 
 
