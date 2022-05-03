@@ -42,7 +42,7 @@ export class AttendanceNewComponent implements OnInit {
           this.Attendance = data.filter(x => x.trainerID == this.userid);
         }
         else{
-          this.Attendance = data
+          this.Attendance = data.filter(x => x.empID == this.userid);
         }
        
       })

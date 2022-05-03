@@ -19,11 +19,13 @@ export class TrainerCourseMappingFormComponent implements OnInit {
   EndDate:any;
   BatchName:any;
   AllowedStudents:any;
-
+  maxdate: any;
   constructor(public LearningService:LearningService, public ActivatedRoute:ActivatedRoute) { }
   trainerlist:any;
   ngOnInit(): void {
-
+   
+    this.maxdate = new Date().toISOString().split("T")[0];
+ 
     this.TrainerID=0;
     this.CourseID=0;
     this.BatchName=0;
@@ -59,6 +61,13 @@ export class TrainerCourseMappingFormComponent implements OnInit {
     // this.BatchName=0;
   }
 
+  public endingdatealert(even: any) {
+    this.EndDate= even.target.value;
+    if(this.EndDate < this.StartDate || this.EndDate < this.StartDate){
+      Swal.fire("End date should be greater than Start date")
+      this.EndDate=0
+    }
+  }
   trainerName:any;
   courseName:any;
 

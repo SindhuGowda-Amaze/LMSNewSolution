@@ -100,8 +100,7 @@ name123:any;
             let id = data;
           })
         Swal.fire(
-          'Cousre Assigned Successfully!!!',
-          'success'
+          'Course Assigned Successfully!!!',
         );
         location.href = "#/AssignCourseDashboard";
       }

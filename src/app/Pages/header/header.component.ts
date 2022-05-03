@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
 import { LearningService } from 'src/app/learning.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -19,10 +21,19 @@ export class HeaderComponent implements OnInit {
   mm: any;
   ampm: any;
   loginid:any;
-  constructor(private LearningService:LearningService) { }
+  staffID: any;
+  myname:any;
+
+  constructor(private LearningService:LearningService,public router: Router) { }
   ngOnInit(): void {
     this.temp = sessionStorage.getItem('temp');
     this.loginid=localStorage.getItem('loginid');
+    this.staffID = sessionStorage.getItem('userid');
+
+    this.roleid = sessionStorage.getItem('roleid');
+    this.company_name = sessionStorage.getItem("company_name");
+    this.UserName = sessionStorage.getItem('UserName');
+    this.role = sessionStorage.getItem('role')
 
 
     setInterval(() => {
@@ -40,10 +51,16 @@ export class HeaderComponent implements OnInit {
     }));
 
 
-    this.roleid = sessionStorage.getItem('roleid');
-    this.company_name = sessionStorage.getItem("company_name");
-    this.UserName = sessionStorage.getItem('UserName');
-    this.role = sessionStorage.getItem('role')
+
+
+
+    this.LearningService.GetMyDetails().subscribe(res => {
+      debugger
+      let temp: any = res.filter(x => x.id == this.staffID);
+      this.myname = temp[0].name;
+      this.initail = this.myname.charAt(0);
+    });
+
   }
 
   async logout() {
@@ -82,6 +99,41 @@ export class HeaderComponent implements OnInit {
 
 
 
+
+  initail: any
+  notificationslist: any
+
+  public GetNotification() {
+    debugger
+
+    this.LearningService.GetNotification(this.staffID).subscribe(data => {
+      debugger
+      this.notificationslist = data;
+    })
+  }
+
+  public ClearNotification() {
+    debugger
+    this.LearningService.ClearNotificationByID(Number(this.staffID)).subscribe(data => {
+      debugger
+
+    })
+
+    Swal.fire('Cleared Successfully');
+    this.GetNotification();
+
+  }
+
+
+  public accountsetting() {
+    debugger
+    this.router.navigate(['/MyAccountSetting']);
+  }
+
+
+  public onActivate(event: any) {
+    window.scroll(0, 0);
+  }
 
 
 

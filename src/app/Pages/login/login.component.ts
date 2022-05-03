@@ -119,6 +119,7 @@ export class LoginComponent implements OnInit {
       
         }
         else {
+
           Swal.fire('Username or Password is invalid');
           this.userName = "";
           this.password = "";
