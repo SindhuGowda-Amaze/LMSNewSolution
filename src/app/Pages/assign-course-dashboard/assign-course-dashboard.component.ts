@@ -29,7 +29,9 @@ public GetEnroll(){
     })
 }
 
-Ondelete(id:any){}
+Ondelete(id:any){
+  
+}
 }
 
 
