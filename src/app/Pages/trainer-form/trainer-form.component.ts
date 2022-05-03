@@ -125,7 +125,7 @@ export class TrainerFormComponent implements OnInit {
     this.LearningService.AttachmentsUpload(this.files).subscribe(res => {
       debugger
       this.Company_logo = res;
-      alert("ATTACHMENT UPLOADED");
+      Swal.fire("ATTACHMENT UPLOADED");
     })
   }
 

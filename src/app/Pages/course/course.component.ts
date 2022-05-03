@@ -78,13 +78,20 @@ this.categoryid=list[1];
 
   Save(){
     debugger 
-   var json = {  
-    "categoryName":this.categoryName,
+    if(this.name==undefined || this.description==undefined || this.categoryName==undefined || 
+      this.Course_Photo==undefined || this.duration==undefined || this.entryCriteria==
+      undefined ||  this.exitCriteria==undefined || this.categoryid==undefined || this.trainingType
+      == undefined)
+    {
+      Swal.fire("Please fill all the fields");
+    }
+  else{
+    var json = {
+      "categoryName":this.categoryName,
       "name": this.name,
       "description":this.description,  
       "photo": this.Course_Photo,
       "duration": this.duration,
-      "fee":this.fee,
       "entryCriteria":this.entryCriteria,
       "exitCriteria":this.exitCriteria,    
       "CategoryID":this.categoryid,
@@ -92,15 +99,16 @@ this.categoryid=list[1];
       "userName":this.userName,
       "password":this.password,
       "venue":this.venue,
-      "trainingType":this.trainingType
+      "trainingType":this.trainingType  
     };
     this.LearningService.InsertCourse(json).subscribe(
       data => {
         debugger
         let id = data;
-        Swal.fire("Saved Sucessfully");
-      location.href="#/CourseDashboard"
+        Swal.fire("Saved Successfully");
+        location.href="#/CourseDashboard"
       })
+  }
   }
 
     Update(){
@@ -170,7 +178,7 @@ this.categoryid=list[1];
     this.LearningService.AttachmentsUpload(this.files).subscribe(res => {
       debugger
       this.Course_Photo = res;
-      alert("ATTACHMENT UPLOADED");
+      Swal.fire("ATTACHMENT UPLOADED");
     })
   }
 

@@ -37,13 +37,26 @@ export class TrainerComponent implements OnInit {
   }
 
   public Ondelete(id:any) {
+    Swal.fire({
+      title: 'Are You Sure ',
+      text: "Do you want to delete the Selected Record",
+      showCloseButton: true,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'OK'
+    }).then((result) => {
+      if (result.value == true) {
     this.LearningService.DeleteTrainer(id).subscribe(
       data => {
         debugger
-        Swal.fire('Successfully Deleted...!');
         this.GetTrainer();
       }
     )
+    Swal.fire('Successfully Deleted...!');
+    this.ngOnInit();
+      }
+    })
   }
 
   OpenPdf(pdf:any)

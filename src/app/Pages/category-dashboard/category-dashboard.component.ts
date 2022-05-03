@@ -39,13 +39,26 @@ export class CategoryDashboardComponent implements OnInit {
   }
 
   public Ondelete(id:any) {
-    this.LearningService.DeleteCategoryMaster(id).subscribe(
+    Swal.fire({
+      title: 'Are You Sure ',
+      text: "Do you want to delete the Selected Record",
+      showCloseButton: true,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'OK'
+    }).then((result) => {
+      if (result.value == true) {
+        this.LearningService.DeleteCategoryMaster(id).subscribe(
       data => {
         debugger
-        Swal.fire('Successfully Deleted...!');
         this.GetCategoryMaster();
       }
     )
+    Swal.fire('Successfully Deleted...!');
+    this.ngOnInit();
+      }
+    });
   }
 
 }

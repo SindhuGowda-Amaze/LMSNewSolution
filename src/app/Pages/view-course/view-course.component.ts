@@ -328,7 +328,7 @@ attachmentId:any;
             data => {
               debugger
               let id = data;
-              Swal.fire("saved Sucessfully");
+              Swal.fire("Saved Successfully");
             location.href="#/Catalog"
             })
         Swal.fire(
