@@ -615,6 +615,13 @@ export class LearningService {
     return this.http.get<any[]>(this.baseURL + "/Master/GetAttendance_New");
   }
 
+  public UpdatePassword(data: any) {
+    debugger;
+    this.url = this.host + '/Master/UpdatePassword';
+    return this.http.post(this.url, data);
+  }
+
+
 
   public InsertAttendance_New(data: any) {
     debugger;
@@ -711,6 +718,16 @@ export class LearningService {
       this.host + '/Announcement/GetDepartmentMaster');
   }
 
+  public GetNotification(UserID: any) {
+    return this.http.get<any[]>(
+      this.host + "/User/GetNotification?UserID=" + UserID
+    );
+  }
+
+  public ClearNotificationByID(ID: any) {
+    return this.http.get<any[]>(
+      this.host + "/Announcement/ClearNotificationByID?ID=" + ID);
+  }
 
 
 

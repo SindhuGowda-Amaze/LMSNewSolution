@@ -65,7 +65,7 @@ export class AssignCourseToEmployeeComponent implements OnInit {
   public getdata(name: any) {
     this.name = name
   }
-name123:any;
+  name123: any;
 
   // enroll() {
   //   debugger
@@ -108,25 +108,36 @@ name123:any;
   //   });
   // }
 
-  enroll(){
-    debugger 
-    if(this.name123==undefined || this.courseid==undefined)
-    {
+  enroll() {
+    debugger
+    if (this.name123 == undefined || this.courseid == undefined) {
       Swal.fire("Please fill all the fields");
     }
-  else{
-    var json = {
-      "Name": this.name123,
-      "Description": this.courseid,     
-    };
-    this.LearningService.InsertEnroll(json).subscribe(
-      data => {
-        debugger
-        let id = data;
-        Swal.fire("Saved Successfully");
-        location.href = "#/AssignCourseDashboard";
-      })
-  }
+    else {
+      var json = {
+        "Name": this.name123,
+        "Description": this.courseid,
+      };
+      this.LearningService.InsertEnroll(json).subscribe(
+        data => {
+          debugger
+          var json = {
+            "staffid": this.staffId,
+            "manager": this.manager,
+            "courseid": this.courseid,
+            "status": 'Manager Assign',
+            "employeeName": this.name123,
+            "phoneNo": this.mobile,
+            "email": this.emailID,
+            "type": "Manager Assign"
+          };
+          Swal.fire(
+            'Course Assigned Successfully!!!'
+          );
+          location.href = "#/AssignCourseDashboard";
+
+        })
+    }
   }
 
 }
