@@ -46,7 +46,6 @@ export class ManagerDashboardComponent implements OnInit {
   result: any;
   employeeList:any;
   employeeid:any;
-  employeereportlist:any;
 
   public GetEnroll() {
     debugger
@@ -57,7 +56,6 @@ export class ManagerDashboardComponent implements OnInit {
       //  this.result = data
         this.dummemployeedetails=data;
         this.employeeList=data;
-        this.employeereportlist=data;
         this.count = this.result.length;
       })
   }
@@ -66,8 +64,8 @@ export class ManagerDashboardComponent implements OnInit {
     debugger
     this.employeeid=even.target.value;
     if(even.target.value !=0){
-      this.employeereportlist = this.dummemployeedetails.filter((x: { employeeName: any; }) => x.employeeName == this.employeeid)
-      this.count = this.employeereportlist.length;
+      this.result = this.dummemployeedetails.filter((x: { employeeName: any; }) => x.employeeName == this.employeeid)
+      this.count = this.result.length;
     }
     else{
       this.GetEnroll();
