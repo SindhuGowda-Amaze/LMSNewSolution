@@ -52,14 +52,14 @@ export class CategoryFormComponent implements OnInit {
   else{
     var json = {
       "Name": this.Name,
-      "Description": this.Description,     
+      "Description": this.Description  
     };
     this.LearningService.InsertCategoryMaster(json).subscribe(
       data => {
         debugger
         let id = data;
         Swal.fire("Saved Successfully");
-        location.href="/#/CategoryDashboard"
+        location.href="#/CategoryDashboard";
       })
   }
   }

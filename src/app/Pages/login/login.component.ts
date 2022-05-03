@@ -77,23 +77,15 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
-
     if (this.userName == 'admin' && this.password == '1') {
       debugger
-      // location.reload();
       sessionStorage.setItem('UserName', 'admin');
       sessionStorage.setItem('temp', '1');
       sessionStorage.setItem('role', 'Admin');
       sessionStorage.setItem('roleid', '1');
-
-      //  this.router.navigate(["AdminDashboard"]);
       localStorage.setItem("clickname", "Admin Dashboard")
       location.href = "#/AdminDashboard";
       location.reload();
-
-
-
-
     }
     else if (this.roleID == 2) {
       this.LearningService.GetMyDetails().subscribe(async data => {
@@ -105,18 +97,14 @@ export class LoginComponent implements OnInit {
           debugger
           sessionStorage.setItem('UserName', this.result.name);
           sessionStorage.setItem('userid', this.result.id);
-       
           console.log("Employeid", this.result.id)
           sessionStorage.setItem('temp', '1');
           sessionStorage.setItem('manager', this.result.supervisor)
           sessionStorage.setItem('role', 'Employee');
-       
           debugger
           sessionStorage.setItem('roleid', '2');
           localStorage.setItem("clickname", "Admin Dashboard")
-       //   location.href = "#/AdminDashboard";
            this.Insertattdnace(this.result.id)
-      
         }
         else {
           Swal.fire('Username or Password is invalid');
@@ -124,7 +112,6 @@ export class LoginComponent implements OnInit {
           this.password = "";
         }
       })
-
     }
 
     else if (this.roleID == 3) {
@@ -148,9 +135,7 @@ export class LoginComponent implements OnInit {
           this.userName = "";
           this.password = "";
         }
-
       })
-
     }
 
 

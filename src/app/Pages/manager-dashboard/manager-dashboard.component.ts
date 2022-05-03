@@ -17,9 +17,9 @@ export class ManagerDashboardComponent implements OnInit {
   constructor(public LearningService: LearningService) { }
 
   ngOnInit(): void {
+   this.GetEnroll(); 
     this.Showcards(2);
     this.show = 2;
-
     this.manager = sessionStorage.getItem('userid');
    // this.GetCandidateReg()
     // this.insertdetails()
@@ -44,6 +44,9 @@ export class ManagerDashboardComponent implements OnInit {
     // }
   }
   result: any;
+  employeeList:any;
+  employeeid:any;
+  employeereportlist:any;
 
   public GetEnroll() {
     debugger
@@ -52,10 +55,23 @@ export class ManagerDashboardComponent implements OnInit {
         debugger
          this.result = data.filter(x => x.manager == this.manager );
       //  this.result = data
-        this.dummemployeedetails=data
+        this.dummemployeedetails=data;
+        this.employeeList=data;
+        this.employeereportlist=data;
         this.count = this.result.length;
-
       })
+  }
+
+  getemployeeid(even:any){
+    debugger
+    this.employeeid=even.target.value;
+    if(even.target.value !=0){
+      this.employeereportlist = this.dummemployeedetails.filter((x: { employeeName: any; }) => x.employeeName == this.employeeid)
+      this.count = this.employeereportlist.length;
+    }
+    else{
+      this.GetEnroll();
+    }
   }
 
   id: any;
