@@ -19,7 +19,7 @@ export class MyAccountsettingModifyComponent implements OnInit {
     this.passvaild = true;
     this.LearningService.GetMyDetails().subscribe(data => {
       debugger
-      let temp: any = data.filter(x => x.id == localStorage.getItem('staffid'));
+      let temp: any = data.filter(x => x.id == sessionStorage.getItem('userid'));
       this.Currentpassword = temp[0].password;
     });
 

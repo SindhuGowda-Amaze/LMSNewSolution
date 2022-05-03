@@ -21,8 +21,11 @@ export class LoginComponent implements OnInit {
   showpassword: any;
   companycode: any;
   loader: boolean | undefined;
+  admin:any;
   constructor(public LearningService: LearningService, private router: Router) { }
   ngOnInit(): void {
+    this.admin="Admin"
+
     this.temp = sessionStorage.getItem('temp');
     this.showpassword = 0;
 
@@ -77,7 +80,9 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
-    if (this.userName == 'admin' && this.password == '1') {
+    debugger
+    let adminCopy = this.admin.toLowerCase();
+    if (this.userName.toLowerCase().includes(adminCopy)  && this.password == '1') {
       debugger
       sessionStorage.setItem('UserName', 'admin');
       sessionStorage.setItem('temp', '1');
@@ -88,8 +93,10 @@ export class LoginComponent implements OnInit {
       location.reload();
     }
     else if (this.roleID == 2) {
+      debugger
+      let userNameCopy = this.userName.toLowerCase();
       this.LearningService.GetMyDetails().subscribe(async data => {
-        let temp: any = data.filter(x => (x.emailID == this.userName || x.phoneNo == this.userName) && x.password == this.password);
+        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.password);
         this.result = temp[0];
         debugger;
          this.loader = true;
@@ -116,8 +123,10 @@ export class LoginComponent implements OnInit {
     }
 
     else if (this.roleID == 3) {
+      debugger
+      let userNameCopy = this.userName.toLowerCase();
       this.LearningService.GetMyDetails().subscribe(data => {
-        let temp: any = data.filter(x => (x.emailID == this.userName || x.phoneNo == this.userName) && x.password == this.password);
+        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.password);
         this.result = temp[0];
         debugger;
          this.loader = true;
@@ -142,8 +151,10 @@ export class LoginComponent implements OnInit {
 
 
     else if (this.roleID == 4) {
+      debugger
+      let userNameCopy = this.userName.toLowerCase();
       this.LearningService.GetTrainer().subscribe(data => {
-        let temp: any = data.filter(x => (x.phoneNo == this.userName || x.email == this.userName) && x.password == this.password);
+        let temp: any = data.filter(x => (x.phoneNo == this.userName || x.email.toLowerCase().includes(userNameCopy) ) && x.password == this.password);
         this.result = temp[0];
         debugger;
         // this.loader = true;

@@ -13,12 +13,19 @@ export class AssessmentdashboardComponent implements OnInit {
   result:any;
   search:any;
   count:any;
+  courseid:any;
+  coursedetails:any;
+  dummcoursedetails:any;
+  question:any;
   quetionlist:any;
+
   ngOnInit(): void {
    this. GetAssessmentResult()
     this.GetAssessments();
     this.GetCourse();
     this. GetQuestionMaster();
+    this.question1=0;
+    this.course = 0;
 
     this.LearningService.GetTestResponse().subscribe(
       data => {
@@ -26,32 +33,28 @@ export class AssessmentdashboardComponent implements OnInit {
         // this.result = data.filter(x => x.manager == this.manager );
         this.result = data;
       })
-
-
-
-
-
-
   }
 
+  course:any;
+  question1:any;
 
-
-  courseid:any;
-  coursedetails:any;
-  dummcoursedetails:any;
 
   getcourseid(even: any) {
     debugger
     this.courseid = even.target.value;
-    if (even.target.value != 0) {
+    if (this.course != 0 && this.question1 == 0) {
       debugger
-      this.quetionlist = this.dummquetionlist.filter((x: { courseID: any; }) => x.courseID == this.courseid)
+      this.quetionlist = this.dummquetionlist.filter((x: { courseID: any; }) => x.courseID == this.course)
+    }
+    else if (this.course == 0 && this.question1 != 0) {
+      debugger
+      this.quetionlist = this.dummquetionlist.filter((x: { questionID: any; }) => x.questionID == this.question1)
     }
     else{
-      debugger
-      this.GetAssessments()
+      this.quetionlist = this.dummquetionlist.filter((x: { questionID: any,courseID:any }) => x.questionID == this.question1 &&  x.courseID == this.course)
     }
 
+<<<<<<< HEAD
     this.GetFilteredCourseID();
 
   }
@@ -61,7 +64,24 @@ export class AssessmentdashboardComponent implements OnInit {
       debugger
       this.quetionlist = data.filter(x => x.courseID == this.courseid)
     })
+=======
+
+>>>>>>> 891f4980e1b193394c9a3b629a53d9c07ffd7666
   }
+
+
+  getquestion(even:any){
+    if(even.target.value !=0){
+      this.question=even.target.value;
+      debugger
+      this.quetionlist = this.dummquetionlist.filter((x: { questionID: any; }) => x.questionID == this.question);
+      this.count=this.quetionlist.length;
+    }
+    else{
+      this.GetAssessments();
+    }
+  }
+
 
   courselist:any;
   public GetCourse() {
@@ -126,6 +146,7 @@ export class AssessmentdashboardComponent implements OnInit {
     location.href="/Checkanswer"
   }
 
+<<<<<<< HEAD
   question:any;
   getquestion(even:any){
     if(even.target.value !=0){
@@ -146,6 +167,9 @@ export class AssessmentdashboardComponent implements OnInit {
 
 
 
+=======
+ 
+>>>>>>> 891f4980e1b193394c9a3b629a53d9c07ffd7666
 
 
 }
