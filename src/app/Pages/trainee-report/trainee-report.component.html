@@ -54,11 +54,11 @@
                         <tr *ngFor="let details of employeereportlist|filter :search">
                             <td style="color:#0C275A">{{details.staffID}}</td>
                             <td style="color:#0C275A">{{details.employeeName}}</td>
-                            <td style="color:#0C275A">{{details.employeeRole}}</td>
+                            <td style="color:#0C275A">{{details.role}}</td>
                             <td style="color:#0C275A">{{details.courseName}}</td>
                             <td style="color:#0C275A">{{details.modifiedDate}}</td>
                             <td style="color:#0C275A">{{details.completiondate}}</td>
-                            <td style="color:#0C275A"></td>
+                            <td style="color:#0C275A">{{details.percentage}}</td>
                             <td style="color:#0C275A">
                                 <button class="Button"
                                 [routerLink]="['/CourseCertificateNew',details.id]">View</button>

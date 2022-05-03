@@ -20,14 +20,14 @@
             <p class="filter">Filter By</p>
         </div>
         <div class="col-lg-3">
-            <select class="form-control" name="cars" id="Duration" (change)="getcourseid($event)">
+            <select class="form-control" name="cars" id="Duration" (change)="getcourseid($event)" [(ngModel)]="course">
                 <option value="0">Select Training</option>
                 <option style="color:#0C275A" *ngFor="let details of courselist" value="{{details.id}}">
                     {{details.name}}</option>
             </select>
         </div>
         <div class="col-lg-3">
-            <select class="form-control" name="cars" id="Duration" (change)="getquestion($event)">
+            <select class="form-control" name="cars" id="Duration" (change)="getquestion($event)" [(ngModel)]="question1">
                 <option value="0">Select Question Type</option>
                 <option style="color:#0C275A" *ngFor="let details of questiontype"  value="{{details.id}}">
                     {{details.type}}</option>

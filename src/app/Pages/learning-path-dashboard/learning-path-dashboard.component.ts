@@ -16,8 +16,10 @@ export class LearningPathDashboardComponent implements OnInit {
   result: any;
   result1: any;
   result2: any;
-
+  roleid:any;
+  
   ngOnInit(): void {
+    this.roleid = sessionStorage.getItem('roleid');
     this.GetEmployee();
     this.GetCourse();
     this.GetTrainerCourseMapping();

@@ -3,10 +3,10 @@
    <div class="card">
        <br>
        <div class="row">
-           <div class="col-lg-2">
-               <P class="filter2">Employee Name:</P>
+           <div class="col-lg-2"  *ngIf="roleid!=2">
+               <P class="filter2" >Employee Name:</P>
            </div>
-           <div class="col-lg-3">
+           <div class="col-lg-3"  *ngIf="roleid!=2">
             <!-- <select  class="form-control "  id="Duration" (change)="getcategoryid($event)">
                 <option class="FilterClass"  value="0">Select Employee Name</option>
                 <option class="FilterClass">Emp 1</option>
@@ -15,10 +15,11 @@
                 <option class="FilterClass">Emp 4</option>
             </select> -->
 
-            <select  class="form-control ">
+            <select  class="form-control" >
                 <option class="FilterClass"  value="0">Select Employee Name</option>
                 <option class="FilterClass" *ngFor="let details of result" value="{{details.name}}">{{details.name}}</option>
             </select>
+           
 
            </div>
            <div class="col-lg-1"></div>
