@@ -23,13 +23,14 @@ export class TraineeReportComponent implements OnInit {
     this.GetDepartmentMaster();
   }
   dummemployeereportlist:any;
-
+  traininglist:any;
   employeereportlist:any;
    public GetTrainerReport(){
      debugger
      this.LearningService.GetTrainerReport(0,0).subscribe(data=>{
        this.employeereportlist=data;
        this.dummemployeereportlist=data;
+       this.traininglist=data;
      }
       )
    }
@@ -77,6 +78,19 @@ export class TraineeReportComponent implements OnInit {
       this.GetTrainerReport();
     }
   }
+  courseid:any;
+  count:any;
+    getcourseid(even:any){
+      debugger
+      this.courseid=even.target.value;
+      if(even.target.value !=0){
+        this.employeereportlist = this.dummemployeereportlist.filter((x: { courseName: any; }) => x.courseName == this.courseid)
+        this.count = this.employeereportlist.length;
+      }
+      else{
+        this.GetTrainerReport();
+      }
+    }
 
 
 

@@ -29,9 +29,29 @@ public GetEnroll(){
     })
 }
 
-Ondelete(id:any){
-  
+public Ondelete(id:any) {
+  Swal.fire({
+    title: 'Are You Sure ',
+    text: "Do you want to delete the Selected Record",
+    showCloseButton: true,
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'OK'
+  }).then((result) => {
+    if (result.value == true) {
+      this.LearningService.DeleteEnroll(id).subscribe(
+    data => {
+      debugger
+      this.GetEnroll();
+    }
+  )
+  Swal.fire('Successfully Deleted...!');
+  this.ngOnInit();
+    }
+  });
 }
+
 }
 
 
