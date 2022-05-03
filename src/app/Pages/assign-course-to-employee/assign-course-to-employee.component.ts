@@ -115,30 +115,21 @@ export class AssignCourseToEmployeeComponent implements OnInit {
     }
     else {
       var json = {
-        "Name": this.name123,
-        "Description": this.courseid,
+        "employeeName": this.name123,
+        "courseid": this.name
       };
       this.LearningService.InsertEnroll(json).subscribe(
         data => {
           debugger
-          var json = {
-            "staffid": this.staffId,
-            "manager": this.manager,
-            "courseid": this.courseid,
-            "status": 'Manager Assign',
-            "employeeName": this.name123,
-            "phoneNo": this.mobile,
-            "email": this.emailID,
-            "type": "Manager Assign"
-          };
-          Swal.fire(
-            'Course Assigned Successfully!!!'
-          );
+          let id = data;
+        })
+          Swal.fire('Course Assigned Successfully!!!');
           location.href = "#/AssignCourseDashboard";
 
-        })
+       
     }
   }
+
 
 }
 

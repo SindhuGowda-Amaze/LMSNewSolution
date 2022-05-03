@@ -64,6 +64,8 @@ import { TraineeReportComponent } from './Pages/trainee-report/trainee-report.co
 import { CourseCertificateNewComponent } from './Pages/course-certificate-new/course-certificate-new.component';
 import { MyAccountSettingComponent } from './my-account-setting/my-account-setting.component';
 import { MyAccountsettingModifyComponent } from './my-accountsetting-modify/my-accountsetting-modify.component';
+import { HelpComponent } from './help/help.component';
+import { SupportTicketsComponent } from './support-tickets/support-tickets.component';
 
 
 
@@ -120,6 +122,8 @@ const ngWizardConfig: NgWizardConfig = {
     CourseCertificateNewComponent,
     MyAccountSettingComponent,
     MyAccountsettingModifyComponent,
+    HelpComponent,
+    SupportTicketsComponent,
 
   
   ],

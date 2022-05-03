@@ -52,6 +52,15 @@ export class AssessmentdashboardComponent implements OnInit {
       this.GetAssessments()
     }
 
+    this.GetFilteredCourseID();
+
+  }
+
+  public GetFilteredCourseID() {
+    this.LearningService.GetAssessments().subscribe(data => {
+      debugger
+      this.quetionlist = data.filter(x => x.courseID == this.courseid)
+    })
   }
 
   courselist:any;
@@ -129,6 +138,9 @@ export class AssessmentdashboardComponent implements OnInit {
       this.GetAssessments();
     }
   }
+
+
+ 
 
 
 
