@@ -73,21 +73,21 @@ export class MyCourseDashboardComponent implements OnInit {
   Showcards(value: any) {
     this.show = value;
     if (value == 1) {
-      this.GetCourse();
+      this.GetTrainerCourseMapping();
     }
     else if (value == 2) {
       this.GetApproveCourse();
     }
    else if (value == 3) {
-    this.LearningService.GetCourse().subscribe(data => {
+    this.LearningService.GetTrainerCourseMapping().subscribe(data => {
       debugger
-      this.coursedetails = data.filter(x=> x.staffID==this.userid && x.completed!=1 && x.notStarted!=1);
+      this.coursedetails = data.filter(x=> x.staffID==this.userid && x.completed!=1 && x.enrollid==0);
     });
     }
     else if (value == 4) {
-      this.LearningService.GetCourse().subscribe(data => {
+      this.LearningService.GetTrainerCourseMapping().subscribe(data => {
         debugger
-        this.coursedetails = data.filter(x=> x.staffID==this.userid &&x.completed==1);
+        this.coursedetails = data.filter(x=> x.staffID==this.userid &&x.completed==1 &&  x.enrollid!=0);
       });
       }
   }
@@ -103,7 +103,7 @@ export class MyCourseDashboardComponent implements OnInit {
     debugger
     this.LearningService.GetApproveCourse(this.userid).subscribe(data => {
       debugger
-      this.coursedetails = data;
+      this.coursedetails = data.filter(x=>x.completed==0 && x.enrollid!=0);
       this.latestcoursedetails = data[0];
       if(this.latestcoursedetails.length=0){
         this.lastassigned=0;

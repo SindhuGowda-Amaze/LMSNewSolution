@@ -58,7 +58,8 @@
                             <td style="color:#0C275A">{{details.courseName}}</td>
                             <td style="color:#0C275A">{{details.modifiedDate}}</td>
                             <td style="color:#0C275A">{{details.completiondate}}</td>
-                            <td style="color:#0C275A">{{details.percentage}}</td>
+                            <td> {{details.obtainedMarks/details.totalmarks
+                                *100 | number : '1.2-2'}} % </td>
                             <td style="color:#0C275A">
                                 <button class="Button"
                                 [routerLink]="['/CourseCertificateNew',details.id]">View</button>

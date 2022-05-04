@@ -36,8 +36,8 @@
                         <div style="margin-bottom: 10px;" *ngIf="list.userAnswer!=list.correctAnswer  && list.type==1">0
                             &nbsp;&#10060;
                         </div>
-                        <div style="margin-bottom: 10px;" *ngIf="list.type==2">
-                            <input type="number" id="marks" name="marks" [(ngModel)]="list.marks"
+                        <div style="margin-bottom: 10px;" *ngIf="list.type==2" >
+                            <input type="number" id="marks" name="marks" [(ngModel)]="list.marks" [disabled]="roleid!=4"
                                 placeholder="Enter Marks" (ngModelChange)="updatemarks(list)" style="height: 40px;">
                         </div>
                     </div>

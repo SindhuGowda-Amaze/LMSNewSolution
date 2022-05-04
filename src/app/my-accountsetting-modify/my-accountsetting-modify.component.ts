@@ -44,7 +44,7 @@ export class MyAccountsettingModifyComponent implements OnInit {
     } else {
       var entity = {
 
-        ID: localStorage.getItem('staffid'),
+        ID: sessionStorage.getItem('userid'),
         Password: this.confirmpassword,
       }
       this.LearningService.UpdatePassword(entity).subscribe(data => {

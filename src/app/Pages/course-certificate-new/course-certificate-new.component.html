@@ -15,7 +15,8 @@
             <div style="position:absolute;left:345.97px;top:269.16px" class="cls_005"><span
                     class="cls_005">{{certificate[0].employeeName}}</span></div>
             <div style="position:absolute;left:183.19px;top:337.78px" class="cls_006"><span class="cls_006">For
-                    Completing 3 Months {{certificate[0].courseName}} Online Training with 80%{{certificate.percentage}}</span></div>
+                    Completing {{certificate[0].duration}} months {{certificate[0].courseName}} Online Training with {{certificate[0].obtainedMarks/certificate[0].totalmarks
+                        *100 | number : '1.2-2'}} % </span></div>
             <div style="position:absolute;left:164.05px;top:352.18px" class="cls_006"><span class="cls_006"></span>
             </div>
             <div style="position:absolute;left:586.99px;top:449.57px" class="cls_006"><span class="cls_006">

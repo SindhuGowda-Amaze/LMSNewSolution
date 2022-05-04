@@ -24,10 +24,13 @@ export class AssessmentFormComponent implements OnInit {
   ChapterList: any;
   QuestionList: any;
   id: any;
+  userid:any;
 
 
 
   ngOnInit(): void {
+    this.userid = sessionStorage.getItem('userid');
+
     this.GetQuestionMaster();
     this.ActivatedRoute.params.subscribe(params => {
       debugger
@@ -168,7 +171,8 @@ export class AssessmentFormComponent implements OnInit {
       "Option4": this.Option4,
       "CorrectAnswer": this.CorrectAnswer,
       "weightage": this.Weightage,
-      "AssessmentName": this.AssessmentName
+      "AssessmentName": this.AssessmentName,
+      "TrainerID":this.userid
     };
   
     this.assessmenrArray.push(json)
@@ -228,7 +232,8 @@ export class AssessmentFormComponent implements OnInit {
         "Option4": this.assessmenrArray[i].Option4,
         "CorrectAnswer": this.assessmenrArray[i].CorrectAnswer,
         "weightage": this.assessmenrArray[i].weightage,
-        "AssessmentName": this.assessmenrArray[i].AssessmentNames
+        "AssessmentName": this.assessmenrArray[i].AssessmentNames,
+        "TrainerID":this.assessmenrArray[i].TrainerID
       };
       debugger
       this.LearningService.InsertAssessments(entity).subscribe(

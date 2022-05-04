@@ -13,10 +13,10 @@
             <div class="col-lg-1" style="margin-left: 10px;">
                 <p class="filter">Filter By</p>
             </div>
-            <div class="col-lg-3">
-                <input type="date" class="form-control search" placeholder="Search" [(ngModel)]="search">
-            </div>
-            <div class="col-lg-3">
+            <!-- <div class="col-lg-3">
+                <input type="date" class="form-control search" placeholder="Search" [(ngModel)]="date">
+            </div> -->
+            <div class="col-lg-4">
                 <input class="form-control search" placeholder="Search" [(ngModel)]="search">
             </div>
             <div class="col-lg-3">
@@ -36,7 +36,7 @@
                         <th>Employee Name</th>
                         <th>Training Name</th>
                         <th>Topic Name</th>
-                        <th>Assigned Date </th>
+                        <!-- <th>Assigned Date </th> -->
                         <th>Actions</th>
                     </tr>
 
@@ -44,7 +44,7 @@
                         <td>{{details.staffname}}</td>
                         <td>{{details.coursename}}</td>
                         <td>{{details.chaptername}}</td>
-                        <td>{{details.assignedDate}}</td>
+                        <!-- <td>{{details.assignedDate}}</td> -->
                         <td>
                             <button class="check" (click)="Check(details.id)" *ngIf="details.checked==0&&Checkid==1">Check</button>
                             <button *ngIf="details.checked==1&&Checkid==1"  [routerLink]="['/Checkanswer',details.id]" class="add" id="show==1">View

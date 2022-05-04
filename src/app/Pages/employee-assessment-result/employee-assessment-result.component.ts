@@ -20,11 +20,14 @@ export class EmployeeAssessmentResultComponent implements OnInit {
   trainer:any; 
   courselist: any;
   Checkid:any;
+  roleid:any;
+  
   constructor(public LearningService: LearningService) { }
 
   ngOnInit(): void {
     this.getdetailslist();
     // this.show = 2;
+    this.roleid = localStorage.getItem('roleid');
     this.staffid = localStorage.getItem('userid');
     this.manager = localStorage.getItem('manager');
     this.trainer =localStorage.getItem('trainerid');
@@ -67,7 +70,13 @@ export class EmployeeAssessmentResultComponent implements OnInit {
     // this.empid = details.id;
     this.LearningService.GetTestResponsenew().subscribe(data => {
       debugger
-      this.detailslist =data;
+      if(this.roleid==4){
+        this.detailslist =data.filter(x=>x.trainerID==this.staffid);
+      }
+      else{
+        this.detailslist =data;
+      }
+   
       // .filter(x => x.checked == 1);
     });
 

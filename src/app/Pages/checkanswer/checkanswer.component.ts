@@ -14,8 +14,10 @@ export class CheckanswerComponent implements OnInit {
   constructor(private AmazeService: LearningService, private ActivatedRoute: ActivatedRoute, private elementRef: ElementRef, public router: Router) { }
   id: any;
   useranssheet: any;
-
+  roleid:any;
+  
   ngOnInit(): void {
+    this.roleid = sessionStorage.getItem('roleid');
     debugger
     this.ActivatedRoute.params.subscribe(params => {
       debugger
