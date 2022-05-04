@@ -59,8 +59,9 @@ export class StartMyCourseNewComponent implements OnInit {
         })
       }
 
-      this.loader = false;
+  
     })
+    this.loader = false;
   }
   getcoursedetails(details: any) {
     this.coursename = details.courseName

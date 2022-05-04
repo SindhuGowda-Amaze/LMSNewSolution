@@ -68,6 +68,7 @@ import { HelpComponent } from './help/help.component';
 import { SupportTicketsComponent } from './support-tickets/support-tickets.component';
 import { LoaderComponent } from './loader/loader.component';
 import { SupportTicketsDashboardComponent } from './support-tickets-dashboard/support-tickets-dashboard.component';
+import { CertificateDashboardComponent } from './certificate-dashboard/certificate-dashboard.component';
 
 
 
@@ -128,6 +129,7 @@ const ngWizardConfig: NgWizardConfig = {
     SupportTicketsComponent,
     LoaderComponent,
     SupportTicketsDashboardComponent,
+    CertificateDashboardComponent,
 
   
   ],

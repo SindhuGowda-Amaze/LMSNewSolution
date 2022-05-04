@@ -92,7 +92,11 @@ export class SidebarComponent implements OnInit {
 
   mycourse() {
     this.active = 'mycourse';
-    localStorage.setItem("clickname", "My TRAINING")
+    localStorage.setItem("clickname", "MY TRAINING")
+  }
+  mycertificate() {
+    this.active = 'mycertificate';
+    localStorage.setItem("clickname", "MY CERTIFICATE")
   }
   attendence() {
     this.active = 'MyATTENDANCE';
@@ -109,7 +113,7 @@ export class SidebarComponent implements OnInit {
 
   assigncourse() {
     this.active = 'ASSIGNCourse';
-    localStorage.setItem("clickname", "ASSIGN COURSE")
+    localStorage.setItem("clickname", "ASSIGN TRAINING")
   }
 
   results() {

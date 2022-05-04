@@ -20,12 +20,14 @@
                 <div class="row leavereq">
                     <div class="col-md-2">
                         <select class="form-control" name="name123" id="name123" [(ngModel)]="name123" >
+                            <option value="0">Select Employee Name</option>
                             <option *ngFor="let details of stafflist" value="{{details.name}}">{{details.name}}</option> 
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <select class="form-control" name="courseid" id="courseid" [(ngModel)]="courseid">
-                            <option *ngFor="let details of courselist" value="{{details.id}}">{{details.name}}</option>
+                        <select class="form-control" name="courseid" id="courseid" [(ngModel)]="coursename">
+                            <option value="0">Select Training</option>
+                            <option *ngFor="let details of courselist" value="{{details.name}}">{{details.name}}</option>
                         </select>
                     </div>
                 </div>
