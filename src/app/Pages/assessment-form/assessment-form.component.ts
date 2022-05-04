@@ -113,7 +113,7 @@ export class AssessmentFormComponent implements OnInit {
     this.LearningService.AttachmentsUpload(this.files1).subscribe(res => {
       debugger
       this.Course_Photo = res;
-      alert("ATTACHMENT UPLOADED");
+      alert("Attachment Uploaded");
     })
   }
 
@@ -136,7 +136,7 @@ export class AssessmentFormComponent implements OnInit {
     this.LearningService.AttachmentsUpload(this.files).subscribe(res => {
       debugger
       this.Attachment = res;
-      alert("ATTACHMENT UPLOADED");
+      alert("Attachment Uploaded");
     })
   }
   Question: any;

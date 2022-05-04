@@ -15,8 +15,6 @@ import Swal from 'sweetalert2'
 export class CatalogComponent implements OnInit {
 
   constructor(private LearningService: LearningService, private ActivatedRoute: ActivatedRoute) { }
-
-
   clientlist: any;
   clientlist1: any;
   count: any;
@@ -40,11 +38,29 @@ export class CatalogComponent implements OnInit {
   userid: any;
   manager: any;
   Emplist:any;
-
-
   manageremail:any;
   managlist:any;
   emplyphn:any;
+  courselist: any;
+  categorylist1: any;
+  categorylist2: any;
+  categorylist3: any;
+  categorylist4: any;
+  show: any;
+  show1: any;
+  show2: any;
+  show3: any;
+  show4: any;
+  show5: any;
+  course1: any;
+  course2: any;
+  course3: any;
+  course4: any;
+  course: any
+  name: any;
+  mobile: any;
+  emailID: any;
+
   ngOnInit(): void {
     this.userid = sessionStorage.getItem('userid');
     this.GetCourse();
@@ -72,13 +88,6 @@ export class CatalogComponent implements OnInit {
     this.courseid = id
   }
 
-
-
-
-  course: any
-  name: any;
-  mobile: any;
-  emailID: any;
   enroll(name: any, mobile: any, emailID: any) {
     Swal.fire({
       title: 'Enroll Confirmation',
@@ -120,18 +129,6 @@ export class CatalogComponent implements OnInit {
     });
   }
 
-
-  show: any;
-  show1: any;
-  show2: any;
-  show3: any;
-  show4: any;
-  show5: any;
-  course1: any;
-  course2: any;
-  course3: any;
-  course4: any;
-
   // showcards(){
   //  debugger
   //  this.showfullcards=0;
@@ -163,11 +160,7 @@ export class CatalogComponent implements OnInit {
   // {
   //   this.courselist=this.courselist.filter(x=>x.)
   // }
-
-  categorylist1: any;
-  categorylist2: any;
-  categorylist3: any;
-  categorylist4: any;
+  
   public GetCategoryMaster() {
     debugger
     this.LearningService.GetCategoryMaster().subscribe(
@@ -185,7 +178,7 @@ export class CatalogComponent implements OnInit {
   }
 
 
-  courselist: any;
+ 
   public GetCourse() {
     debugger
     this.LearningService.GetCoursesByUserID(this.userid).subscribe(

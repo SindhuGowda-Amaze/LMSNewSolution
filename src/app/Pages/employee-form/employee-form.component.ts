@@ -610,7 +610,7 @@ this.files.splice(this.files.indexOf(event),1);
     this.LearningService.AttachmentsUpload(this.files).subscribe(res => {
       debugger
       this.Company_logo = res;
-      alert("ATTACHMENT UPLOADED");
+      alert("Attachment Uploaded");
     })
   }
 

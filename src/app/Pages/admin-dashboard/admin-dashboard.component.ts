@@ -80,6 +80,7 @@ export class AdminDashboardComponent implements OnInit {
           debugger
           if(this.roleid==1){
             this.trainerlist = data;
+            console.log(this.trainerlist)
           }
           else{
             this.trainerlist = data.filter(x => x.staffID == this.userid && x.status == 'Manager Approved');

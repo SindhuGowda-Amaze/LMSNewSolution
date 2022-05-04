@@ -106,7 +106,7 @@ export class ChapterComponent implements OnInit {
       this.file = res;
       this.Attachment.push(this.file);
       console.log("Attchaments",this.Attachment);
-      Swal.fire("ATTACHMENT UPLOADED");
+      Swal.fire("Attachment Uploaded");
     })
   }
 
@@ -224,7 +224,7 @@ export class ChapterComponent implements OnInit {
     this.LearningService.AttachmentsUpload(this.files).subscribe(res => {
       debugger
       this.ChapterPhoto = res;
-      Swal.fire("ATTACHMENT UPLOADED");
+      Swal.fire("Attachment Uploaded");
     })
   }
 
@@ -321,7 +321,7 @@ export class ChapterComponent implements OnInit {
       debugger
       this.photourl = res;
       console.log("Attchaments",this.Attachment);
-      Swal.fire("ATTACHMENT UPLOADED");
+      Swal.fire("Attachment Uploaded");
     })
   }
 

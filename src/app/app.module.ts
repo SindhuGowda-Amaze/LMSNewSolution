@@ -66,6 +66,7 @@ import { MyAccountSettingComponent } from './my-account-setting/my-account-setti
 import { MyAccountsettingModifyComponent } from './my-accountsetting-modify/my-accountsetting-modify.component';
 import { HelpComponent } from './help/help.component';
 import { SupportTicketsComponent } from './support-tickets/support-tickets.component';
+import { SupportTicketsDashboardComponent } from './support-tickets-dashboard/support-tickets-dashboard.component';
 
 
 
@@ -124,6 +125,7 @@ const ngWizardConfig: NgWizardConfig = {
     MyAccountsettingModifyComponent,
     HelpComponent,
     SupportTicketsComponent,
+    SupportTicketsDashboardComponent,
 
   
   ],

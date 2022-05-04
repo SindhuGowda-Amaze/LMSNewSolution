@@ -52,6 +52,11 @@ public Ondelete(id:any) {
   });
 }
 
+edit(id: any) {
+  debugger
+  location.href = "#/AssignCourseToEmployee/" + id;
+}
+
 }
 
 
