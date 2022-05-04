@@ -62,6 +62,7 @@ export class StartMyCourseNewComponent implements OnInit {
 
   
     })
+    this.loader = false;
   }
   getcoursedetails(details: any) {
     this.coursename = details.courseName

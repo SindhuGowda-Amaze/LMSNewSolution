@@ -6,22 +6,19 @@ import html2canvas from 'html2canvas';
 import * as XLSX from 'xlsx';
 
 @Component({
-  selector: 'app-trainee-report',
-  templateUrl: './trainee-report.component.html',
-  styleUrls: ['./trainee-report.component.css']
+  selector: 'app-certificate-dashboard',
+  templateUrl: './certificate-dashboard.component.html',
+  styleUrls: ['./certificate-dashboard.component.css']
 })
-export class TraineeReportComponent implements OnInit {
+export class CertificateDashboardComponent implements OnInit {
   
-
-
-
-  search:any;
   constructor(private LearningService:LearningService,private ActivatedRoute:ActivatedRoute ) { }
 
   ngOnInit(): void {
     this.GetTrainerReport();
     this.GetDepartmentMaster();
   }
+  search:any;
   dummemployeereportlist: any;
   traininglist: any;
   employeereportlist: any;
@@ -97,3 +94,4 @@ export class TraineeReportComponent implements OnInit {
 
 
 }
+

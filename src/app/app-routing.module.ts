@@ -48,6 +48,7 @@ import { HelpComponent } from './help/help.component';
 import { SupportTicketsComponent } from './support-tickets/support-tickets.component';
 import { LoaderComponent } from './loader/loader.component';
 import { SupportTicketsDashboardComponent } from './support-tickets-dashboard/support-tickets-dashboard.component';
+import { CertificateDashboardComponent } from './certificate-dashboard/certificate-dashboard.component';
 
 
 
@@ -103,6 +104,7 @@ const routes: Routes = [
   {path:'FinalResult',component:FinalResultComponent},
   {path:'AssesmentDetails',component:AssesmentDetailsComponent},
   {path:'StartMyCourseNew/:id',component:StartMyCourseNewComponent},
+  {path:'StartMyCourseNew',component:StartMyCourseNewComponent},
   {path:'CourseCertificate/:id',component:CourseCertificateComponent},
   {path:'TraineeReport',component: TraineeReportComponent},
   {path:'CourseCertificateNew/:id',component:CourseCertificateNewComponent},
@@ -112,6 +114,7 @@ const routes: Routes = [
   {path:'SupportTickets',component: SupportTicketsComponent},
   {path:'Loader',component: LoaderComponent},
   {path:'SupportTicketsDashboard',component: SupportTicketsDashboardComponent},
+  {path:'CertificateDashboard',component: CertificateDashboardComponent},
  
 
 

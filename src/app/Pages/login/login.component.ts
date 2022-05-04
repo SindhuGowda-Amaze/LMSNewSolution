@@ -116,7 +116,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('role', 'Employee');
           debugger
           sessionStorage.setItem('roleid', '2');
-          localStorage.setItem("clickname", "Admin Dashboard")
+          localStorage.setItem("clickname", "Employee Dashboard")
            this.Insertattdnace(this.result.id)
            this.loader=false;
         }

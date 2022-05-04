@@ -24,8 +24,11 @@ export class AssignCourseToEmployeeComponent implements OnInit {
   name123: any;
   stafflist1: any;
   id:any;
+  coursename:any;
 
   ngOnInit(): void {
+    this.name123=0;
+    this.coursename=0;
     this.userid = sessionStorage.getItem('userid');
     this.GetCourse();
     this.GetStaff();
@@ -62,65 +65,31 @@ export class AssignCourseToEmployeeComponent implements OnInit {
   public getdata(name: any) {
     this.name = name
   }
- 
-  // enroll() {
-  //   debugger
-
-  //   Swal.fire({
-  //     title: 'Enroll Confirmation',
-  //     text: "Please click on OK to Assign Course To Employee",
-  //     icon: 'warning',
-  //     // icon: 'success',
-  //     showCloseButton: true,
-  //     showCancelButton: true,
-  //     confirmButtonColor: '#3085d6',
-  //     cancelButtonColor: '#d33',
-  //     confirmButtonText: 'OK'
-  //   }).then((result) => {
-
-  //     if (result.isConfirmed) {
-  //       debugger
-  //       var json = {
-  //         "staffid": this.staffId,
-  //         "manager": this.manager,
-  //         "courseid": this.courseid,
-  //         "status": 'Manager Assign',
-  //         "employeeName": this.name123,
-  //         "phoneNo": this.mobile,
-  //         "email": this.emailID,
-  //         "type": "Manager Assign"
-  //       };
-  //       this.LearningService.InsertEnroll(json).subscribe(
-  //         data => {
-  //           debugger
-  //           let id = data;
-  //         })
-  //       Swal.fire(
-  //         'Cousre Assigned Successfully!!!',
-  //         'success'
-  //       );
-  //       location.href = "#/AssignCourseDashboard";
-  //     }
-  //   });
-  // }
 
   enroll() {
     debugger
-    if (this.name123 == undefined || this.courseid == undefined) {
+    if (this.name123 == undefined || this.coursename == undefined) {
       Swal.fire("Please fill all the fields");
     }
     else {
       var json = {
         "employeeName": this.name123,
-        "courseid": this.courseid
-      };
+        "name": this.coursename,
+        "staffid": this.staffId,
+        "manager": this.manager,
+        "courseid": this.courseid,
+        "status": 'Manager Assign',
+        "phoneNo": this.mobile,
+        "email": this.emailID,
+        "type": "Manager Assign"
+      }
       this.LearningService.InsertEnroll(json).subscribe(
         data => {
           debugger
           let id = data;
-        })
           Swal.fire('Course Assigned Successfully!!!');
           location.href = "#/AssignCourseDashboard";
+        })
 
        
     }

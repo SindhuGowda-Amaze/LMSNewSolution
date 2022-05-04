@@ -344,6 +344,13 @@ export class TakeAssessmentComponent implements OnInit {
   }
 
 
+  public Cancel() {
+    debugger
+    location.href = "#/StartMyCourseNew";
+    
+  }
+
+
 
 
 
