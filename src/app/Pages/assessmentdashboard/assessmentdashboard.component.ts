@@ -66,18 +66,7 @@ export class AssessmentdashboardComponent implements OnInit {
   }
 
 
-  getquestion(even:any){
-    if(even.target.value !=0){
-      this.question=even.target.value;
-      debugger
-      this.quetionlist = this.dummquetionlist.filter((x: { questionID: any; }) => x.questionID == this.question);
-      this.count=this.quetionlist.length;
-    }
-    else{
-      this.GetAssessments();
-    }
-  }
-
+ 
 
   courselist:any;
   public GetCourse() {
@@ -142,7 +131,26 @@ export class AssessmentdashboardComponent implements OnInit {
     location.href="/Checkanswer"
   }
 
+
+  getquestion(even:any){
+    if(even.target.value !=0){
+      this.question=even.target.value;
+      debugger
+      this.quetionlist = this.dummquetionlist.filter((x: { questionID: any; }) => x.questionID == this.question);
+      this.count=this.quetionlist.length;
+    }
+    else{
+      this.GetAssessments();
+    }
+  }
+
+
  
+
+
+
+
+
 
 
 }
