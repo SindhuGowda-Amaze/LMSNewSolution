@@ -17,8 +17,9 @@ export class MyCourseDashboardComponent implements OnInit {
   search: any;
   managlist:any;
   manageremail:any;
+  loader:any;
   ngOnInit(): void {
-  
+  this.loader=false;
     this.manager = sessionStorage.getItem('manager')
     this.userid = sessionStorage.getItem('userid')
     this.GetTrainerCourseMapping();
@@ -26,31 +27,34 @@ export class MyCourseDashboardComponent implements OnInit {
 
    
 
-   this.Showcards(2);
-    this.LearningService.GetMyDetails().subscribe(data => {
-      debugger
-      this.stafflist = data.filter(x => x.id == this.userid);
-      this.managlist = data.filter(x=>x.id==this.manager)    
-      this.manageremail=this.managlist[0].emailID
+  //  this.Showcards(2);
+  //   this.LearningService.GetMyDetails().subscribe(data => {
+  //     debugger
+  //     this.stafflist = data.filter(x => x.id == this.userid);
+  //     this.managlist = data.filter(x=>x.id==this.manager)    
+  //     this.manageremail=this.managlist[0].emailID
    
-    });
+  //   });
 
     // this.show=2;
 
     
     this.GetAllCounts();
-    this.show = 2;
+    this.Showcards(2);
   }
 
   coursedetails: any;
   result: any;
-
+  trainerCourseMapList:any;
   public GetTrainerCourseMapping() {
+    this.loader=true;
     debugger
     this.LearningService.GetTrainerCourseMapping().subscribe(
       data => {
         debugger
         this.result = data;
+        this.trainerCourseMapList=data;
+        this.loader=false;
       })
   }
 
@@ -71,25 +75,30 @@ export class MyCourseDashboardComponent implements OnInit {
 
   };
   Showcards(value: any) {
+    this.loader=true;
     this.show = value;
     if (value == 1) {
-      this.GetTrainerCourseMapping();
+      this.GetCourse();
     }
     else if (value == 2) {
       this.GetApproveCourse();
     }
    else if (value == 3) {
-    this.LearningService.GetTrainerCourseMapping().subscribe(data => {
+     debugger
+    //  this.coursedetails = this.trainerCourseMapList.filter((x: { staffID: any; completed: number; enrollid: number; })=> x.staffID==this.userid && x.completed!=1 && x.enrollid==0);
+    this.LearningService.GetCourse().subscribe(data => {
       debugger
-      this.coursedetails = data.filter(x=> x.staffID==this.userid && x.completed!=1 && x.enrollid==0);
+      this.coursedetails = data.filter(x=>(x.completed==0) && (x.enrollid==0));
     });
+
     }
     else if (value == 4) {
-      this.LearningService.GetTrainerCourseMapping().subscribe(data => {
+      this.LearningService.GetCourse().subscribe(data => {
         debugger
-        this.coursedetails = data.filter(x=> x.staffID==this.userid &&x.completed==1 &&  x.enrollid!=0);
+        this.coursedetails = data.filter(x=>  x.completed==1 &&  x.enrollid!=0);
       });
       }
+      this.loader=false;
   }
 
   getcourseid(id:any)
@@ -111,7 +120,7 @@ export class MyCourseDashboardComponent implements OnInit {
       }
       else{
         this.lastassigned=1;
-        this.show=1
+        // this.show=1
       }
 
       debugger

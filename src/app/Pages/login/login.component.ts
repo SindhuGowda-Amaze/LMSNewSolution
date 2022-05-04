@@ -80,6 +80,7 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
+    this.loader=true;
     debugger
     let adminCopy = this.admin.toLowerCase();
     if (this.userName.toLowerCase().includes(adminCopy)  && this.password == '1') {
@@ -91,6 +92,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("clickname", "Admin Dashboard")
       location.href = "#/AdminDashboard";
       location.reload();
+      this.loader=false;
     }
     else if (this.roleID == 2) {
       debugger
@@ -112,12 +114,14 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('roleid', '2');
           localStorage.setItem("clickname", "Admin Dashboard")
            this.Insertattdnace(this.result.id)
+           this.loader=false;
         }
         else {
 
           Swal.fire('Username or Password is invalid');
           this.userName = "";
           this.password = "";
+          this.loader=false;
         }
       })
     }
@@ -139,11 +143,13 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("clickname", "Manager Dashboard")
           location.href = "#/ManagerDashboard";
           location.reload();
+          this.loader=false;
         }
         else {
           Swal.fire('Username or Password is invalid');
           this.userName = "";
           this.password = "";
+          this.loader=false;
         }
       })
     }
@@ -151,6 +157,7 @@ export class LoginComponent implements OnInit {
 
 
     else if (this.roleID == 4) {
+
       debugger
       let userNameCopy = this.userName.toLowerCase();
       this.LearningService.GetTrainer().subscribe(data => {
@@ -168,11 +175,13 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("clickname", "Assessment Dashboard")
           location.href = "#/Assessmentdashboard";
           location.reload();
+          this.loader=false;
         }
         else {
           Swal.fire('Username or Password is invalid');
           this.userName = "";
           this.password = "";
+          this.loader=false;
         }
 
       })
@@ -199,6 +208,7 @@ export class LoginComponent implements OnInit {
           location.href = "#/AdminDashboard";
           this.loader = false;
           location.reload();
+          this.loader=false;
         }
    
       })

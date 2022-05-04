@@ -15,8 +15,9 @@ export class StartMyCourseNewComponent implements OnInit {
   constructor(private LearningService: LearningService, private ActivatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
 
   courseid: any;
-
+  loader: any;
   ngOnInit(): void {
+    this.loader = false;
     this.ActivatedRoute.params.subscribe(params => {
       debugger
       this.courseid = params['id'];
@@ -35,6 +36,7 @@ export class StartMyCourseNewComponent implements OnInit {
   chapterphoto: any;
   show: any;
   public GetChapter() {
+    this.loader = true;
     debugger
     this.LearningService.GetChapterListByEmployeeID(sessionStorage.getItem('userid')).subscribe(data => {
       debugger
@@ -57,7 +59,7 @@ export class StartMyCourseNewComponent implements OnInit {
         })
       }
 
-
+      this.loader = false;
     })
   }
   getcoursedetails(details: any) {
@@ -128,9 +130,9 @@ export class StartMyCourseNewComponent implements OnInit {
   public PreviewVideo(photo: any) {
     debugger
     this.show = 2;
-   // this.chapterphoto = photo;
-   window.open(photo, "_blank")
-       if (this.Attachmentlist.length != 0) {
+    // this.chapterphoto = photo;
+    window.open(photo, "_blank")
+    if (this.Attachmentlist.length != 0) {
       this.Attachmentlist = this.dummAttachmentlist.filter((x: { attachmentType: string; }) => x.attachmentType == 'video')
       if (this.Attachmentlist.length != 0) {
         // this.show = 2
@@ -154,7 +156,7 @@ export class StartMyCourseNewComponent implements OnInit {
 
   public PreviewPdf(photo: any) {
     this.show = 3
-  //  this.chapterphoto = this.sanitizer.bypassSecurityTrustResourceUrl(photo);
+    //  this.chapterphoto = this.sanitizer.bypassSecurityTrustResourceUrl(photo);
     window.open(photo, "_blank")
     if (this.Attachmentlist.length != 0) {
       this.Attachmentlist = this.dummAttachmentlist.filter((x: { attachmentType: string; }) => x.attachmentType == 'Pdf')
@@ -178,9 +180,9 @@ export class StartMyCourseNewComponent implements OnInit {
   ppt: any
   public PreviewPPT(photo: any) {
     this.show = 4;
-  //  this.chapterphoto = "https://docs.google.com/gvie" + photo;
+    //  this.chapterphoto = "https://docs.google.com/gvie" + photo;
     window.open(photo, "_blank")
-     this.ppt=this.sanitizer.bypassSecurityTrustResourceUrl(photo);
+    this.ppt = this.sanitizer.bypassSecurityTrustResourceUrl(photo);
     window.open(photo, "_blank")
     if (this.Attachmentlist.length != 0) {
       this.Attachmentlist = this.dummAttachmentlist.filter((x: { attachmentType: string; }) => x.attachmentType == 'Ppt')
@@ -205,10 +207,10 @@ export class StartMyCourseNewComponent implements OnInit {
   public PreviewMSword(photo: any) {
     debugger
     this.show = 5;
-  //  this.chapterphoto = this.sanitizer.bypassSecurityTrustResourceUrl(photo);
-     this.show=4;
-    this.chapterphoto=photo;
-    this.chapterphoto=this.sanitizer.bypassSecurityTrustResourceUrl(photo);
+    //  this.chapterphoto = this.sanitizer.bypassSecurityTrustResourceUrl(photo);
+    this.show = 4;
+    this.chapterphoto = photo;
+    this.chapterphoto = this.sanitizer.bypassSecurityTrustResourceUrl(photo);
     window.open(photo, "_blank")
     if (this.Attachmentlist.length != 0) {
       this.Attachmentlist = this.dummAttachmentlist.filter((x: { attachmentType: string; }) => x.attachmentType == 'Document')
@@ -230,8 +232,8 @@ export class StartMyCourseNewComponent implements OnInit {
 
   public PreviewIMG(photo: any) {
     this.show = 1;
-  //  this.chapterphoto = photo;
-    window.open(photo, "_blank")   
+    //  this.chapterphoto = photo;
+    window.open(photo, "_blank")
     // this.ActivatedRoute.
     if (this.Attachmentlist.length != 0) {
       debugger
@@ -254,8 +256,8 @@ export class StartMyCourseNewComponent implements OnInit {
     location.reload();
   }
 
-  certificate(){
-    location.href="#/CourseCertificate/"+this.courseid
+  certificate() {
+    location.href = "#/CourseCertificate/" + this.courseid
   }
 
 

@@ -55,11 +55,18 @@ export class CategoryFormComponent implements OnInit {
       "Description": this.Description  
     };
     this.LearningService.InsertCategoryMaster(json).subscribe(
-      data => {
+      (data:any) => {
         debugger
         let id = data;
-        Swal.fire("Saved Successfully");
-        location.href="#/CategoryDashboard";
+        if(data!=0)
+        {
+          Swal.fire("Saved Successfully");
+          location.href="#/CategoryDashboard";
+        }
+        else{
+          Swal.fire("Name Already Exists");
+        }
+       
       })
   }
   }
