@@ -80,10 +80,11 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
-    this.loader=true;
+
     debugger
     let adminCopy = this.admin.toLowerCase();
-    if (this.userName.toLowerCase().includes(adminCopy)  && this.password == '1') {
+    if (this.userName.toLowerCase().includes(adminCopy)  && this.password == '1' && this.roleID==1) {
+      
       debugger
       sessionStorage.setItem('UserName', 'admin');
       sessionStorage.setItem('temp', '1');
@@ -99,10 +100,13 @@ export class LoginComponent implements OnInit {
       let userNameCopy = this.userName.toLowerCase();
       this.LearningService.GetMyDetails().subscribe(async data => {
         let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.password);
+       if (temp.length == 0) {
+          Swal.fire('Incorrect Username Or Password')
+        }
         this.result = temp[0];
         debugger;
-         this.loader = true;
-        if (this.result != undefined || this.result != null) {
+
+        if (this.result != undefined || this.result != null || this.roleID==4) {
           debugger
           sessionStorage.setItem('UserName', this.result.name);
           sessionStorage.setItem('userid', this.result.id);
@@ -130,11 +134,11 @@ export class LoginComponent implements OnInit {
       debugger
       let userNameCopy = this.userName.toLowerCase();
       this.LearningService.GetMyDetails().subscribe(data => {
-        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.password);
+        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.password );
         this.result = temp[0];
         debugger;
          this.loader = true;
-        if (this.result != undefined || this.result != null) {
+        if (this.result != undefined || this.result != null || this.roleID==4) {
           sessionStorage.setItem('UserName', this.result.name);
           sessionStorage.setItem('userid', this.result.id);
           sessionStorage.setItem('temp', '1');
@@ -165,7 +169,7 @@ export class LoginComponent implements OnInit {
         this.result = temp[0];
         debugger;
         // this.loader = true;
-        if (this.result != undefined || this.result != null) {
+        if (this.result != undefined || this.result != null || this.roleID==4) {
           sessionStorage.setItem('UserName', this.result.name);
           sessionStorage.setItem('userid', this.result.id);
           localStorage.setItem('trainerid',this.result.id)

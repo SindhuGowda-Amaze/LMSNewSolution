@@ -60,7 +60,7 @@ export class CatalogComponent implements OnInit {
   name: any;
   mobile: any;
   emailID: any;
-
+loader:any
   ngOnInit(): void {
     this.userid = sessionStorage.getItem('userid');
     this.GetCourse();

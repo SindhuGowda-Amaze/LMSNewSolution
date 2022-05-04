@@ -46,6 +46,7 @@ export class MyCourseDashboardComponent implements OnInit {
   coursedetails: any;
   result: any;
   trainerCourseMapList:any;
+  
   public GetTrainerCourseMapping() {
     this.loader=true;
     debugger
@@ -143,6 +144,8 @@ export class MyCourseDashboardComponent implements OnInit {
       this.coursedetails = data;;
     });
   }
+
+
 
   manager:any;
   course: any

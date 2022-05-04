@@ -43,6 +43,7 @@ export class StartMyCourseNewComponent implements OnInit {
       this.coursedetails = data.filter(x => x.courseID == this.courseid);
       // this.chapterdetails = data.filter(x=>x.ID==this.ID && x.courseID==this.courseid);
       this.chapterdetails = data.filter(x => x.courseID == this.courseid);
+      this.loader = false;
       debugger
       this.coursename = this.coursedetails[0].courseName
       this.chaptername = this.coursedetails[0].name
@@ -59,7 +60,7 @@ export class StartMyCourseNewComponent implements OnInit {
         })
       }
 
-      this.loader = false;
+  
     })
   }
   getcoursedetails(details: any) {

@@ -28,8 +28,9 @@ export class ViewCourseComponent implements OnInit {
   showPpt: any;
   show: any;
   noattachments: any;
+  loader:any;
   ngOnInit(): void {
-    
+    this.loader=false
     this.userid = sessionStorage.getItem('userid')
     this.manager = sessionStorage.getItem('manager')
     this.ActivatedRoute.params.subscribe(params => {
@@ -101,6 +102,7 @@ attachmentId:any;
     this.attachmentId =id;
 
     this.LearningService.GetChapterAttachmentByChapterID(id).subscribe(data => {
+
       debugger
       this.Attachmentlist = data;
       this.dummAttachmentlist = data;
@@ -128,6 +130,7 @@ attachmentId:any;
         }
       }
     })
+
   }
 
 
@@ -264,6 +267,7 @@ attachmentId:any;
   chapterdetails: any;
 
   public GetChapter() {
+    this.loader=true
     debugger
     this.LearningService.GetChapter().subscribe(
       data => {
@@ -274,17 +278,20 @@ attachmentId:any;
         this.show = 1
 
       })
+      this.loader=false
   }
 
   coursedetails: any;
 
   public GetTrainerCourseMapping() {
+    this.loader=true
     debugger
     this.LearningService.GetTrainerCourseMapping().subscribe(data => {
       debugger
       this.coursedetails = data.filter(x => x.courseID == this.courseid);
       debugger
     })
+    this.loader=false
   }
 
   rowno: any;
