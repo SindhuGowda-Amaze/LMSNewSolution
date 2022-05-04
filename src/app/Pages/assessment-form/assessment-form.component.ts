@@ -25,7 +25,8 @@ export class AssessmentFormComponent implements OnInit {
   QuestionList: any;
   id: any;
   userid:any;
-
+  files1: File[] = [];
+  files: File[] = [];
 
 
   ngOnInit(): void {
@@ -93,10 +94,9 @@ export class AssessmentFormComponent implements OnInit {
 
 
   cancel() {
-    location.href = "/#/Assessmentdashboard";
+    location.href = "#/Assessmentdashboard";
   }
-  files1: File[] = [];
-
+  
   onSelect1(event: any) {
     console.log(event);
     this.files1.push(...event.addedFiles);
@@ -118,7 +118,7 @@ export class AssessmentFormComponent implements OnInit {
   }
 
 
-  files: File[] = [];
+  
 
   onSelect(event: any) {
     console.log(event);
