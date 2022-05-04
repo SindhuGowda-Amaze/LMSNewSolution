@@ -11,7 +11,7 @@ import { formatDate } from '@angular/common';
 })
 export class SupportTicketsComponent implements OnInit {
 
-  constructor( private LearningService: LearningService,public ActivatedRoute: ActivatedRoute) { }
+  constructor(public LearningService: LearningService,public ActivatedRoute: ActivatedRoute) { }
   todaydate:any
   date: any;
   time: any;
@@ -46,18 +46,18 @@ export class SupportTicketsComponent implements OnInit {
 
 
   public GetSupportTickets() {
-    // this.LearningService.GetSupportTickets().subscribe(
-    //   data => {
-    //     this.ticketlist = data.filter(x => x.applicationName == 'Performance Management' && x.id==this.id);
-    //     this.date = this.ticketlist[0].date,
-    //       this.time = this.ticketlist[0].time1,
-    //       this.typeofissue = this.ticketlist[0].typeOfApplicationIssues,
-    //       this.prority = this.ticketlist[0].priority,
-    //       this.screenShot[0] = this.ticketlist[0].screenShot,
-    //       this.comments = this.ticketlist[0].comment
+    this.LearningService.GetSupportTickets().subscribe(
+      data => {
+        this.ticketlist = data.filter(x => x.applicationName == 'DigiLearning and Management' && x.id==this.id);
+        this.date = this.ticketlist[0].date,
+          this.time = this.ticketlist[0].time1,
+          this.typeofissue = this.ticketlist[0].typeOfApplicationIssues,
+          this.prority = this.ticketlist[0].priority,
+          this.screenShot[0] = this.ticketlist[0].screenShot,
+          this.comments = this.ticketlist[0].comment
 
-    //   }
-    // )
+      }
+    )
   }
 
 
@@ -75,12 +75,12 @@ export class SupportTicketsComponent implements OnInit {
 
 
   AttachmentsUpload() {
-    // this.PerformanceManagementService.AttachmentsUploadsss(this.files).subscribe(data => {
-    //   debugger
-    //   this.screenShot.push(data);
-    //   console.log( "data",this.screenShot);
-    //   this.files.length=0;
-    // })
+    this.LearningService.AttachmentsUploadsss(this.files).subscribe(data => {
+      debugger
+      this.screenShot.push(data);
+      console.log( "data",this.screenShot);
+      this.files.length=0;
+    })
   }
 
   onRemove(event: any) {
@@ -106,25 +106,25 @@ export class SupportTicketsComponent implements OnInit {
       "Comment": this.comments,
       "Status": 'Raised',
       "Companyname": 'Amazeinc.in',
-      "ApplicationName": 'Performance Management',
+      "ApplicationName": 'DigiLearning and Management',
       "StaffID":this.staffID
     }
     
-    // this.PerformanceManagementService.InsertSupportTickets(entity).subscribe(
-    //   data => {
-    //     this.ticketid = data;
-    //     this.uploadmultipleimages()
-    //     Swal.fire("Saved Sucessfully");
-    //     location.href="#/SupportTicketDashboard";
+    this.LearningService.InsertSupportTickets(entity).subscribe(
+      data => {
+        this.ticketid = data;
+        this.uploadmultipleimages()
+        Swal.fire("Saved Sucessfully");
+        location.href="#/SupportTicketsDashboard";
 
-    //     this.date='';
-    //     this.time='';
-    //     this.typeofissue='';
-    //     this.prority='';
-    //     this.comments='';
+        this.date='';
+        this.time='';
+        this.typeofissue='';
+        this.prority='';
+        this.comments='';
 
-    //   }
-    // )
+      }
+    )
   }
   }
 
@@ -136,12 +136,12 @@ export class SupportTicketsComponent implements OnInit {
         "Attachment": this.screenShot[i],
         "TicketID": this.ticketid,
       }
-      // this.PerformanceManagementService.InsertAttachment(entity).subscribe(
-      //   data => {
-      //     Swal.fire("Saved Successfully");
+      this.LearningService.InsertAttachment(entity).subscribe(
+        data => {
+          Swal.fire("Saved Successfully");
 
-      //   }
-      // )
+        }
+      )
     }
   }
 
@@ -156,27 +156,27 @@ export class SupportTicketsComponent implements OnInit {
       "Comment": this.comments,
       "Status": 'Open',
       "Companyname": 'Amazeinc.in',
-      "ApplicationName": 'Performance Management',
+      "ApplicationName": 'DigiLearning and Management',
       "StaffID":this.staffID
     }
-    // this.PerformanceManagementService.UpdateSupportTickets(entity).subscribe(
-    //   data => {
-    //     this.ticketid = data;
-    //     this.uploadmultipleimages()
-    //     Swal.fire("Updated Sucessfully");
-    //     location.href = "#/SupportTicketDashboard";
+    this.LearningService.UpdateSupportTickets(entity).subscribe(
+      data => {
+        this.ticketid = data;
+        this.uploadmultipleimages()
+        Swal.fire("Updated Sucessfully");
+        location.href = "#/SupportTicketsDashboard";
 
-    //     this.date = '';
-    //     this.time = '';
-    //     this.typeofissue = '';
-    //     this.prority = '';
-    //     this.comments = '';
+        this.date = '';
+        this.time = '';
+        this.typeofissue = '';
+        this.prority = '';
+        this.comments = '';
 
-    //   }
-    // )
+      }
+    )
   }
   public cancel(){
-    location.href="#/SupportTicketDashboard";
+    location.href="#/SupportTicketsDashboard";
   }
 }
 

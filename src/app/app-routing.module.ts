@@ -47,6 +47,7 @@ import { MyAccountsettingModifyComponent } from './my-accountsetting-modify/my-a
 import { HelpComponent } from './help/help.component';
 import { SupportTicketsComponent } from './support-tickets/support-tickets.component';
 import { LoaderComponent } from './loader/loader.component';
+import { SupportTicketsDashboardComponent } from './support-tickets-dashboard/support-tickets-dashboard.component';
 
 
 
@@ -110,6 +111,7 @@ const routes: Routes = [
   {path:'Help',component: HelpComponent},
   {path:'SupportTickets',component: SupportTicketsComponent},
   {path:'Loader',component: LoaderComponent},
+  {path:'SupportTicketsDashboard',component: SupportTicketsDashboardComponent},
  
 
 

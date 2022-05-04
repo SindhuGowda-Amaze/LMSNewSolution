@@ -21,6 +21,10 @@ export class AssignCourseToEmployeeComponent implements OnInit {
   mobile: any;
   emailID: any;
   staffId: any;
+  name123: any;
+  stafflist1: any;
+  id:any;
+
   ngOnInit(): void {
     this.userid = sessionStorage.getItem('userid');
     this.GetCourse();
@@ -35,10 +39,9 @@ export class AssignCourseToEmployeeComponent implements OnInit {
         debugger
         this.courselist = data;
         // this.count = this.courselist.length;
-
       })
   }
-  stafflist1: any;
+ 
   public GetStaff() {
     this.LearningService.GetMyDetails().subscribe(data => {
       debugger
@@ -56,17 +59,10 @@ export class AssignCourseToEmployeeComponent implements OnInit {
     this.staffId = id
   }
 
-  // public getdetails(name:any,mobile:any,emailID:any){
-  //   this.name=name,
-  //   this.mobile=mobile,
-  //   this.emailID=emailID
-
-  // }
   public getdata(name: any) {
     this.name = name
   }
-  name123: any;
-
+ 
   // enroll() {
   //   debugger
 
@@ -116,7 +112,7 @@ export class AssignCourseToEmployeeComponent implements OnInit {
     else {
       var json = {
         "employeeName": this.name123,
-        "courseid": this.name
+        "courseid": this.courseid
       };
       this.LearningService.InsertEnroll(json).subscribe(
         data => {
@@ -129,6 +125,23 @@ export class AssignCourseToEmployeeComponent implements OnInit {
        
     }
   }
+
+  Update(){
+    debugger
+     var json = {
+      "employeeName": this.name123,
+      "courseid": this.courseid        
+      };
+    
+      this.LearningService.UpdateEnroll(json).subscribe(
+        data => {
+        debugger
+        let id = data;
+        Swal.fire("Successfully Updated...!");
+        location.href="#/AssignCourseDashboard";
+      })
+  }
+
 
 
 }

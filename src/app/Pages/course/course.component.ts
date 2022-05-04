@@ -178,7 +178,7 @@ this.categoryid=list[1];
     this.LearningService.AttachmentsUpload(this.files).subscribe(res => {
       debugger
       this.Course_Photo = res;
-      Swal.fire("ATTACHMENT UPLOADED");
+      Swal.fire("Attachment Uploaded");
     })
   }
 
