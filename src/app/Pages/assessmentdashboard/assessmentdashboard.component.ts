@@ -54,7 +54,19 @@ export class AssessmentdashboardComponent implements OnInit {
       this.quetionlist = this.dummquetionlist.filter((x: { questionID: any,courseID:any }) => x.questionID == this.question1 &&  x.courseID == this.course)
     }
 
+<<<<<<< HEAD
+    this.GetFilteredCourseID();
 
+  }
+
+  public GetFilteredCourseID() {
+    this.LearningService.GetAssessments().subscribe(data => {
+      debugger
+      this.quetionlist = data.filter(x => x.courseID == this.courseid)
+    })
+=======
+
+>>>>>>> 891f4980e1b193394c9a3b629a53d9c07ffd7666
   }
 
 
@@ -134,7 +146,30 @@ export class AssessmentdashboardComponent implements OnInit {
     location.href="/Checkanswer"
   }
 
+<<<<<<< HEAD
+  question:any;
+  getquestion(even:any){
+    if(even.target.value !=0){
+      this.question=even.target.value;
+      debugger
+      this.quetionlist = this.dummquetionlist.filter((x: { questionID: any; }) => x.questionID == this.question);
+      this.count=this.quetionlist.length;
+    }
+    else{
+      this.GetAssessments();
+    }
+  }
+
+
  
+
+
+
+
+
+=======
+ 
+>>>>>>> 891f4980e1b193394c9a3b629a53d9c07ffd7666
 
 
 }
