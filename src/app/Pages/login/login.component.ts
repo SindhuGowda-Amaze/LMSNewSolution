@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('role', 'Admin');
       sessionStorage.setItem('roleid', '1');
       localStorage.setItem("clickname", "Admin Dashboard")
-      location.href = "#/AdminDashboard";
+      location.href = "#/Dashboard";
       location.reload();
       this.loader=false;
     }
@@ -158,8 +158,6 @@ export class LoginComponent implements OnInit {
       })
     }
 
-
-
     else if (this.roleID == 4) {
 
       debugger
@@ -191,6 +189,14 @@ export class LoginComponent implements OnInit {
       })
 
     }
+
+    else {
+
+      Swal.fire('Username or Password is invalid');
+      this.userName = "";
+      this.password = "";
+      this.loader=false;
+    }
   }
 
 
@@ -209,7 +215,7 @@ export class LoginComponent implements OnInit {
         {
           localStorage.setItem('loginid',datay);
       
-          location.href = "#/AdminDashboard";
+          location.href = "#/Dashboard";
           this.loader = false;
           location.reload();
           this.loader=false;

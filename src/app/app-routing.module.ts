@@ -74,7 +74,7 @@ const routes: Routes = [
   { path: 'TrainerCourseMappingForm/:id', component: TrainerCourseMappingFormComponent },
   { path: 'CourseDashboard', component: CourseDashboardComponent },
   { path: 'ChapterDashboard', component: ChapterDashboardComponent },
-  { path: 'AdminDashboard', component: AdminDashboardComponent },
+  { path: 'Dashboard', component: AdminDashboardComponent },
   { path: 'ViewCourse', component: ViewCourseComponent },
   { path: 'ViewCourse/:id', component: ViewCourseComponent },
   { path: 'MyCourseDashboard', component: MyCourseDashboardComponent },

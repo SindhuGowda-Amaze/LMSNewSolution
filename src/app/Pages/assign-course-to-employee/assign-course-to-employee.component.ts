@@ -25,6 +25,7 @@ export class AssignCourseToEmployeeComponent implements OnInit {
   stafflist1: any;
   id:any;
   coursename:any;
+  count:any;
 
   ngOnInit(): void {
     this.name123=0;
@@ -42,7 +43,7 @@ export class AssignCourseToEmployeeComponent implements OnInit {
       data => {
         debugger
         this.courselist = data;
-        // this.count = this.courselist.length;
+        this.count = this.courselist.length;
       })
   }
  
@@ -50,6 +51,7 @@ export class AssignCourseToEmployeeComponent implements OnInit {
     this.LearningService.GetMyDetails().subscribe(data => {
       debugger
       this.stafflist = data.filter(x => x.id != this.userid && x.role != 'Admin')
+      this.count=this.stafflist.length;
       // this.name= this.stafflist[0].employeeName
       // this.mobile=this.stafflist[0].phoneNo
       // this.emailID=this.stafflist[0].emailID
@@ -65,7 +67,7 @@ export class AssignCourseToEmployeeComponent implements OnInit {
 
   public getdata(details: any) {
     this.staffId = details.id
- 
+    this.count = this.staffId.length;
   }
 
   enroll() {
