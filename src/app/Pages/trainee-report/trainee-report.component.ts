@@ -30,6 +30,7 @@ export class TraineeReportComponent implements OnInit {
   departmentid: any;
   dumdeptlist: any
   departmentlist: any;
+  roleid:any;
 
 
    public GetTrainerReport(){

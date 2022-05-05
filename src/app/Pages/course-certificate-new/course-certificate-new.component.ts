@@ -44,23 +44,19 @@ export class CourseCertificateNewComponent implements OnInit {
 
     html2canvas(data).then(canvas => {
 
-      var margin = 5;
+      var imgWidth = 300;
 
-      var imgWidth = 208
-
-      // var pageHeight = 295 - 10 * margin;
-
-      var pageHeight = 295;
+      var pageHeight = 400;
 
       var imgHeight = canvas.height * imgWidth / canvas.width;
 
       var heightLeft = imgHeight;
 
-      var doc = new jsPDF('p', 'mm');
+      var doc = new jsPDF('l', 'mm', 'a4');
 
       var position = 0;
 
-      while (heightLeft > 0) {
+      while (heightLeft >= 0) {
 
         const contentDataURL = canvas.toDataURL('image/png')
 
@@ -68,30 +64,21 @@ export class CourseCertificateNewComponent implements OnInit {
 
         doc.addPage();
 
-        doc.addImage(contentDataURL, 'PNG', 0, position, imgWidth, 1500);
+        doc.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight, undefined, 'FAST');
 
         heightLeft -= pageHeight;
 
-      }   
 
 
-      doc.deletePage(1)
+      }
 
-      doc.save('R1A Report.pdf');
+      doc.deletePage(1);
+
+doc.save('Certificate.pdf'); 
 
 
 
-      var pdf1 = doc.output('blob');
-
-      var file = new File([pdf1], "R1-A Report.pdf");
-
-      let body = new FormData();
-
-      debugger
-
-      body.append('Dan', file);
-
-      console.log('pdf', pdf1)
+    
 
 
 
