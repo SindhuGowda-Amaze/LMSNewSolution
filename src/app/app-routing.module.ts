@@ -50,6 +50,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { SupportTicketsDashboardComponent } from './support-tickets-dashboard/support-tickets-dashboard.component';
 import { CertificateDashboardComponent } from './certificate-dashboard/certificate-dashboard.component';
 import { EmployeeAssessmentReportComponent } from './employee-assessment-report/employee-assessment-report.component';
+import { EmployeeReportComponent } from './employee-report/employee-report.component';
 
 
 
@@ -74,7 +75,7 @@ const routes: Routes = [
   { path: 'TrainerCourseMappingForm/:id', component: TrainerCourseMappingFormComponent },
   { path: 'CourseDashboard', component: CourseDashboardComponent },
   { path: 'ChapterDashboard', component: ChapterDashboardComponent },
-  { path: 'AdminDashboard', component: AdminDashboardComponent },
+  { path: 'Dashboard', component: AdminDashboardComponent },
   { path: 'ViewCourse', component: ViewCourseComponent },
   { path: 'ViewCourse/:id', component: ViewCourseComponent },
   { path: 'MyCourseDashboard', component: MyCourseDashboardComponent },
@@ -118,6 +119,7 @@ const routes: Routes = [
   {path:'SupportTicketsDashboard',component: SupportTicketsDashboardComponent},
   {path:'CertificateDashboard',component: CertificateDashboardComponent},
   {path:'EmployeeAssessmentReport',component: EmployeeAssessmentReportComponent},
+  {path:'EmployeeReport',component: EmployeeReportComponent},
  
 
 

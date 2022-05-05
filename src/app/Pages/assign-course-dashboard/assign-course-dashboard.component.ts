@@ -25,6 +25,7 @@ public GetEnroll(){
       // this.result = data.filter(x => x.manager == this.manager );
       // this.result = data.filter(x => x.status == 'Manager Assigned' );
       this.result =  data.filter(x => x.type == 'Manager Assign')
+      this.result=data;
       this.count = this.result.length;
     })
 }

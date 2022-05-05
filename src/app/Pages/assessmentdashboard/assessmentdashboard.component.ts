@@ -58,11 +58,12 @@ export class AssessmentdashboardComponent implements OnInit {
     this.GetFilteredCourseID();
 
   }
-
+  correctAnswers:any
   public GetFilteredCourseID() {
     this.LearningService.GetAssessments().subscribe(data => {
       debugger
       this.quetionlist = data.filter(x => x.courseID == this.courseid)
+      this.correctAnswers= this.quetionlist[0].correctAnswers
     })
   }
 
@@ -117,14 +118,27 @@ export class AssessmentdashboardComponent implements OnInit {
       })
   }
 
-  public Ondelete(id:any) {
-    this.LearningService.DeleteAssessments(id).subscribe(
+ public Ondelete(id:any) {
+    Swal.fire({
+      title: 'Are You Sure ',
+      text: "Do you want to delete the Selected Record",
+      showCloseButton: true,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'OK'
+    }).then((result) => {
+      if (result.value == true) {
+        this.LearningService.DeleteAssessments(id).subscribe(
       data => {
         debugger
-        Swal.fire('Successfully Deleted...!');
         this.GetAssessments();
       }
     )
+    Swal.fire('Successfully Deleted...!');
+    this.ngOnInit();
+      }
+    });
   }
 
 
