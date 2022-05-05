@@ -30,6 +30,7 @@ export class AssignCourseToEmployeeComponent implements OnInit {
     this.name123=0;
     this.coursename=0;
     this.userid = sessionStorage.getItem('userid');
+    this.manager = sessionStorage.getItem('UserName');
     this.GetCourse();
     this.GetStaff();
   }
@@ -58,12 +59,13 @@ export class AssignCourseToEmployeeComponent implements OnInit {
   Cancel() {
     location.href = "#/AssignCourseDashboard";
   }
-  public getcoureid(id: any) {
-    this.staffId = id
-  }
+  // public getcoureid(id: any) {
+  //   this.staffId = id
+  // }
 
-  public getdata(name: any) {
-    this.name = name
+  public getdata(details: any) {
+    this.staffId = details.id
+ 
   }
 
   enroll() {
@@ -74,8 +76,8 @@ export class AssignCourseToEmployeeComponent implements OnInit {
     else {
       var json = {
         "employeeName": this.name123,
-        "name": this.coursename,
-        "staffid": this.staffId,
+        // "name": this.coursename,
+        "staffid": this.name123,
         "manager": this.manager,
         "courseid": this.courseid,
         "status": 'Manager Assign',
@@ -99,7 +101,9 @@ export class AssignCourseToEmployeeComponent implements OnInit {
     debugger
      var json = {
       "employeeName": this.name123,
-      "courseid": this.courseid        
+      "courseid": this.courseid ,
+      "status": 'Manager Assign',
+      "type": "Manager Assign"
       };
     
       this.LearningService.UpdateEnroll(json).subscribe(

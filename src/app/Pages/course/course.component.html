@@ -35,7 +35,7 @@
                 <!-- name="categoryName" [(ngModel)]="categoryName"  -->
                 <select class="form-control"  id="categoryName" name="categoryName" [(ngModel)]="categoryName" (change)="GetCategoryid($event)">
                     <option value="0">Select Category</option>
-                    <option *ngFor="let details of result" value="{{details.name}},{{details.id}}">{{details.name}}</option>
+                    <option *ngFor="let details of categoryList" value="{{details.name}},{{details.id}}">{{details.name}}</option>
                 </select>
             </div>
             <div class="col-lg-2">
