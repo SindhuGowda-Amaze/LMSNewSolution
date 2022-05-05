@@ -9,17 +9,17 @@ import Swal from 'sweetalert2';
 })
 export class CourseComponent implements OnInit {
 
-  constructor(public LearningService: LearningService,private ActivatedRoute: ActivatedRoute) { }
+  constructor(public LearningService: LearningService, private ActivatedRoute: ActivatedRoute) { }
   result: any;
-  id:any;
-  venue:any;
-  password:any;
-  userName:any;
-  trainingLink:any
+  id: any;
+  venue: any;
+  password: any;
+  userName: any;
+  trainingLink: any
   ngOnInit(): void {
-    this.categoryName=0;
-    this.trainingType=0;
-  this.GetCategoryMaster();
+    this.categoryName = 0;
+    this.trainingType = 0;
+    this.GetCategoryMaster();
 
     this.ActivatedRoute.params.subscribe(params => {
       debugger
@@ -31,127 +31,125 @@ export class CourseComponent implements OnInit {
 
   }
 
-  categoryName:any;
-  name:any;
-  description:any;
-  duration:any;
-  fee:any;
-  entryCriteria:any;
-  exitCriteria:any;
-  trainingType:any;
+  categoryName: any;
+  name: any;
+  description: any;
+  duration: any;
+  fee: any;
+  entryCriteria: any;
+  exitCriteria: any;
+  trainingType: any;
 
-  public GetCourse(){
-  this.LearningService.GetCourse().subscribe(
-    data => {
-    debugger
-    this.result = data;
-		this.result=this.result.filter((x: { id: any; })=>x.id==Number(this.id));
-		this.categoryName=this.result[0].categoryName;
-		this.name=this.result[0].name;
-    this.description=this.result[0].description;
-    this.Course_Photo=this.result[0].photo;
-    this.duration=this.result[0].duration;
-    this.fee=this.result[0].fee;
-    this.entryCriteria=this.result[0].entryCriteria;
-    this.exitCriteria=this.result[0].exitCriteria;
-    this.trainingLink=this.result[0].trainingLink;
-    this.userName=this.result[0].userName;
-    this.password=this.result[0].password;
-    this.venue=this.result[0].venue;
-    this.trainingType=this.result[0].trainingType;
-      }
-    ) 
-  }
-categoryid:any;
-
-  GetCategoryid(even:any)
-  {
-    debugger
-    var list=even.target.value.split(",");
-this.categoryName=list[0]
-this.categoryid=list[1];
-  }
-
-  GetTrainingType(even:any){
-
-  }
-
-  Save(){
-    debugger 
-    if(this.name==undefined || this.description==undefined || this.categoryName==undefined || 
-      this.Course_Photo==undefined || this.duration==undefined || this.entryCriteria==
-      undefined ||  this.exitCriteria==undefined || this.categoryid==undefined || this.trainingType
-      == undefined)
-    {
-      Swal.fire("Please fill all the fields");
-    }
-  else{
-    var json = {
-      "categoryName":this.categoryName,
-      "name": this.name,
-      "description":this.description,  
-      "photo": this.Course_Photo,
-      "duration": this.duration,
-      "entryCriteria":this.entryCriteria,
-      "exitCriteria":this.exitCriteria,    
-      "CategoryID":this.categoryid,
-      "trainingLink":this.trainingLink,
-      "userName":this.userName,
-      "password":this.password,
-      "venue":this.venue,
-      "trainingType":this.trainingType  
-    };
-    this.LearningService.InsertCourse(json).subscribe(
+  public GetCourse() {
+    this.LearningService.GetCourse().subscribe(
       data => {
         debugger
-        let id = data;
-        Swal.fire("Saved Successfully");
-        location.href="#/CourseDashboard"
-      })
+        this.result = data;
+        this.result = this.result.filter((x: { id: any; }) => x.id == Number(this.id));
+        this.categoryName = this.result[0].categoryName;
+        this.name = this.result[0].name;
+        this.description = this.result[0].description;
+        this.Course_Photo = this.result[0].photo;
+        this.duration = this.result[0].duration;
+        this.fee = this.result[0].fee;
+        this.entryCriteria = this.result[0].entryCriteria;
+        this.exitCriteria = this.result[0].exitCriteria;
+        this.trainingLink = this.result[0].trainingLink;
+        this.userName = this.result[0].userName;
+        this.password = this.result[0].password;
+        this.venue = this.result[0].venue;
+        this.trainingType = this.result[0].trainingType;
+      }
+    )
   }
+  categoryid: any;
+
+  GetCategoryid(even: any) {
+    debugger
+    var list = even.target.value.split(",");
+    this.categoryName = list[0]
+    this.categoryid = list[1];
   }
 
-    Update(){
-     debugger
-     var json = {
+  GetTrainingType(even: any) {
+
+  }
+
+  Save() {
+    debugger
+    if (this.name == undefined || this.description == undefined || this.categoryName == undefined ||
+      this.Course_Photo == undefined || this.duration == undefined || this.entryCriteria ==
+      undefined || this.exitCriteria == undefined || this.categoryid == undefined || this.trainingType
+      == undefined) {
+      Swal.fire("Please fill all the fields");
+    }
+    else {
+      var json = {
+        "categoryName": this.categoryName,
+        "name": this.name,
+        "description": this.description,
+        "photo": this.Course_Photo,
+        "duration": this.duration,
+        "entryCriteria": this.entryCriteria,
+        "exitCriteria": this.exitCriteria,
+        "CategoryID": this.categoryid,
+        "trainingLink": this.trainingLink,
+        "userName": this.userName,
+        "password": this.password,
+        "venue": this.venue,
+        "trainingType": this.trainingType
+      };
+      this.LearningService.InsertCourse(json).subscribe(
+        data => {
+          debugger
+          let id = data;
+          Swal.fire("Saved Successfully");
+          location.href = "#/CourseDashboard"
+        })
+    }
+  }
+
+  Update() {
+    debugger
+    var json = {
       'ID': this.id,
-     "categoryName":this.categoryName,
+      "categoryName": this.categoryName,
       "name": this.name,
-      "description":this.description,  
+      "description": this.description,
       "photo": this.Course_Photo,
       "duration": this.duration,
-      "fee":this.fee,
-      "entryCriteria":this.entryCriteria,
-      "exitCriteria":this.exitCriteria,    
-      "CategoryID":this.categoryid,
-      "trainingLink":this.trainingLink,
-      "userName":this.userName,
-      "password":this.password,
-      "venue":this.venue,
-      "trainingType":this.trainingType
-      };
-    
-      this.LearningService.UpdateCourse(json).subscribe(
-        data => {
+      "fee": this.fee,
+      "entryCriteria": this.entryCriteria,
+      "exitCriteria": this.exitCriteria,
+      "CategoryID": this.categoryid,
+      "trainingLink": this.trainingLink,
+      "userName": this.userName,
+      "password": this.password,
+      "venue": this.venue,
+      "trainingType": this.trainingType
+    };
+
+    this.LearningService.UpdateCourse(json).subscribe(
+      data => {
         debugger
         let result = data;
         Swal.fire("Updated Successfully");
-      location.href="#/CourseDashboard";
+        location.href = "#/CourseDashboard";
       })
-    }
+  }
 
 
+  categoryList: any
+  public GetCategoryMaster() {
+    debugger
+    this.LearningService.GetCategoryMaster().subscribe(
+      data => {
+        debugger
+        this.categoryList = data;
+      })
+  }
 
-    public GetCategoryMaster() {
-      debugger
-      this.LearningService.GetCategoryMaster().subscribe(
-        data => {
-          debugger
-          this.result = data;
-        })
-    }
-  
-  
+
   cancel() {
     location.href = "#/CourseDashboard";
   }

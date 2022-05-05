@@ -53,13 +53,26 @@ export class HeaderComponent implements OnInit {
 
 
 
-
-    this.LearningService.GetMyDetails().subscribe(res => {
-      debugger
-      let temp: any = res.filter(x => x.id == this.staffID);
-      this.myname = temp[0].name;
-      this.initail = this.myname.charAt(0);
-    });
+if(this.roleid==1){
+    this.initail = 'A'
+}
+else if(this.roleid==4){
+  this.LearningService.GetTrainer().subscribe(res => {
+    debugger
+    let temp: any = res.filter(x => x.id == this.staffID);
+    this.myname = temp[0].name;
+    this.initail = this.myname.charAt(0);
+  });
+}
+else{
+  this.LearningService.GetMyDetails().subscribe(res => {
+    debugger
+    let temp: any = res.filter(x => x.id == this.staffID);
+    this.myname = temp[0].name;
+    this.initail = this.myname.charAt(0);
+  });
+}
+  
 
   }
 

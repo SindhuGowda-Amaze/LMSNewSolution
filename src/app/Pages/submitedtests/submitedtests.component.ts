@@ -14,6 +14,7 @@ export class SubmitedtestsComponent implements OnInit {
   constructor(public LearningService: LearningService) { }
   staffid: any;
   search: any;
+  date:any;
  
   ngOnInit(): void {
 
@@ -23,6 +24,18 @@ export class SubmitedtestsComponent implements OnInit {
       data => {
         debugger
         this.result = data.filter(x => x.checked == 1);
+      })
+  }
+  public getdate(even:any){
+this.date=even.target.value;
+
+this.filterdate();
+  }
+  public filterdate(){
+    this.LearningService.GetTestResponsenew().subscribe(
+      data => {
+        debugger
+        this.result = data.filter(x => x.checked == 1 && x.modifiedDate==this.date);
       })
   }
 

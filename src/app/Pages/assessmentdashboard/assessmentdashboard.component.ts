@@ -18,7 +18,8 @@ export class AssessmentdashboardComponent implements OnInit {
   dummcoursedetails:any;
   question:any;
   quetionlist:any;
-
+  p: any = 1;
+  count1: any = 10;
   ngOnInit(): void {
    this. GetAssessmentResult()
     this.GetAssessments();
