@@ -69,6 +69,7 @@ import { SupportTicketsComponent } from './support-tickets/support-tickets.compo
 import { LoaderComponent } from './loader/loader.component';
 import { SupportTicketsDashboardComponent } from './support-tickets-dashboard/support-tickets-dashboard.component';
 import { CertificateDashboardComponent } from './certificate-dashboard/certificate-dashboard.component';
+import { EmployeeAssessmentReportComponent } from './employee-assessment-report/employee-assessment-report.component';
 
 
 
@@ -130,6 +131,7 @@ const ngWizardConfig: NgWizardConfig = {
     LoaderComponent,
     SupportTicketsDashboardComponent,
     CertificateDashboardComponent,
+    EmployeeAssessmentReportComponent,
 
   
   ],
