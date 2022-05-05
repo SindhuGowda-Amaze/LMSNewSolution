@@ -27,11 +27,13 @@ export class SubmitedtestsComponent implements OnInit {
       })
   }
   public getdate(even:any){
+    debugger
 this.date=even.target.value;
 
 this.filterdate();
   }
   public filterdate(){
+    debugger
     this.LearningService.GetTestResponsenew().subscribe(
       data => {
         debugger

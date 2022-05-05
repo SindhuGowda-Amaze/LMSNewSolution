@@ -88,6 +88,7 @@ const routes: Routes = [
   { path: 'LearningPathDetails', component: LearningPathDetailsComponent },
   { path: 'Assessmentdashboard', component: AssessmentdashboardComponent },
   { path: 'AssessmentForm', component: AssessmentFormComponent },
+  { path: 'AssessmentForm/:id', component: AssessmentFormComponent },
   { path: 'ManagerDashboard', component: ManagerDashboardComponent },
   { path: 'CategoryDashboard', component: CategoryDashboardComponent },
   { path: 'CategoryForm', component: CategoryFormComponent },

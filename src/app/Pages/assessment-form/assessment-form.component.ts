@@ -27,9 +27,12 @@ export class AssessmentFormComponent implements OnInit {
   userid:any;
   files1: File[] = [];
   files: File[] = [];
-
+  quetionlist:any
 
   ngOnInit(): void {
+    this.courseid=0;
+    this.chapterid=0;
+    this.questionid=0;
     this.userid = sessionStorage.getItem('userid');
 
     this.GetQuestionMaster();
@@ -61,6 +64,19 @@ export class AssessmentFormComponent implements OnInit {
 
     // this.show = 1;
     // this.show2 = 1;
+  }
+
+
+  public GetAssessments() {
+    debugger
+    this.LearningService.GetAssessments().subscribe(
+      data => {
+        debugger
+        this.quetionlist = data;
+        console.log("questionlist",this.quetionlist)
+      
+     
+      })
   }
 
   public GetQuestionMaster() {
@@ -271,4 +287,41 @@ export class AssessmentFormComponent implements OnInit {
     this.courseid = even.target.value;
     this.ChapterList = this.dumchapterlist.filter((x: { courseID: any; }) => x.courseID == this.courseid)
   }
+
+  update() {
+    debugger
+   
+      debugger
+    var entity = {
+        "CourseID": this.courseid,
+        "ChapterID": this.chapterid,
+        "QuestionID": this.questionid,
+        "Question": this.Question,
+        "Option1": this.Option1,
+        "Option2": this.Option2,
+        "Option3": this.Option3,
+        "Option4": this.Option4,
+        "CorrectAnswer": this.CorrectAnswer,
+        "weightage": this.Weightage,
+        "AssessmentName": this.AssessmentName,
+        "TrainerID":this.userid
+      };
+      debugger
+      this.LearningService.UpdateAssessments(entity).subscribe(
+        data => {
+          debugger
+          let id = data;
+          Swal.fire("Updated Successfully!!");
+          this.tablecout = 0;
+          location.href = "#/Assessmentdashboard"
+        })      
+
+
+
+   
+   
+   
+       
+  }
+
 }

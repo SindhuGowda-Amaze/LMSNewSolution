@@ -76,7 +76,7 @@
                         <td>{{item.option4}}</td>
                         <td style="width: 10px;">{{item.correctAnswer}}</td>
                         <td>{{item.weightage}}</td>
-                        <td><button class="addbutton" routerLink="/AssessmentForm">Edit</button> <br>
+                        <td><button class="addbutton" routerLink="[/AssessmentForm,item.id]"]>Edit</button> <br>
                             <br>
                             <button class="addbutton" (click)="Ondelete(item.id)">Delete</button>
                         </td>
