@@ -98,6 +98,10 @@ export class SidebarComponent implements OnInit {
     this.active = 'mycertificate';
     localStorage.setItem("clickname", "MY CERTIFICATE")
   }
+  myemployeereport() {
+    this.active = 'myemployeereport';
+    localStorage.setItem("clickname", "EMPLOYEE REPORT")
+  }
   myassessmentreport() {
     this.active = 'myassessmentreport';
     localStorage.setItem("clickname", "MY ASSESSMENT REPORT")
