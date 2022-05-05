@@ -50,6 +50,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { SupportTicketsDashboardComponent } from './support-tickets-dashboard/support-tickets-dashboard.component';
 import { CertificateDashboardComponent } from './certificate-dashboard/certificate-dashboard.component';
 import { EmployeeAssessmentReportComponent } from './employee-assessment-report/employee-assessment-report.component';
+import { EmployeeReportComponent } from './employee-report/employee-report.component';
 
 
 
@@ -118,6 +119,7 @@ const routes: Routes = [
   {path:'SupportTicketsDashboard',component: SupportTicketsDashboardComponent},
   {path:'CertificateDashboard',component: CertificateDashboardComponent},
   {path:'EmployeeAssessmentReport',component: EmployeeAssessmentReportComponent},
+  {path:'EmployeeReport',component: EmployeeReportComponent},
  
 
 
