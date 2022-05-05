@@ -13,8 +13,9 @@ import * as XLSX from 'xlsx';
 export class CertificateDashboardComponent implements OnInit {
   
   constructor(private LearningService:LearningService,private ActivatedRoute:ActivatedRoute ) { }
-
+  userid:any
   ngOnInit(): void {
+    this.userid = sessionStorage.getItem('userid');
     this.GetTrainerReport();
     this.GetDepartmentMaster();
   }
@@ -32,7 +33,7 @@ export class CertificateDashboardComponent implements OnInit {
    public GetTrainerReport(){
      debugger
      this.LearningService.GetTrainerReport(0,0).subscribe(data=>{
-       this.employeereportlist=data;
+       this.employeereportlist=data.filter(x=>x.staffID== this.userid )
        this.dummemployeereportlist=data;
        this.traininglist=data;
      }
