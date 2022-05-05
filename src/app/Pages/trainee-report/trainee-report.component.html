@@ -45,6 +45,7 @@
                             <th>Employee ID</th>
                             <th>Employee Name</th>
                             <th>Role</th>
+                            <th *ngIf="roleid!=4">Trainer Name</th>
                             <th>Training name</th>
                             <th>Start Date</th>
                             <th>Completion Date</th>
@@ -54,6 +55,7 @@
                         <tr *ngFor="let details of employeereportlist|filter :search">
                             <td style="color:#0C275A">{{details.staffID}}</td>
                             <td style="color:#0C275A">{{details.employeeName}}</td>
+                            <td style="color:#0C275A">{{details.role}}</td>
                             <td style="color:#0C275A">{{details.role}}</td>
                             <td style="color:#0C275A">{{details.courseName}}</td>
                             <td style="color:#0C275A">{{details.modifiedDate}}</td>
