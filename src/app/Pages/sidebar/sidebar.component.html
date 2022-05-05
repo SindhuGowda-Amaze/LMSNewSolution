@@ -222,6 +222,16 @@
     <!-- <i class="fa fa-users "></i> -->
 </a>
 
+<a *ngIf="roleid==2" routerLink="/EmployeeReport" class="tablinks" (click)="highlight($event)"
+(click)="myemployeereport()">
+<img src="assets/Images/online-course.png" style="width:13% ;margin-right: 17px;"
+    [ngClass]="active == 'myemployeereport' ? 'Active1' : 'Active2'" />
+<img [ngClass]="active != 'myemployeereport' ? 'Active1' : 'Active2'" src="assets/Images/New folder/online-course1.png
+    " style="width:13%; margin-right: 17px;">
+&nbsp;
+<span [ngClass]="active == 'myemployeereport' ? 'Active1' : 'Active3'">  Employee Report </span>
+<!-- <i class="fa fa-users "></i> -->
+</a>
         <!-- <a *ngIf="roleid==2" routerLink="/CourseCertificate" class="tablinks" (click)="highlight($event)"
         (click)="certificate()">
             <i class="fa fa-users dashboard "></i>
