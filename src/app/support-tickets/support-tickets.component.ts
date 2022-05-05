@@ -92,7 +92,7 @@ export class SupportTicketsComponent implements OnInit {
   save() {
     debugger
     if(this.date==undefined||this.time==0||this.typeofissue==undefined||this.prority==null||this.screenShot==
-      undefined||this.comments==undefined||this.staffID==undefined){
+      undefined||this.comments==undefined){
       Swal.fire("Please Enter the Mandatory Fields");
     }
     else{
