@@ -29,16 +29,19 @@
                 <div class="row head">
                     <div class="col-lg-2">
                         <select class="form-control" name="id" id="id" [(ngModel)]="courseid" (change)="getcourseid($event)">
+                            <option value="0">Select Training</option>
                             <option *ngFor="let details of CourseList" value="{{details.id}}">{{details.name}}</option>
                         </select>
                     </div>
                     <div class="col-lg-2">
                         <select class="form-control" name="id" id="id" [(ngModel)]="chapterid">
+                            <option value="0">Select Topic</option>
                             <option *ngFor="let details of ChapterList" value="{{details.id}}">{{details.name}}</option>
                         </select>
                     </div>
                     <div class="col-lg-2">
                         <select class="form-control" [(ngModel)]="questionid" name="questionid">
+                            <option value="0">Select Question Type</option>
                             <option *ngFor="let details of QuestionList" value="{{details.id}}">{{details.type}}
                             </option>
                         </select>
@@ -103,7 +106,8 @@
                 <div class="row">
                     <div class="col-lg-10"></div>
                     <div class="col-lg-1">
-                        <button class="form-control cancel" (click)="ADd()">Add</button>
+                        <button class="form-control cancel" *ngIf="id==undefined||id==null" (click)="ADd()">Add</button>
+                        <button class="form-control cancel" *ngIf="id!=undefined||id!=null" (click)="update()">Update</button>
                     </div>
                     <div class="col-lg-1">
                         <button class="form-control cancel" (click)="cancel()">Cancel</button>
@@ -148,6 +152,7 @@
                     <div class="col-lg-5"></div>
                     <div class="col-lg-1">
                         <button class="form-control cancel" (click)="save()">Save</button>
+                        
                     </div>
                 </div>
             </div>
