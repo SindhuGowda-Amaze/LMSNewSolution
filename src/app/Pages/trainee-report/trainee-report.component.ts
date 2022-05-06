@@ -19,6 +19,7 @@ export class TraineeReportComponent implements OnInit {
   constructor(private LearningService:LearningService,private ActivatedRoute:ActivatedRoute ) { }
 
   ngOnInit(): void {
+    this.roleid = sessionStorage.getItem('roleid');
     this.GetTrainerReport();
     this.GetDepartmentMaster();
   }

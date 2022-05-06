@@ -27,7 +27,7 @@ export class EmployeeReportComponent implements OnInit {
   departmentid: any;
   dumdeptlist: any
   departmentlist: any;
-
+  reportlist: any;
 
    public GetTrainerReport(){
      debugger

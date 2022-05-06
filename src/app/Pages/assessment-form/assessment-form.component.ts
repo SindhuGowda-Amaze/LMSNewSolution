@@ -240,41 +240,41 @@ export class AssessmentFormComponent implements OnInit {
 
 
   
-  // save() {
-  //   debugger
-  //   for (let i = 0; i <=this.assessmenrArray.length; i++) {
-  //     debugger
-  //   var entity = {
-  //       "CourseID": this.assessmenrArray[i].CourseID,
-  //       "ChapterID": this.assessmenrArray[i].ChapterID,
-  //       "QuestionID": this.assessmenrArray[i].QuestionID,
-  //       "Question": this.assessmenrArray[i].Question,
-  //       "Option1": this.assessmenrArray[i].Option1,
-  //       "Option2": this.assessmenrArray[i].Option2,
-  //       "Option3": this.assessmenrArray[i].Option3,
-  //       "Option4": this.assessmenrArray[i].Option4,
-  //       "CorrectAnswer": this.assessmenrArray[i].CorrectAnswer,
-  //       "weightage": this.assessmenrArray[i].weightage,
-  //       "AssessmentName": this.assessmenrArray[i].AssessmentNames,
-  //       "TrainerID":this.assessmenrArray[i].TrainerID
-  //     };
-  //     debugger
-  //     this.LearningService.InsertAssessments(entity).subscribe(
-  //       data => {
-  //         debugger
-  //         let id = data;
-  //         Swal.fire("Saved Successfully!!");
-  //         this.tablecout = 0;
-  //         location.href = "#/Assessmentdashboard"
-  //       })      
+  save() {
+    debugger
+    for (let i = 0; i <=this.assessmenrArray.length; i++) {
+      debugger
+    var entity = {
+        "CourseID": this.assessmenrArray[i].CourseID,
+        "ChapterID": this.assessmenrArray[i].ChapterID,
+        "QuestionID": this.assessmenrArray[i].QuestionID,
+        "Question": this.assessmenrArray[i].Question,
+        "Option1": this.assessmenrArray[i].Option1,
+        "Option2": this.assessmenrArray[i].Option2,
+        "Option3": this.assessmenrArray[i].Option3,
+        "Option4": this.assessmenrArray[i].Option4,
+        "CorrectAnswer": this.assessmenrArray[i].CorrectAnswer,
+        "weightage": this.assessmenrArray[i].weightage,
+        "AssessmentName": this.assessmenrArray[i].AssessmentNames,
+        "TrainerID":this.assessmenrArray[i].TrainerID
+      };
+      debugger
+      this.LearningService.InsertAssessments(entity).subscribe(
+        data => {
+          debugger
+          let id = data;
+          Swal.fire("Saved Successfully!!");
+          this.tablecout = 0;
+          location.href = "#/Assessmentdashboard"
+        })      
 
 
 
-  //   }
+    }
    
    
        
-  // }
+  }
 
 
 
