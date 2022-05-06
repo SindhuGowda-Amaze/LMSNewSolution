@@ -106,8 +106,8 @@
                 <div class="row">
                     <div class="col-lg-10"></div>
                     <div class="col-lg-1">
-                        <button class="form-control cancel" *ngIf="id== undefined || id==null" (click)="ADd()">Add</button>
-                        <button class="form-control cancel" *ngIf="id!= undefined || id!=null" (click)="update()">Update</button>
+                        <button class="form-control cancel" *ngIf="id== undefined" (click)="ADd()">Add</button>
+                        <button class="form-control cancel" *ngIf="id!= undefined" (click)="update()">Update</button>
                     </div>
                     <div class="col-lg-1">
                         <button class="form-control cancel" (click)="cancel()">Cancel</button>
@@ -151,11 +151,8 @@
                 <div class="row" *ngIf="tablecout==1">
                     <div class="col-lg-5"></div>
                     <div class="col-lg-1">
-                        <button class="form-control cancel" *ngIf="id!= undefined || id!=null" (click)="update()">Update</button>
+                        <button class="form-control cancel" (click)="save()">Save</button>
                         
-                    </div>
-                     <div class="col-lg-1">
-                        <button class="form-control cancel" (click)="cancel()">Cancel</button>
                     </div>
                 </div>
             </div>
