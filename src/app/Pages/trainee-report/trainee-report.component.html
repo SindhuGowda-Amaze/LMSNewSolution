@@ -50,7 +50,7 @@
                             <th>Training name</th>
                             <th>Start Date</th>
                             <th>Completion Date</th>
-                            <th>Percentage</th>
+                            <th>Percentage(%)</th>
                             <th>Status</th>
                         </tr>
                         <tr *ngFor="let details of employeereportlist|filter :search">
@@ -63,7 +63,7 @@
                             <td style="color:#0C275A">{{details.modifiedDate}}</td>
                             <td style="color:#0C275A">{{details.completiondate}}</td>
                             <td> {{details.obtainedMarks/details.totalmarks
-                                *100 | number : '1.2-2'}} % </td>
+                                *100 | number : '1.2-2'}} </td>
                             <td style="color:#0C275A">
                                 <p  *ngIf="details.obtainedMarks/details.totalmarks==0 || details.obtainedMarks/details.totalmarks==null">On Going</p>
                                 <button class="Button" *ngIf="details.obtainedMarks/details.totalmarks!=0"  [routerLink]="['/CourseCertificateNew',details.id]"

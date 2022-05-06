@@ -16,7 +16,7 @@
             <div class="col-lg-3">
                 <select class="form-control" id="Duration" (change)=" getcourseid($event)">
                     <option value="0" >Select Training</option>
-                    <option style="color:#0C275A" *ngFor="let details of traininglist" value="{{details.courseName}}" >{{details.courseName}}</option>
+                    <option style="color:#0C275A" *ngFor="let details of courseList" value="{{details.id}}" >{{details.name}}</option>
                 </select>
             </div>
             <div class="col-lg-2">
@@ -24,7 +24,7 @@
                     name="search">
             </div>
             <div class="col-lg-2">
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" id="date" name="date" [(ngModel)]="date">
             </div>
         </div><br>
     </div>
@@ -36,7 +36,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <table id="download" class="table" *ngIf="(employeereportlist | filter: search).length > 0; else noResults">
+                <table id="download" class="table" *ngIf="(employeereportlist | filter: search|filter:date).length > 0; else noResults">
                     <thead>
                         <tr>
                             <th>Training name</th>
@@ -48,8 +48,8 @@
                         </tr>
                         <tr *ngFor="let details of employeereportlist|filter :search">
                             <td style="color:#0C275A">{{details.courseName}}</td>
-                            <td style="color:#0C275A">{{details.modifiedDate}}</td>
-                            <td style="color:#0C275A">{{details.completiondate}}</td>
+                            <td style="color:#0C275A">{{details.modifiedDate|date}}</td>
+                            <td style="color:#0C275A">{{details.completiondate|date}}</td>
                             <td style="color:#0C275A">{{details.trainer}}</td>
                             <td> {{details.obtainedMarks/details.totalmarks
                                 *100 | number : '1.2-2'}} % </td>

@@ -14,10 +14,17 @@ export class CertificateDashboardComponent implements OnInit {
   
   constructor(private LearningService:LearningService,private ActivatedRoute:ActivatedRoute ) { }
   userid:any
+  courseList:any;
   ngOnInit(): void {
     this.userid = sessionStorage.getItem('userid');
     this.GetTrainerReport();
     this.GetDepartmentMaster();
+
+    this.LearningService.GetCourse().subscribe(
+      data => {
+        debugger
+        this.courseList = data;
+      })
   }
   search:any;
   dummemployeereportlist: any;
@@ -28,14 +35,14 @@ export class CertificateDashboardComponent implements OnInit {
   departmentid: any;
   dumdeptlist: any
   departmentlist: any;
-
+  date:any;
 
    public GetTrainerReport(){
      debugger
      this.LearningService.GetTrainerReport(0,0).subscribe(data=>{
        this.employeereportlist=data.filter(x=>x.staffID== this.userid )
        this.dummemployeereportlist=data;
-       this.traininglist=data;
+   
      }
       )
    }

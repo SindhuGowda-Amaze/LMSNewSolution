@@ -49,7 +49,10 @@
                             <td style="color:#0C275A">{{details.courseName}}</td>
                             <td style="color:#0C275A">{{details.modifiedDate}}</td>
                             <td style="color:#0C275A">{{details.completiondate}}</td>
-                            <td style="color:#0C275A">Ongoing</td>
+                            <td style="color:#0C275A">
+                                <p *ngIf="details.testResult==null">Ongoing</p>
+                                <p *ngIf="details.testResult!=null">Completed</p>
+                        </td>
                             <td style="color:#0C275A">
                                 <!-- <button class="Button"
                                 [routerLink]="['/CourseCertificateNew',details.id]">View</button> -->
@@ -85,8 +88,11 @@
                                 <tr *ngFor="let details of employeereportlist" style="text-align: left;">
                                     <td style="text-align: left;">{{details.chapterName}}</td>
                                     <td style="text-align: left;">{{details.obtainedMarks/details.totalmarks
-                                        *100 | number : '1.2-2'}} %</td>
-                                    <td style="text-align: left;">Ongoing</td>
+                                        *100 | number : '1.2-2'}} </td>
+                                    <td style="text-align: left;">
+                                        <p *ngIf="details.testResult==null">Ongoing</p>
+                                        <p *ngIf="details.testResult!=null">{{details.testResult}}</p>
+                                    </td>
                                 </tr>
                             </table>
                         </div>
