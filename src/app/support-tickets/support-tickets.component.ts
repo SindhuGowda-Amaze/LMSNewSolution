@@ -26,7 +26,7 @@ export class SupportTicketsComponent implements OnInit {
   staffID:any;
   ticketlist: any;
   ngOnInit(): void {
-    this.staffID = sessionStorage.getItem('EmaployedID');
+    this.staffID = sessionStorage.getItem('userid');
     this.typeofissue="0";
     this.prority="0"
     const format = 'yyyy-MM-dd';
@@ -91,8 +91,11 @@ export class SupportTicketsComponent implements OnInit {
 
   save() {
     debugger
-    if(this.date==undefined||this.time==0||this.typeofissue==undefined||this.prority==null||this.screenShot==
-      undefined||this.comments==undefined){
+    if(this.date==undefined||this.date==""||this.date==null||this.time==0||this.time==undefined
+    ||this.time==""||this.time==null||this.typeofissue==undefined||this.typeofissue==""||
+    this.typeofissue==null||this.typeofissue==0||this.prority==null||this.prority==undefined||
+    this.prority==""||this.prority==0||this.screenShot==undefined||this.screenShot==""||
+    this.screenShot==null||this.screenShot==0||this.comments==undefined||this.comments==""||this.comments==null){
       Swal.fire("Please Enter the Mandatory Fields");
     }
     else{
@@ -107,7 +110,7 @@ export class SupportTicketsComponent implements OnInit {
       "Status": 'Raised',
       "Companyname": 'Amazeinc.in',
       "ApplicationName": 'DigiLearning and Management',
-      "StaffID":this.staffID
+       "StaffID":this.staffID
     }
     
     this.LearningService.InsertSupportTickets(entity).subscribe(

@@ -16,9 +16,9 @@ export class SupportTicketsDashboardComponent implements OnInit {
   count:any;
   staffID:any;
   ngOnInit(): void {
-    this.staffID = sessionStorage.getItem('EmaployedID');
+    this.staffID = sessionStorage.getItem('userid');
     this.GetSupportTickets();
-  }
+  } 
 
 
 
@@ -26,7 +26,7 @@ export class SupportTicketsDashboardComponent implements OnInit {
     debugger
     this.LearningService.GetSupportTickets().subscribe(
       data=>{
-        this.ticketlist=data.filter(x=>x.applicationName=='L' && x.staffID==this.staffID );
+        this.ticketlist=data.filter(x=>x.applicationName=='DigiLearning and Management' && x.staffID==this.staffID );
         this.count=this.ticketlist.length;
       }
     )

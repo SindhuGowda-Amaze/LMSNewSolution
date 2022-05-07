@@ -30,7 +30,7 @@ public GetEnroll(){
     })
 }
 
-public Ondelete(id:any) {
+public Ondelete(ID:any) {
   Swal.fire({
     title: 'Are You Sure ',
     text: "Do you want to delete the Selected Record",
@@ -41,7 +41,7 @@ public Ondelete(id:any) {
     confirmButtonText: 'OK'
   }).then((result) => {
     if (result.value == true) {
-      this.LearningService.DeleteEnroll(id).subscribe(
+      this.LearningService.DeleteEnroll(ID).subscribe(
     data => {
       debugger
       this.GetEnroll();
@@ -53,9 +53,9 @@ public Ondelete(id:any) {
   });
 }
 
-edit(id: any) {
+edit(ID: any) {
   debugger
-  location.href = "#/AssignCourseToEmployee/" + id;
+  location.href = "#/AssignCourseToEmployee/" + ID;
 }
 
 }

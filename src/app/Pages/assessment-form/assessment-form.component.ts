@@ -28,33 +28,19 @@ export class AssessmentFormComponent implements OnInit {
   files1: File[] = [];
   files: File[] = [];
   quetionlist:any
-  Question: any;
-  Option1: any;
-  Option2: any;
-  Option3: any;
-  Option4: any;
-  CorrectAnswer: any;
-  Weightage: any;
-  AssessmentName: any;
-  tablecout: any;
-  assessmenrArray: any = [];
-  entity:any
-  show: any;
-  show2: any;
 
   ngOnInit(): void {
     this.courseid=0;
     this.chapterid=0;
     this.questionid=0;
     this.userid = sessionStorage.getItem('userid');
-    this.GetAssessments();
+
     this.GetQuestionMaster();
     this.ActivatedRoute.params.subscribe(params => {
       debugger
       this.questionid = params["id"];
       if (this.questionid != null && this.questionid != undefined) {
         this.GetQuestionMaster();
-        this.GetAssessments();
       }
     })
 
@@ -170,7 +156,18 @@ export class AssessmentFormComponent implements OnInit {
       alert("Attachment Uploaded");
     })
   }
-  
+  Question: any;
+  Option1: any;
+  Option2: any;
+  Option3: any;
+  Option4: any;
+  CorrectAnswer: any;
+  Weightage: any;
+  AssessmentName: any;
+
+  tablecout: any;
+
+  assessmenrArray: any = [];
   ADd() {
     debugger
     if(this.courseid==undefined || this.chapterid==undefined || this.questionid==undefined || this.Question==
@@ -179,7 +176,7 @@ export class AssessmentFormComponent implements OnInit {
       Swal.fire("Please fill all the fields");
     }
   else{
-     this.tablecout = 1;
+    this.tablecout = 1;
     var json = {
       "CourseID": this.courseid,
       "ChapterID": this.chapterid,
@@ -194,7 +191,7 @@ export class AssessmentFormComponent implements OnInit {
       // "AssessmentName": this.AssessmentName,
       "TrainerID":this.userid
     };
- 
+  
     this.assessmenrArray.push(json)
     this.Question="";
     this.Option1="";
@@ -202,9 +199,18 @@ export class AssessmentFormComponent implements OnInit {
     this.Option3="";
     this.Option4="";
     this.Weightage="";
-    // this.AssessmentName="";
-    // Swal.fire("Saved Successfully");
+    this.AssessmentName="";
+    Swal.fire("Saved Successfully");
   }
+ 
+
+    // this.LearningService.InsertAssessments(json).subscribe(
+    //   data => {
+    //     debugger
+    //     let id = data;
+    //     Swal.fire("Saved Successfully!!");
+    //     location.href = "#/Assessmentdashboard"
+    //   })
   }
 
 
@@ -227,7 +233,7 @@ export class AssessmentFormComponent implements OnInit {
   }
 
 
-  
+  entity:any
   save() {
     debugger
     for (let i = 0; i <=this.assessmenrArray.length; i++) {
@@ -271,7 +277,8 @@ export class AssessmentFormComponent implements OnInit {
 
 
 
- 
+  show: any;
+  show2: any;
 
   // ShowObjectives(value:any){
   //   debugger
@@ -290,10 +297,8 @@ export class AssessmentFormComponent implements OnInit {
   update() {
     debugger
    
-    this.tablecout = 1;
+      debugger
     var entity = {
-     
-        "id":this.questionid,
         "CourseID": this.courseid,
         "ChapterID": this.chapterid,
         "QuestionID": this.questionid,
@@ -313,7 +318,7 @@ export class AssessmentFormComponent implements OnInit {
           debugger
           let id = data;
           Swal.fire("Updated Successfully!!");
-          // this.tablecout = 0;
+          this.tablecout = 0;
           location.href = "#/Assessmentdashboard"
         })      
 
