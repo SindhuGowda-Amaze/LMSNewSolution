@@ -80,13 +80,14 @@ export class AssessmentFormComponent implements OnInit {
     // this.show2 = 1;
   }
 
-
+  type:any
   public GetAssessments() {
     debugger
     this.LearningService.GetAssessments().subscribe(
       data => {
         debugger
         this.quetionlist = data;
+        this.type= this.quetionlist[0].type
         console.log("questionlist",this.quetionlist)
       
      
@@ -178,7 +179,7 @@ export class AssessmentFormComponent implements OnInit {
       Swal.fire("Please fill all the fields");
     }
   else{
-    // this.tablecout = 1;
+     this.tablecout = 1;
     var json = {
       "CourseID": this.courseid,
       "ChapterID": this.chapterid,
@@ -190,30 +191,17 @@ export class AssessmentFormComponent implements OnInit {
       "Option4": this.Option4,
       "CorrectAnswer": this.CorrectAnswer,
       "weightage": this.Weightage,
-      "AssessmentName": this.AssessmentName,
+      // "AssessmentName": this.AssessmentName,
       "TrainerID":this.userid
     };
-    this.LearningService.InsertAssessments(json).subscribe(
-      (data:any) => {
-        debugger
-        let quetionlist = data;
-        if(data!=0)
-        {
-          Swal.fire("Saved Successfully");
-          location.href="#/Assessmentdashboard";
-        }
-        else{
-          Swal.fire("Name Already Exists");
-        }
-       
-      })
-    // this.assessmenrArray.push(json)
-    // this.Question="";
-    // this.Option1="";
-    // this.Option2="";
-    // this.Option3="";
-    // this.Option4="";
-    // this.Weightage="";
+ 
+    this.assessmenrArray.push(json)
+    this.Question="";
+    this.Option1="";
+    this.Option2="";
+    this.Option3="";
+    this.Option4="";
+    this.Weightage="";
     // this.AssessmentName="";
     // Swal.fire("Saved Successfully");
   }
@@ -255,19 +243,24 @@ export class AssessmentFormComponent implements OnInit {
         "Option4": this.assessmenrArray[i].Option4,
         "CorrectAnswer": this.assessmenrArray[i].CorrectAnswer,
         "weightage": this.assessmenrArray[i].weightage,
-        "AssessmentName": this.assessmenrArray[i].AssessmentNames,
+        // "AssessmentName": this.assessmenrArray[i].AssessmentNames,
         "TrainerID":this.assessmenrArray[i].TrainerID
       };
       debugger
-      this.LearningService.InsertAssessments(entity).subscribe(
-        data => {
-          debugger
-          let id = data;
-          Swal.fire("Saved Successfully!!");
-          this.tablecout = 0;
-          location.href = "#/Assessmentdashboard"
-        })      
-
+        this.LearningService.InsertAssessments(entity).subscribe(
+      (data:any) => {
+        debugger
+        let quetionlist = data;
+        if(data!=0)
+        {
+          Swal.fire("Saved Successfully");
+          location.href="#/Assessmentdashboard";
+        }
+        else{
+          Swal.fire("Name Already Exists");
+        }
+       
+      })
 
 
     }

@@ -239,14 +239,14 @@
                                 <p class="name2">{{details.name}}</p>
                             </div>
                         </div> <br>
-                        <div class="row" style="height: 20px;overflow-y: scroll;">
+                        <div class="row" style="height: 20px;">
                             <div class="col-lg-6">
                                 <p style="font-size: 13px;">Start Date</p>
-                                <p >{{details.startDate}}</p>
+                                <p >{{details.startDate|date}}</p>
                             </div>
                             <div class="col-lg-6" >
                                 <p style="font-size: 13px;">End Date </p>
-                                <p>{{details.endDate}}</p>
+                                <p>{{details.endDate|date}}</p>
                             </div>                        
                         </div>   <br><br>                
                         <div class="row">

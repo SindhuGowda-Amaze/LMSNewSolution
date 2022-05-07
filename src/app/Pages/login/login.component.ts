@@ -22,9 +22,10 @@ export class LoginComponent implements OnInit {
   companycode: any;
   loader: boolean | undefined;
   admin:any;
+  roleid:any;
   constructor(public LearningService: LearningService, private router: Router) { }
   ngOnInit(): void {
-    this.admin="Admin"
+   
 
     this.temp = sessionStorage.getItem('temp');
     this.showpassword = 0;
@@ -82,18 +83,39 @@ export class LoginComponent implements OnInit {
   public login() {
 
     debugger
-    let adminCopy = this.admin.toLowerCase();
-    if (this.userName.toLowerCase().includes(adminCopy)  && this.password == '1' && this.roleID==1) {
+    // let adminCopy = this.admin.toLowerCase();
+    // if (this.userName.toLowerCase().includes(adminCopy)  && this.password == '1' && this.roleID==1) {
       
-      debugger
-      sessionStorage.setItem('UserName', 'admin');
-      sessionStorage.setItem('temp', '1');
-      sessionStorage.setItem('role', 'Admin');
-      sessionStorage.setItem('roleid', '1');
-      localStorage.setItem("clickname", "Admin Dashboard")
-      location.href = "#/Dashboard";
-      location.reload();
-      this.loader=false;
+    //   debugger
+    //   sessionStorage.setItem('UserName', 'admin');
+    //   sessionStorage.setItem('temp', '1');
+    //   sessionStorage.setItem('role', 'Admin');
+    //   sessionStorage.setItem('roleid', '1');
+    //   localStorage.setItem("clickname", "Admin Dashboard")
+    //   location.href = "#/Dashboard";
+    //   location.reload();
+    //   this.loader=false;
+    // }
+    if(this.roleID == 1) {
+      let adminCopy = this.userName.toLowerCase();
+      this.LearningService.GetMyDetails().subscribe((data: any) => {
+        debugger
+        let temp: any = data.filter((x: { emailID: any; password: any; roleType: any }) => x.emailID.toLowerCase().includes(adminCopy) && x.password == this.password && x.roleType == 1);
+        if (temp.length == 0) {
+          Swal.fire('Incorrect Username Or Password')
+        }
+        else {
+          sessionStorage.setItem('UserName', 'admin');
+          sessionStorage.setItem('temp', '1');
+          sessionStorage.setItem('role', 'Admin');
+          sessionStorage.setItem('roleid', '1');
+          sessionStorage.setItem('userid', temp[0].id);
+          localStorage.setItem("clickname", "Admin Dashboard")
+          this.router.navigate(['/Dashboard']).then(() => {
+            location.reload();
+          });
+        }
+      });
     }
     else if (this.roleID == 2) {
       debugger
@@ -138,7 +160,7 @@ export class LoginComponent implements OnInit {
         this.result = temp[0];
         debugger;
          this.loader = true;
-        if (this.result != undefined || this.result != null || this.roleID==4) {
+        if (this.result != undefined || this.result != null || this.roleID==3) {
           sessionStorage.setItem('UserName', this.result.name);
           sessionStorage.setItem('userid', this.result.id);
           sessionStorage.setItem('temp', '1');

@@ -15,7 +15,7 @@
             <div class="col-lg-2">
                 <p>Training Name</p>
             </div>
-            
+
             <div class="col-lg-2">
                 <p>Photo</p>
             </div>
@@ -28,20 +28,23 @@
             <div class="col-lg-2">
                 <p>Fees</p>
             </div>
-          
+
         </div><br>
         <div class="row ">
             <div class="col-lg-2">
                 <!-- name="categoryName" [(ngModel)]="categoryName"  -->
-                <select class="form-control"  id="categoryName" name="categoryName" [(ngModel)]="categoryName" (change)="GetCategoryid($event)">
+
+                <select class="form-control" id="categoryid" name="categoryid" [(ngModel)]="categoryid"
+                    (change)="GetCategoryid($event)">
                     <option value="0">Select Category</option>
-                    <option *ngFor="let details of categoryList" value="{{details.name}},{{details.id}}">{{details.name}}</option>
+                    <option *ngFor="let details of categoryList" value="{{details.id}}">
+                        {{details.name}}</option>
                 </select>
             </div>
             <div class="col-lg-2">
                 <input class="form-control" placeholder="Name" [(ngModel)]="name">
             </div>
-        
+
             <div class="col-lg-2">
                 <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto; text-align: center;">
                     <ngx-dropzone-label>Please Attach Photo!</ngx-dropzone-label>
@@ -49,10 +52,14 @@
                         <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
                     </ngx-dropzone-preview>
                 </ngx-dropzone>
+                <img src="{{Course_Photo}}" data-toggle="modal1" data-target="#exampleModal1"
+                style="width: 100px;height:auto">
+               
             </div>
             <div class="col-lg-2">
                 <!-- name="categoryName" [(ngModel)]="categoryName"  -->
-                <select class="form-control" (change)="GetTrainingType($event)" id="trainingType" name="trainingType" [(ngModel)]="trainingType">
+                <select class="form-control" (change)="GetTrainingType($event)" id="trainingType" name="trainingType"
+                    [(ngModel)]="trainingType">
                     <option value="0">Select Type</option>
                     <option value="1">Internal online</option>
                     <option value="2">External online</option>
@@ -66,7 +73,7 @@
             <div class="col-lg-2">
                 <input class="form-control" placeholder="0" [(ngModel)]="fee">
             </div>
-           
+
 
         </div> <br>
 
@@ -82,11 +89,11 @@
             </div>
             <div class="col-lg-3" *ngIf="trainingType==3">
                 <p>Venue</p>
-            </div>               
+            </div>
         </div>
 
         <div class="row ">
-            <div class="col-lg-2"*ngIf="trainingType==2">
+            <div class="col-lg-2" *ngIf="trainingType==2">
                 <input class="form-control" placeholder="link" [(ngModel)]="trainingLink" name="trainingLink">
             </div>
             <div class="col-lg-2" *ngIf="trainingType==2">
@@ -99,7 +106,7 @@
                 <textarea class="form-control" placeholder="Venue" rows="5" [(ngModel)]="venue" name="venue"></textarea>
                 <!-- <input class="form-control" placeholder="Venue" [(ngModel)]="venue" name="venue"> -->
             </div>
-         
+
         </div><br>
 
 
@@ -108,7 +115,7 @@
             <div class="col-lg-3">
                 <p>Course Description</p>
             </div>
-        
+
             <div class="col-lg-4">
                 <p>Entry Criteria</p>
             </div>
@@ -120,7 +127,7 @@
             <div class="col-lg-3">
                 <textarea class="form-control" placeholder="Description" rows="5" [(ngModel)]="description"></textarea>
             </div>
-         
+
             <div class="col-lg-4">
                 <textarea class="form-control" placeholder="Entry Criteria" rows="5"
                     [(ngModel)]="entryCriteria"></textarea>
@@ -136,8 +143,7 @@
             <div class="col-lg-1">
                 <!-- <button class="form-control button1">Save</button> -->
                 <button class="form-control cancel" *ngIf="id==null || id==undefined" (click)="Save()">Save</button>
-                <button class="form-control cancel" *ngIf="id!=null || id!=undefined"
-                    (click)="Update()">Update</button>
+                <button class="form-control cancel" *ngIf="id!=null || id!=undefined" (click)="Update()">Update</button>
             </div>
             <div class="col-lg-1">
                 <button class="form-control  cancel " (click)="cancel()">Cancel</button>

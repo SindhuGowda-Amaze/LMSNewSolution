@@ -63,7 +63,7 @@ export class AssessmentdashboardComponent implements OnInit {
     this.LearningService.GetAssessments().subscribe(data => {
       debugger
       this.quetionlist = data.filter(x => x.courseID == this.courseid)
-      this.correctAnswers= this.quetionlist[0].correctAnswers
+    
     })
   }
 
@@ -89,6 +89,7 @@ export class AssessmentdashboardComponent implements OnInit {
       data => {
         debugger
         this.questiontype = data;
+        this.correctAnswers= this.quetionlist[0].correctAnswers
       })
   }
 
@@ -113,7 +114,7 @@ export class AssessmentdashboardComponent implements OnInit {
         this.quetionlist = data;
         console.log("questionlist",this.quetionlist)
         this.dummquetionlist = data;
-      
+        this.correctAnswers= this.quetionlist[0].correctAnswers
         this.count = this.quetionlist.length;
       })
   }
@@ -153,6 +154,7 @@ export class AssessmentdashboardComponent implements OnInit {
       debugger
       this.quetionlist = this.dummquetionlist.filter((x: { questionID: any; }) => x.questionID == this.question);
       this.count=this.quetionlist.length;
+      this.correctAnswers= this.quetionlist[0].correctAnswers
     }
     else{
       this.GetAssessments();

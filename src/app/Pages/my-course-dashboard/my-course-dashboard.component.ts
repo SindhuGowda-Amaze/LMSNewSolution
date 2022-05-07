@@ -47,17 +47,31 @@ export class MyCourseDashboardComponent implements OnInit {
   result: any;
   trainerCourseMapList:any;
   
+  // public GetTrainerCourseMapping() {
+  //   this.loader=true;
+  //   debugger
+  //   this.LearningService.GetTrainerCourseMapping().subscribe(
+  //     data => {
+  //       debugger
+  //       this.result = data;
+  //       this.trainerCourseMapList=data;
+  //       this.loader=false;
+  //     })
+  // }
+
+
+
   public GetTrainerCourseMapping() {
-    this.loader=true;
+    this.loader=true
     debugger
-    this.LearningService.GetTrainerCourseMapping().subscribe(
-      data => {
-        debugger
-        this.result = data;
-        this.trainerCourseMapList=data;
-        this.loader=false;
-      })
+    this.LearningService.GetTrainerCourseMapping().subscribe(data => {
+      debugger
+      this.coursedetails = data;
+      debugger
+    })
+    this.loader=false
   }
+
 
 
 

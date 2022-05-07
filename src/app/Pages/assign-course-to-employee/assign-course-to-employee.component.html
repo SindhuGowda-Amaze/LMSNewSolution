@@ -19,7 +19,7 @@
                 </div>
                 <div class="row leavereq">
                     <div class="col-md-3">
-                        <select class="form-control" name="name123" id="name123" [(ngModel)]="name123" >
+                        <select class="form-control" name="name123" id="name123" [(ngModel)]="name123"  (change)="getdata($event)">
                             <option value="0">Select Employee Name</option>
                             <option *ngFor="let details of stafflist" value="{{details.id}}">{{details.name}}</option> 
                         </select>
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-lg-9"></div>
                     <div class="col-lg-1" >
-                        <button class="form-control cancel" *ngIf="id==null || id==undefined" (click)="enroll()">Enroll</button>
+                        <button class="form-control cancel" *ngIf="id==null || id==undefined" (click)="enroll()">Assign</button>
                         <button class="form-control cancel"  *ngIf="id!=null || id!=undefined" (click)="Update()">Update</button>   
                     </div>
                     <div class="col-lg-1">

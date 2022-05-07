@@ -96,6 +96,7 @@ const routes: Routes = [
   { path: 'CategoryForm/:id', component: CategoryFormComponent },
   { path: 'Staffresult', component: StaffresultComponent },
   { path: 'AssignCourseToEmployee', component: AssignCourseToEmployeeComponent },
+  { path: 'AssignCourseToEmployee/:id', component: AssignCourseToEmployeeComponent },
   { path: 'sidebar', component: SidebarComponent },
   { path: 'Checkanswer/:id', component: CheckanswerComponent },
   { path: 'Checkanswer', component: CheckanswerComponent },
