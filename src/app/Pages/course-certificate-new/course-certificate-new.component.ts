@@ -11,10 +11,12 @@ import { jsPDF } from "jspdf";
 export class CourseCertificateNewComponent implements OnInit {
 
   constructor(private LearningService:LearningService,private ActivatedRoute:ActivatedRoute) { }
-
+  userid:any;
   courseid:any;
   id:any;
   ngOnInit(): void {
+
+    this.userid = sessionStorage.getItem('userid');
     this.ActivatedRoute.params.subscribe(params => {
       debugger
       this.id = params['id'];
@@ -29,11 +31,16 @@ export class CourseCertificateNewComponent implements OnInit {
   certificate:any;
   public GetEnrollCourseCertificateNew(ID:any) {
     debugger
-    this.LearningService.GetEnrollCourseCertificateNew(ID).subscribe(
-      data => {
-        debugger
-        this.certificate = data;
-      })
+    // this.LearningService.GetEnrollCourseCertificateNew(ID).subscribe(
+    //   data => {
+    //     debugger
+    //     this.certificate = data;
+    //   })
+
+      this.LearningService.GetTestResponse().subscribe(data=>{
+        this.certificate=data.filter(x=>x.userID== this.userid )
+      }
+       )
   }
 
   public convertToPDF1() {
