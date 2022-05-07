@@ -39,8 +39,8 @@ export class CertificateDashboardComponent implements OnInit {
 
    public GetTrainerReport(){
      debugger
-     this.LearningService.GetTrainerReport(0,0).subscribe(data=>{
-       this.employeereportlist=data.filter(x=>x.staffID== this.userid )
+     this.LearningService.GetTestResponse().subscribe(data=>{
+       this.employeereportlist=data.filter(x=>x.userID== this.userid )
        this.dummemployeereportlist=data;
    
      }
