@@ -24,7 +24,7 @@
                     name="search">
             </div>
             <div class="col-lg-2">
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" name="date" id="date" [(ngModel)]="date">
             </div>
         </div><br>
     </div>
@@ -53,15 +53,15 @@
                             <th>Percentage(%)</th>
                             <th>Status</th>
                         </tr>
-                        <tr *ngFor="let details of employeereportlist|filter :search">
+                        <tr *ngFor="let details of employeereportlist|filter :search|filter:date">
                             <td style="color:#0C275A">{{details.staffID}}</td>
                             <td style="color:#0C275A">{{details.employeeName}}</td>
                             <td style="color:#0C275A">{{details.role}}</td>
                             <td style="color:#0C275A"  *ngIf="roleid==3">{{details.trainer}}</td>
                             <!-- <td style="color:#0C275A"  *ngIf="roleid==4">{{details.manager}}</td> -->
                             <td style="color:#0C275A">{{details.courseName}}</td>
-                            <td style="color:#0C275A">{{details.modifiedDate}}</td>
-                            <td style="color:#0C275A">{{details.completiondate}}</td>
+                            <td style="color:#0C275A">{{details.modifiedDate|date}}</td>
+                            <td style="color:#0C275A">{{details.completiondate|date}}</td>
                             <td> {{details.obtainedMarks/details.totalmarks
                                 *100 | number : '1.2-2'}} </td>
                             <td style="color:#0C275A">
