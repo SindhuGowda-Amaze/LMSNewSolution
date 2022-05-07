@@ -25,8 +25,8 @@ export class SubmitedtestsComponent implements OnInit {
       data => {
         debugger
         this.result = data.filter(x => x.checked == 1);
-        this.result = data;
-        this.count = this.result.length;
+        // this.result = data;
+        // this.count = this.result.length;
       })
   }
   public getdate(even:any){
