@@ -30,11 +30,20 @@ export class AssessmentFormComponent implements OnInit {
   quetionlist:any
 
   ngOnInit(): void {
+    // this.GetAssessments();
     this.courseid=0;
     this.chapterid=0;
     this.questionid=0;
     this.userid = sessionStorage.getItem('userid');
 
+    this.GetAssessments();
+    this.ActivatedRoute.params.subscribe(params => {
+      debugger
+      this.id = params["id"];
+      if (this.id != null && this.id != undefined) {
+        this.GetAssessments();
+      }
+    })
     this.GetQuestionMaster();
     this.ActivatedRoute.params.subscribe(params => {
       debugger
@@ -188,7 +197,7 @@ export class AssessmentFormComponent implements OnInit {
       "CorrectAnswer": this.CorrectAnswer,
       "weightage": this.Weightage,
       "AssessmentName": this.AssessmentName,
-      "TrainerID":this.userid
+      // "TrainerID":this.userid
     };
   
     this.assessmenrArray.push(json)
@@ -249,7 +258,7 @@ export class AssessmentFormComponent implements OnInit {
         "CorrectAnswer": this.assessmenrArray[i].CorrectAnswer,
         "weightage": this.assessmenrArray[i].weightage,
         "AssessmentName": this.assessmenrArray[i].AssessmentNames,
-        "TrainerID":this.assessmenrArray[i].TrainerID
+        // "TrainerID":this.assessmenrArray[i].TrainerID
       };
       debugger
       this.LearningService.InsertAssessments(entity).subscribe(
@@ -290,9 +299,8 @@ export class AssessmentFormComponent implements OnInit {
 
   update() {
     debugger
-   
-      debugger
     var entity = {
+      "ID":this.id,
         "CourseID": this.courseid,
         "ChapterID": this.chapterid,
         "QuestionID": this.questionid,
@@ -304,7 +312,7 @@ export class AssessmentFormComponent implements OnInit {
         "CorrectAnswer": this.CorrectAnswer,
         "weightage": this.Weightage,
         "AssessmentName": this.AssessmentName,
-        "TrainerID":this.userid
+        // "TrainerID":this.userid
       };
       debugger
       this.LearningService.UpdateAssessments(entity).subscribe(
