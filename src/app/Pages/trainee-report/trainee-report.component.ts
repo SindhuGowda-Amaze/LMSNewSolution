@@ -17,9 +17,10 @@ export class TraineeReportComponent implements OnInit {
 
   search:any;
   constructor(private LearningService:LearningService,private ActivatedRoute:ActivatedRoute ) { }
-
+  userid:any;
   ngOnInit(): void {
     this.roleid = sessionStorage.getItem('roleid');
+    this.userid = sessionStorage.getItem('userid');
     this.GetTrainerReport();
     this.GetDepartmentMaster();
   }
@@ -37,7 +38,14 @@ export class TraineeReportComponent implements OnInit {
    public GetTrainerReport(){
      debugger
      this.LearningService.GetTrainerReport(0,0).subscribe(data=>{
-       this.employeereportlist=data.filter(x=>x.completed==1);
+      this.employeereportlist=data.filter(x=>x.trainerID==this.userid);
+      //  if(this.roleid==4){
+      //   this.employeereportlist=data.filter(x=>x.completed==1);
+      //  }
+      //  else{
+      //   this.employeereportlist=data
+      //  }
+   
       //  this.dummemployeereportlist=data;
       //  this.traininglist=data;
      }

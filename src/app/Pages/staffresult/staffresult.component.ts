@@ -22,8 +22,8 @@ export class StaffresultComponent implements OnInit {
     // this.Showcards(2);
     this.getdetailslist();
     this.show = 2;
-    this.staffid = localStorage.getItem('userid');
-    this.manager = localStorage.getItem('manager');
+    this.staffid = sessionStorage.getItem('userid');
+    this.manager = sessionStorage.getItem('manager');
 
     this.LearningService.GetMyDetails().subscribe(
       data => {

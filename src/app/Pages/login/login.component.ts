@@ -21,17 +21,17 @@ export class LoginComponent implements OnInit {
   showpassword: any;
   companycode: any;
   loader: boolean | undefined;
-  admin:any;
-  roleid:any;
+  admin: any;
+  roleid: any;
   constructor(public LearningService: LearningService, private router: Router) { }
   ngOnInit(): void {
-   
+
 
     this.temp = sessionStorage.getItem('temp');
     this.showpassword = 0;
 
-    if (localStorage.getItem('temp') == '1') {
-      localStorage.clear();
+    if (sessionStorage.getItem('temp') == '1') {
+      sessionStorage.clear();
       location.reload();
 
     }
@@ -85,51 +85,58 @@ export class LoginComponent implements OnInit {
     debugger
     // let adminCopy = this.admin.toLowerCase();
     // if (this.userName.toLowerCase().includes(adminCopy)  && this.password == '1' && this.roleID==1) {
-      
+
     //   debugger
     //   sessionStorage.setItem('UserName', 'admin');
     //   sessionStorage.setItem('temp', '1');
     //   sessionStorage.setItem('role', 'Admin');
     //   sessionStorage.setItem('roleid', '1');
-    //   localStorage.setItem("clickname", "Admin Dashboard")
+    //   sessionStorage.setItem("clickname", "Admin Dashboard")
     //   location.href = "#/Dashboard";
     //   location.reload();
     //   this.loader=false;
     // }
-    if(this.roleID == 1) {
-      let adminCopy = this.userName.toLowerCase();
+    if (this.roleID == 1) {
+      // let adminCopy = this.userName.toLowerCase();
       this.LearningService.GetMyDetails().subscribe((data: any) => {
         debugger
-        let temp: any = data.filter((x: { emailID: any; password: any; roleType: any }) => x.emailID.toLowerCase().includes(adminCopy) && x.password == this.password && x.roleType == 1);
+        let temp: any = data.filter((x: { emailID: any; password: any; roleType: any }) => (x.emailID.toUpperCase() === this.userName.toUpperCase() && x.password == this.password) && x.roleType == 1);
         if (temp.length == 0) {
           Swal.fire('Incorrect Username Or Password')
         }
-        else {
-          sessionStorage.setItem('UserName', 'admin');
+        this.result = temp[0];
+        if (this.result != undefined || this.result != null || this.roleID == 1) {
+          sessionStorage.setItem('UserName', this.result.name);
           sessionStorage.setItem('temp', '1');
           sessionStorage.setItem('role', 'Admin');
           sessionStorage.setItem('roleid', '1');
           sessionStorage.setItem('userid', temp[0].id);
-          localStorage.setItem("clickname", "Admin Dashboard")
+          sessionStorage.setItem("clickname", "Admin Dashboard")
           this.router.navigate(['/Dashboard']).then(() => {
             location.reload();
             this.loader=false;
           });
         }
+        else {
+          Swal.fire('Username or Password is invalid');
+          this.userName = "";
+          this.password = "";
+          this.loader = false;
+        }
       });
     }
     else if (this.roleID == 2) {
       debugger
-      let userNameCopy = this.userName.toLowerCase();
+      // let userNameCopy = this.userName.toLowerCase();
       this.LearningService.GetMyDetails().subscribe(async data => {
-        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.password);
-       if (temp.length == 0) {
+        let temp: any = data.filter(x => (x.emailID.toUpperCase() === this.userName.toUpperCase() || x.phoneNo == this.userName) && x.password == this.password);
+        if (temp.length == 0) {
           Swal.fire('Incorrect Username Or Password')
         }
         this.result = temp[0];
         debugger;
 
-        if (this.result != undefined || this.result != null || this.roleID==4) {
+        if (this.result != undefined || this.result != null || this.roleID == 4) {
           debugger
           sessionStorage.setItem('UserName', this.result.name);
           sessionStorage.setItem('userid', this.result.id);
@@ -139,16 +146,17 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('role', 'Employee');
           debugger
           sessionStorage.setItem('roleid', '2');
-          localStorage.setItem("clickname", "Employee Dashboard")
-           this.Insertattdnace(this.result.id)
-           this.loader=false;
+          sessionStorage.setItem("clickname", "Employee Dashboard")
+          this.Insertattdnace(this.result.id)
+          location.href = "/Dashboard";
+          this.loader = false;
         }
         else {
 
           Swal.fire('Username or Password is invalid');
           this.userName = "";
           this.password = "";
-          this.loader=false;
+          this.loader = false;
         }
       })
     }
@@ -157,26 +165,27 @@ export class LoginComponent implements OnInit {
       debugger
       let userNameCopy = this.userName.toLowerCase();
       this.LearningService.GetMyDetails().subscribe(data => {
-        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.password );
+        let temp: any = data.filter(x => (x.emailID.toUpperCase() === this.userName.toUpperCase() || x.phoneNo == this.userName) && x.password == this.password);
         this.result = temp[0];
         debugger;
-         this.loader = true;
-        if (this.result != undefined || this.result != null || this.roleID==3) {
+        this.loader = true;
+        if (this.result != undefined || this.result != null || this.roleID == 3) {
           sessionStorage.setItem('UserName', this.result.name);
           sessionStorage.setItem('userid', this.result.id);
           sessionStorage.setItem('temp', '1');
           sessionStorage.setItem('role', 'Manager');
           sessionStorage.setItem('roleid', '3');
-          localStorage.setItem("clickname", "Manager Dashboard")
+          sessionStorage.setItem("clickname", "Manager Dashboard")
           location.href = "#/ManagerDashboard";
+          this.Insertattdnace(this.result.id)
           location.reload();
-          this.loader=false;
+          this.loader = false;
         }
         else {
           Swal.fire('Username or Password is invalid');
           this.userName = "";
           this.password = "";
-          this.loader=false;
+          this.loader = false;
         }
       })
     }
@@ -186,27 +195,28 @@ export class LoginComponent implements OnInit {
       debugger
       let userNameCopy = this.userName.toLowerCase();
       this.LearningService.GetTrainer().subscribe(data => {
-        let temp: any = data.filter(x => (x.phoneNo == this.userName || x.email.toLowerCase().includes(userNameCopy) ) && x.password == this.password);
+        let temp: any = data.filter(x => (x.phoneNo == this.userName || x.email.toUpperCase() === this.userName.toUpperCase()) && x.password == this.password);
         this.result = temp[0];
         debugger;
         // this.loader = true;
-        if (this.result != undefined || this.result != null || this.roleID==4) {
+        if (this.result != undefined || this.result != null || this.roleID == 4) {
           sessionStorage.setItem('UserName', this.result.name);
           sessionStorage.setItem('userid', this.result.id);
-          localStorage.setItem('trainerid',this.result.id)
+          sessionStorage.setItem('trainerid', this.result.id)
           sessionStorage.setItem('temp', '1');
           sessionStorage.setItem('role', 'Trainer');
           sessionStorage.setItem('roleid', '4');
-          localStorage.setItem("clickname", "Assessment Dashboard")
+          sessionStorage.setItem("clickname", "Assessment Dashboard")
           location.href = "#/Assessmentdashboard";
+          this.Insertattdnace(this.result.id)
           location.reload();
-          this.loader=false;
+          this.loader = false;
         }
         else {
           Swal.fire('Username or Password is invalid');
           this.userName = "";
           this.password = "";
-          this.loader=false;
+          this.loader = false;
         }
 
       })
@@ -218,32 +228,36 @@ export class LoginComponent implements OnInit {
       Swal.fire('Username or Password is invalid');
       this.userName = "";
       this.password = "";
-      this.loader=false;
+      this.loader = false;
     }
   }
 
 
 
 
-  public async Insertattdnace(id:any) {
+  public async Insertattdnace(id: any) {
     debugger
+
+
+
+
     var entity = {
       'EmpID': id,
       'LoginDate': new Date()
     }
-  await  this.LearningService.InsertAttendance_New(entity).subscribe(
-      (datay:any) => {
+    await this.LearningService.InsertAttendance_New(entity).subscribe(
+      (datay: any) => {
         debugger
-        if(datay!=0)
-        {
-          localStorage.setItem('loginid',datay);
-      
+        if (datay != 0) {
+          debugger
+          sessionStorage.setItem('loginid', datay);
+
           location.href = "#/Dashboard";
           this.loader = false;
           location.reload();
-          this.loader=false;
+          this.loader = false;
         }
-   
+
       })
 
   }

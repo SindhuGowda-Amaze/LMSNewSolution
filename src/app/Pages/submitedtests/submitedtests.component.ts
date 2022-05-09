@@ -19,7 +19,7 @@ export class SubmitedtestsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.staffid = localStorage.getItem('userid');
+    this.staffid = sessionStorage.getItem('userid');
 
     this.LearningService.GetTestResponsenew().subscribe(
       data => {

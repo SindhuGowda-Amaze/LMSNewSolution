@@ -20,14 +20,14 @@ export class HeaderComponent implements OnInit {
   hh: any;
   mm: any;
   ampm: any;
-  loginid:any;
+  loginid: any;
   staffID: any;
-  myname:any;
+  myname: any;
 
-  constructor(private LearningService:LearningService,public router: Router) { }
+  constructor(private LearningService: LearningService, public router: Router) { }
   ngOnInit(): void {
     this.temp = sessionStorage.getItem('temp');
-    this.loginid=localStorage.getItem('loginid');
+    this.loginid = sessionStorage.getItem('loginid');
     this.staffID = sessionStorage.getItem('userid');
 
     this.roleid = sessionStorage.getItem('roleid');
@@ -47,67 +47,81 @@ export class HeaderComponent implements OnInit {
     }, 1000);
 
     interval(1000).subscribe((x => {
-      this.page = localStorage.getItem('clickname')
+      this.page = sessionStorage.getItem('clickname')
     }));
 
 
 
 
-if(this.roleid==1){
-    this.initail = 'A'
-}
-else if(this.roleid==4){
-  this.LearningService.GetTrainer().subscribe(res => {
-    debugger
-    let temp: any = res.filter(x => x.id == this.staffID);
-    this.myname = temp[0].name;
-    this.initail = this.myname.charAt(0);
-  });
-}
-else{
-  this.LearningService.GetMyDetails().subscribe(res => {
-    debugger
-    let temp: any = res.filter(x => x.id == this.staffID);
-    this.myname = temp[0].name;
-    this.initail = this.myname.charAt(0);
-  });
-}
-  
+    if (this.roleid == 1) {
+      this.initail = 'A'
+    }
+    else if (this.roleid == 4) {
+      this.LearningService.GetTrainer().subscribe(res => {
+        debugger
+        let temp: any = res.filter(x => x.id == this.staffID);
+        this.myname = temp[0].name;
+        this.initail = this.myname.charAt(0);
+      });
+    }
+    else {
+      this.LearningService.GetMyDetails().subscribe(res => {
+        debugger
+        let temp: any = res.filter(x => x.id == this.staffID);
+        this.myname = temp[0].name;
+        this.initail = this.myname.charAt(0);
+      });
+    }
+
 
   }
 
   async logout() {
-    if(this.roleid==2)
-    {
+    debugger
+    if (this.roleid == 2) {
       this.insertattdancelogout();
     }
-    else{
-      localStorage.clear();
+    else {
+      sessionStorage.clear();
       sessionStorage.clear();
       location.href = "#/Login";
       location.reload();
     }
-    
+
   }
 
   public async insertattdancelogout() {
     debugger
-    var entity = {
-      'loginid': this.loginid,
-      'LogoutDate': new Date()
-    }
 
-  await  this.LearningService.UpdateAttendance_New(entity).subscribe(
-      data => {
-        debugger
-        if(data==0)
-        {
-          localStorage.clear();
-          sessionStorage.clear();
-          location.href = "#/Login";
-          location.reload();
+    this.LearningService.GetAttendance_New().subscribe(data => {
+      debugger
+      var todayDate = new Date().toISOString().slice(0, 10);
+      let temp: any = data.filter(x => x.empID == sessionStorage.getItem('userid') && x.filterdate === todayDate);
+      if (temp.length == 0) {
+        Swal.fire('Not Logged In Correctly today'); 
+      } else {
+        this.loginid = temp[0].id;
+
+        var entity = {
+          'loginid': this.loginid,
+          'LogoutDate': new Date()
         }
-      })
+
+        this.LearningService.UpdateAttendance_New(entity).subscribe(
+          data => {
+            debugger
+            if (data == 0) {
+              sessionStorage.clear();
+              sessionStorage.clear();
+              location.href = "#/Login";
+              location.reload();
+            }
+          })
+      }
+
+
+    });
+
   }
 
 

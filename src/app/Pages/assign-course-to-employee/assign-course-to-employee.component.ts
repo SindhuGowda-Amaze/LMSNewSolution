@@ -51,7 +51,7 @@ export class AssignCourseToEmployeeComponent implements OnInit {
 
   public GetCourse() {
     debugger
-    this.LearningService.GetCourse().subscribe(
+    this.LearningService.GetCourseDropdown().subscribe(
       data => {
         debugger
         this.courselist = data;

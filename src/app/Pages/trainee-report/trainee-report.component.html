@@ -48,6 +48,7 @@
                             <th *ngIf="roleid==3">Trainer Name</th>
                             <!-- <th *ngIf="roleid==4">Manager Name</th> -->
                             <th>Training name</th>
+                            <th>Topic Name</th>
                             <th>Start Date</th>
                             <th>Completion Date</th>
                             <th>Percentage(%)</th>
@@ -60,6 +61,7 @@
                             <td style="color:#0C275A"  *ngIf="roleid==3">{{details.trainer}}</td>
                             <!-- <td style="color:#0C275A"  *ngIf="roleid==4">{{details.manager}}</td> -->
                             <td style="color:#0C275A">{{details.courseName}}</td>
+                            <td style="color:#0C275A">{{details.chapterName}}</td>
                             <td style="color:#0C275A">{{details.modifiedDate|date}}</td>
                             <td style="color:#0C275A">{{details.completiondate|date}}</td>
                             <td>
@@ -68,8 +70,9 @@
                                 <!-- <p  *ngIf="details.obtainedMarks/details.totalmarks==0 || details.obtainedMarks/details.totalmarks==null">NA</p> </td> -->
                             <td style="color:#0C275A">
                                 <!-- <p  *ngIf="details.obtainedMarks/details.totalmarks==0 || details.obtainedMarks/details.totalmarks==null">On Going</p> -->
-                                <button class="Button"  [routerLink]="['/CourseCertificateNew',details.id]"
-                                >View Certificate</button>
+                                <p  *ngIf="employeereportlist.completed!=1"  >On Going</p>
+
+                                <button class="Button" *ngIf="employeereportlist.completed==1"   [routerLink]="['/CourseCertificateNew',details.id]">View Certificate</button>
                             </td>
                             
                         </tr>
