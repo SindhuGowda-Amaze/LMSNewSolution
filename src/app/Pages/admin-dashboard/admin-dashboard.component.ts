@@ -12,6 +12,8 @@ export class AdminDashboardComponent implements OnInit {
   userid: any;
   showenrolment: any;
   roleid: any;
+  countlist: any;
+
   ngOnInit(): void {
     this.userid = sessionStorage.getItem('userid')
     this.roleid = sessionStorage.getItem('roleid')
@@ -39,10 +41,6 @@ export class AdminDashboardComponent implements OnInit {
     }
   };
 
-
-
-
-  countlist: any;
   public GetAllCounts() {
     debugger
     if (this.userid != undefined) {
@@ -73,6 +71,7 @@ export class AdminDashboardComponent implements OnInit {
         data => {
           debugger
           this.coursedetails = data.filter(x => x.staffID == this.userid && x.status == 'Manager Approved');
+          console.log(" this.coursedetails", this.coursedetails.length)
         })
 
       this.LearningService.GetTrainerCourseMappingByEnroll().subscribe(

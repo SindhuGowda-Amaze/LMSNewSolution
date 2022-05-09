@@ -9,6 +9,16 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-angular';
   styleUrls: ['./assessment-form.component.css']
 })
 export class AssessmentFormComponent implements OnInit {
+  constructor(public LearningService: LearningService, public ActivatedRoute: ActivatedRoute) { }
+  CourseList: any;
+  ChapterList: any;
+  QuestionList: any;
+  id: any;
+  userid:any;
+  files1: File[] = [];
+  files: File[] = [];
+  quetionlist:any
+  entity:any
   Course_Photo: any;
   Attachment: any;
   result: any;
@@ -19,15 +29,16 @@ export class AssessmentFormComponent implements OnInit {
   questionid: any;
   courseName: any;
   public Editor = ClassicEditor;
-  constructor(public LearningService: LearningService, public ActivatedRoute: ActivatedRoute) { }
-  CourseList: any;
-  ChapterList: any;
-  QuestionList: any;
-  id: any;
-  userid:any;
-  files1: File[] = [];
-  files: File[] = [];
-  quetionlist:any
+  Question: any;
+  Option1: any;
+  Option2: any;
+  Option3: any;
+  Option4: any;
+  CorrectAnswer: any;
+  Weightage: any;
+  AssessmentName: any;
+  tablecout: any;
+  assessmenrArray: any = [];
 
   ngOnInit(): void {
     // this.GetAssessments();
@@ -165,18 +176,7 @@ export class AssessmentFormComponent implements OnInit {
       alert("Attachment Uploaded");
     })
   }
-  Question: any;
-  Option1: any;
-  Option2: any;
-  Option3: any;
-  Option4: any;
-  CorrectAnswer: any;
-  Weightage: any;
-  AssessmentName: any;
-
-  tablecout: any;
-
-  assessmenrArray: any = [];
+  
   ADd() {
     debugger
     if(this.courseid==undefined || this.chapterid==undefined || this.questionid==undefined || this.Question==
@@ -211,18 +211,7 @@ export class AssessmentFormComponent implements OnInit {
     this.AssessmentName="";
     Swal.fire("Saved Successfully");
   }
- 
-
-    // this.LearningService.InsertAssessments(json).subscribe(
-    //   data => {
-    //     debugger
-    //     let id = data;
-    //     Swal.fire("Saved Successfully!!");
-    //     location.href = "#/Assessmentdashboard"
-    //   })
   }
-
-
 
   getCorrectAnswer(event: any) {
     debugger
@@ -241,8 +230,6 @@ export class AssessmentFormComponent implements OnInit {
     }
   }
 
-
-  entity:any
   save() {
     debugger
     for (let i = 0; i <=this.assessmenrArray.length; i++) {
@@ -265,7 +252,7 @@ export class AssessmentFormComponent implements OnInit {
         this.LearningService.InsertAssessments(entity).subscribe(
       (data:any) => {
         debugger
-        let quetionlist = data;
+        let id = data;
         if(data!=0)
         {
           Swal.fire("Saved Successfully");
@@ -325,6 +312,7 @@ export class AssessmentFormComponent implements OnInit {
         data => {
           debugger
           let id = data;
+          this.GetAssessments();
           Swal.fire("Updated Successfully!!");
           this.tablecout = 0;
           location.href = "#/Assessmentdashboard"
