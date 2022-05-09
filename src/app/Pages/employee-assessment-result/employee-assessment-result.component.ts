@@ -27,10 +27,10 @@ export class EmployeeAssessmentResultComponent implements OnInit {
   ngOnInit(): void {
     this.getdetailslist();
     // this.show = 2;
-    this.roleid = localStorage.getItem('roleid');
-    this.staffid = localStorage.getItem('userid');
-    this.manager = localStorage.getItem('manager');
-    this.trainer =localStorage.getItem('trainerid');
+    this.roleid = sessionStorage.getItem('roleid');
+    this.staffid = sessionStorage.getItem('userid');
+    this.manager = sessionStorage.getItem('manager');
+    this.trainer =sessionStorage.getItem('trainerid');
     if(this.trainer==undefined){
       this.Checkid=0;
     }

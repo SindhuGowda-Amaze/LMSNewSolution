@@ -30,7 +30,7 @@ export class SidebarComponent implements OnInit {
   public highlight(evt: any) {
     debugger
     var i, tablinks;
-    //  localStorage.setItem("clickname",name)
+    //  sessionStorage.setItem("clickname",name)
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
       tablinks[i].className = tablinks[i].className.replace(" active", "");
@@ -42,122 +42,122 @@ export class SidebarComponent implements OnInit {
   active: any;
   Dashboard() {
     this.active = 2;
-    localStorage.setItem("clickname", "Dashboard")
+    sessionStorage.setItem("clickname", "Dashboard")
   }
 
   chapterdashboard() {
     this.active = 'Topic';
-    localStorage.setItem("clickname", "Topic  Dashboard")
+    sessionStorage.setItem("clickname", "Topic  Dashboard")
   }
 
   assessments() {
     this.active = 'Assessments';
-    localStorage.setItem("clickname", "Assessments")
+    sessionStorage.setItem("clickname", "Assessments")
   }
 
   setup() {
     this.active = 'setup'
-    localStorage.setItem("clickname", "SETUP")
+    sessionStorage.setItem("clickname", "SETUP")
   }
 
   category() {
     this.active = 'category';
-    localStorage.setItem("clickname", "CATEGORY")
+    sessionStorage.setItem("clickname", "CATEGORY")
   }
 
   course() {
     this.active = 'course'
-    localStorage.setItem("clickname", "TRAINING")
+    sessionStorage.setItem("clickname", "TRAINING")
   }
 
   chapter() {
     this.active = 'chapter'
-    localStorage.setItem("clickname", "TOPIC")
+    sessionStorage.setItem("clickname", "TOPIC")
   }
 
-  trainer() {
-    this.active = 'trainer'
-    localStorage.setItem("clickname", "TRAINER")
-  }
+  // trainer() {
+  //   this.active = 'trainer'
+  //   sessionStorage.setItem("clickname", "TRAINER")
+  // }
 
   assigntrainer() {
     this.active = 11;
-    localStorage.setItem("clickname", "ASSIGN TRAINER")
+    sessionStorage.setItem("clickname", "ASSIGN TRAINER")
   }
 
   employee() {
     this.active = 'employee'
-    localStorage.setItem("clickname", "EMPLOYEE")
+    sessionStorage.setItem("clickname", "EMPLOYEE")
   }
 
   mycourse() {
     this.active = 'mycourse';
-    localStorage.setItem("clickname", "MY TRAINING")
+    sessionStorage.setItem("clickname", "MY TRAINING")
   }
   mycertificate() {
     this.active = 'mycertificate';
-    localStorage.setItem("clickname", "MY CERTIFICATE")
+    sessionStorage.setItem("clickname", "MY CERTIFICATE")
   }
   myemployeereport() {
     this.active = 'myemployeereport';
-    localStorage.setItem("clickname", "EMPLOYEE REPORT")
+    sessionStorage.setItem("clickname", "EMPLOYEE REPORT")
   }
   myassessmentreport() {
     this.active = 'myassessmentreport';
-    localStorage.setItem("clickname", "MY ASSESSMENT REPORT")
+    sessionStorage.setItem("clickname", "MY ASSESSMENT REPORT")
   }
   attendence() {
     this.active = 'MyATTENDANCE';
-    localStorage.setItem("clickname", "ATTENDANCE")
+    sessionStorage.setItem("clickname", "ATTENDANCE")
   }
   catalog() {
     this.active = 'catalogue';
-    localStorage.setItem("clickname", "CATALOG")
+    sessionStorage.setItem("clickname", "CATALOG")
   }
 
   certificate() {
-    localStorage.setItem("clickname", "CERTIFICATE")
+    sessionStorage.setItem("clickname", "CERTIFICATE")
   }
 
   assigncourse() {
     this.active = 'ASSIGNCourse';
-    localStorage.setItem("clickname", "ASSIGN TRAINING")
+    sessionStorage.setItem("clickname", "ASSIGN TRAINING")
   }
 
   results() {
     this.active = 'result';
-    localStorage.setItem("clickname", "RESULTS")
+    sessionStorage.setItem("clickname", "RESULTS")
   }
 
   testsubmit() {
     this.active = 'submitest';
-    localStorage.setItem("clickname", "Test Submitted")
+    sessionStorage.setItem("clickname", "Test Submitted")
   }
 
   employeeAssessment(){
     this.active='employeeAssessment';
-    localStorage.setItem("clickname", "Employee Assessment")
+    sessionStorage.setItem("clickname", "Employee Assessment")
   }
 
 
   Assessmentresult(){
     this.active='assessmentresult';
-    localStorage.setItem("clickname", "Employee Assessment Result")
+    sessionStorage.setItem("clickname", "Employee Assessment Result")
   }
 
   TraineeReport(){
     this.active='traineeReport';
-    localStorage.setItem("clickname", "Trainee Report")
+    sessionStorage.setItem("clickname", "Trainee Report")
   }
 
   help() {
     this.active = 'help'
-    localStorage.setItem("clickname", "HELP")
+    sessionStorage.setItem("clickname", "HELP")
   }
 
   SupportTickets() {
     this.active = 'SupportTickets'
-    localStorage.setItem("clickname", "support tickets")
+    sessionStorage.setItem("clickname", "support tickets")
   }
 
 }

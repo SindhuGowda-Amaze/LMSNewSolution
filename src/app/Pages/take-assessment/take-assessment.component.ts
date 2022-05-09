@@ -62,7 +62,7 @@ export class TakeAssessmentComponent implements OnInit {
     //   }
     //   else {
     //     debugger
-    //     this.url = atob(this.url);
+    //     this.url = atob(this.url); 
     //     this.url = this.url.split('-');
     //     this.userid = this.url[0];
     //     this.categoryid = this.url[1];

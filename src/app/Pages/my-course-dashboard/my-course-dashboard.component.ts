@@ -41,6 +41,17 @@ export class MyCourseDashboardComponent implements OnInit {
     
     this.GetAllCounts();
     this.Showcards(2);
+
+
+      // this.loader=true
+      // debugger
+      // this.LearningService.GetTrainerCourseMapping().subscribe(data => {
+      //   debugger
+      //   this.coursedetails = data;
+      //   debugger
+      // })
+      // this.loader=false
+ 
   }
 
   coursedetails: any;
@@ -60,13 +71,13 @@ export class MyCourseDashboardComponent implements OnInit {
   // }
 
 
-
+  coursedetails1:any;
   public GetTrainerCourseMapping() {
     this.loader=true
     debugger
     this.LearningService.GetTrainerCourseMapping().subscribe(data => {
       debugger
-      this.coursedetails = data;
+      this.coursedetails1 = data;
       debugger
     })
     this.loader=false

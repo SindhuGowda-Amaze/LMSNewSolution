@@ -66,7 +66,7 @@ export class AttendenceDetailsComponent implements OnInit {
   //   var entity = {
 
 
-  //     UserID: localStorage.getItem('staffid'),
+  //     UserID: sessionStorage.getItem('staffid'),
   //     SigninDate: this.datePipe.transform((new Date), 'MM/dd/yyyy h:mm:ss'),
   //     SigninLocation: 'Office',
   //     StatusID: this.StatusID
@@ -75,7 +75,7 @@ export class AttendenceDetailsComponent implements OnInit {
   //   this.LearningService.InsertAttendanceWeb(entity).subscribe(data => {
   //     if (data != 0) {
   //       this.punchinId = data
-  //       localStorage.setItem('PunchINid', this.punchinId)
+  //       sessionStorage.setItem('PunchINid', this.punchinId)
   //       Swal.fire('Punched In Succesfully')
   //     }
 
@@ -89,7 +89,7 @@ export class AttendenceDetailsComponent implements OnInit {
   //   var entity = {
 
 
-  //     ID: localStorage.getItem('PunchINid'),
+  //     ID: sessionStorage.getItem('PunchINid'),
   //     SignoutDate: this.datePipe.transform((new Date), 'MM/dd/yyyy h:mm:ss'),
   //     SignoutLocation: 'Office',
   //     StatusID: this.StatusID
@@ -113,7 +113,7 @@ export class AttendenceDetailsComponent implements OnInit {
   //   debugger
   //   this.LearningService.GetAttendance().subscribe(data => {
   //     debugger
-  //     this.attendancelist = data.filter(x => x.supervisor == localStorage.getItem('staffid') && (x.filterdate >= this.startdate && x.filterdate <= this.enddate))
+  //     this.attendancelist = data.filter(x => x.supervisor == sessionStorage.getItem('staffid') && (x.filterdate >= this.startdate && x.filterdate <= this.enddate))
   //   })
   // }
 
