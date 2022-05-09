@@ -39,12 +39,16 @@ export class AssessmentFormComponent implements OnInit {
   AssessmentName: any;
   tablecout: any;
   assessmenrArray: any = [];
+  type:any
+  dumchapterlist: any;
+  show: any;
+  show2: any;
 
   ngOnInit(): void {
     // this.GetAssessments();
-    this.courseid=0;
-    this.chapterid=0;
-    this.questionid=0;
+    // this.courseid=0;
+    // this.chapterid=0;
+    // this.questionid=0;
     this.userid = sessionStorage.getItem('userid');
 
     this.GetAssessments();
@@ -81,12 +85,8 @@ export class AssessmentFormComponent implements OnInit {
         this.GetCourse();
       }
     })
-
-    // this.show = 1;
-    // this.show2 = 1;
   }
 
-  type:any
   public GetAssessments() {
     debugger
     this.LearningService.GetAssessments().subscribe(
@@ -94,9 +94,6 @@ export class AssessmentFormComponent implements OnInit {
         debugger
         this.quetionlist = data;
         this.type= this.quetionlist[0].type
-        console.log("questionlist",this.quetionlist)
-      
-     
       })
   }
 
@@ -109,8 +106,6 @@ export class AssessmentFormComponent implements OnInit {
       })
   }
 
-
-  dumchapterlist: any;
   public GetChapter() {
     debugger
     this.LearningService.GetChapter().subscribe(
@@ -128,53 +123,8 @@ export class AssessmentFormComponent implements OnInit {
       })
   }
 
-
-
   cancel() {
     location.href = "#/Assessmentdashboard";
-  }
-  
-  onSelect1(event: any) {
-    console.log(event);
-    this.files1.push(...event.addedFiles);
-    this.uploadattachments1();
-  }
-
-  onRemove1(event: any) {
-    console.log(event);
-    this.files1.splice(this.files1.indexOf(event), 1);
-  }
-
-  public uploadattachments1() {
-    debugger
-    this.LearningService.AttachmentsUpload(this.files1).subscribe(res => {
-      debugger
-      this.Course_Photo = res;
-      alert("Attachment Uploaded");
-    })
-  }
-
-
-  
-
-  onSelect(event: any) {
-    console.log(event);
-    this.files.push(...event.addedFiles);
-    this.uploadattachments();
-  }
-
-  onRemove(event: any) {
-    console.log(event);
-    this.files.splice(this.files.indexOf(event), 1);
-  }
-
-  public uploadattachments() {
-    debugger
-    this.LearningService.AttachmentsUpload(this.files).subscribe(res => {
-      debugger
-      this.Attachment = res;
-      alert("Attachment Uploaded");
-    })
   }
   
   ADd() {
@@ -198,7 +148,6 @@ export class AssessmentFormComponent implements OnInit {
       "CorrectAnswer": this.CorrectAnswer,
       "weightage": this.Weightage,
       "AssessmentName": this.AssessmentName,
-      // "TrainerID":this.userid
     };
   
     this.assessmenrArray.push(json)
@@ -261,29 +210,9 @@ export class AssessmentFormComponent implements OnInit {
         else{
           Swal.fire("Name Already Exists");
         }
-       
       })
-
-
-    }
-   
-   
-       
+    }  
   }
-
-
-
-  show: any;
-  show2: any;
-
-  // ShowObjectives(value:any){
-  //   debugger
-  //   this.show=value;
-  // }
-  // ShowSubjectives(value:any){
-  //   debugger
-  //   this.show2=value;
-  // }
 
   getcourseid(even: any) {
     this.courseid = even.target.value;
@@ -304,26 +233,18 @@ export class AssessmentFormComponent implements OnInit {
         "Option4": this.Option4,
         "CorrectAnswer": this.CorrectAnswer,
         "weightage": this.Weightage,
-        "AssessmentName": this.AssessmentName,
-        // "TrainerID":this.userid
+        "AssessmentName": this.AssessmentName
       };
       debugger
       this.LearningService.UpdateAssessments(entity).subscribe(
         data => {
           debugger
           let id = data;
-          this.GetAssessments();
-          Swal.fire("Updated Successfully!!");
-          this.tablecout = 0;
-          location.href = "#/Assessmentdashboard"
+          // this.GetAssessments();
+         console.log("quetionlist",id)
+         Swal.fire("Updated Successfully!!");
+         location.href = "#/Assessmentdashboard"
         })      
-
-
-
-   
-   
-   
-       
+        // this.tablecout = 0;  
   }
-
 }

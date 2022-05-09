@@ -20,6 +20,7 @@ export class AssessmentdashboardComponent implements OnInit {
   quetionlist:any;
   p: any = 1;
   count1: any = 10;
+  correctAnswers:any
   ngOnInit(): void {
    this. GetAssessmentResult()
     this.GetAssessments();
@@ -58,7 +59,7 @@ export class AssessmentdashboardComponent implements OnInit {
     this.GetFilteredCourseID();
 
   }
-  correctAnswers:any
+ 
   public GetFilteredCourseID() {
     this.LearningService.GetAssessments().subscribe(data => {
       debugger
