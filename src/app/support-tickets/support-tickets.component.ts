@@ -29,7 +29,7 @@ export class SupportTicketsComponent implements OnInit {
     this.staffID = sessionStorage.getItem('userid');
     this.typeofissue="0";
     this.prority="0"
-    const format = 'yyyy-MM-dd';
+    const format = 'dd-MM-dd';
 
     const myDate = new Date();
     const locale = 'en-US';
