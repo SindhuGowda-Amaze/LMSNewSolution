@@ -513,7 +513,7 @@ export class LearningService {
 
   public DeleteEnroll(ID: any) {
     return this.http.get<any[]>(
-      this.baseURL + "/Master/DeleteEnroll?ID=" + ID);
+      this.baseURL + "/Master/DeleteTrainingEnrollment?ID=" + ID);
   }
 
   public UpdateErollmentStatusApproved(data: any) {
@@ -624,6 +624,12 @@ export class LearningService {
   public UpdatePassword(data: any) {
     debugger;
     this.url = this.host + '/Master/UpdatePassword';
+    return this.http.post(this.url, data);
+  }
+
+  public UpdateTrainerPassword(data: any) {
+    debugger;
+    this.url = this.baseURL + '/Master/UpdateTrainerPassword';
     return this.http.post(this.url, data);
   }
 

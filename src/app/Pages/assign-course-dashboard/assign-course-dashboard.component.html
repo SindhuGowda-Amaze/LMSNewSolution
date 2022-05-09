@@ -5,7 +5,7 @@
             <p class="headings">Assign Training Dashboard</p>
         </div>
         <div class="col-lg-2">
-            <p class="count">Count: {{result.length}}</p>
+            <p class="count">Count: {{assignList.length}}</p>
         </div>
     </div>
     <div class="card">
@@ -34,7 +34,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <table class="table" *ngIf="(result | filter: search).length > 0; else noResults">
+                <table class="table" *ngIf="(assignList | filter: search).length > 0; else noResults">
                     <thead>
                         <tr>
                             <th>Employee Name</th>
@@ -43,15 +43,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let details of result|filter:search">
+                        <tr *ngFor="let details of assignList|filter:search">
                             <td style="font-size: 15px;">{{details.employeeName}}</td>
                             <td style="font-size: 15px;">{{details.name}}</td>
                             <td style="width: 20%;">
-                                <!-- <button class="form-control button" (click)="Ondelete(details.id)">Delete</button><br>
-                                <button class="form-control button" (click)="Ondelete(details.id)">Edit</button> -->
+                              
 
-                                <img src="assets/Images/Edit_ICON.png" alt="Edit_ICON" style="width: 10%;"
-                                (click)="edit(details.id)" > &nbsp;&nbsp;
+                                <!-- <img src="assets/Images/Edit_ICON.png" alt="Edit_ICON" style="width: 10%;"
+                                (click)="edit(details.id)" > &nbsp;&nbsp; -->
 
                                 <img src="assets/Images/Delete_ICON.png" alt="Delete_ICON"
                                     (click)="Ondelete(details.id)" style="width: 10%;">

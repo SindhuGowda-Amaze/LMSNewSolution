@@ -57,7 +57,7 @@
                         <th>Topic Name</th>
                         <th>QuestionType</th>
                         <th>Question</th>
-                        <th>Option1</th>
+                        <th >Option1</th>
                         <th>Option2</th>
                         <th>Option3</th>
                         <th>Option4</th>
@@ -74,7 +74,8 @@
                         <td>{{item.option2}}</td>
                         <td>{{item.option3}}</td>
                         <td>{{item.option4}}</td>
-                        <td style="width: 10px;">{{item.correctAnswer}}</td>
+                        <!-- <td style="width: 10px;">{{item.correctAnswer}}</td> -->
+                        <td [innerHTML]="item.correctAnswer"></td>
                         <td>{{item.weightage}}</td>
                         <td>
                             <button class="addbutton" [routerLink]="['/AssessmentForm',item.id]">Edit</button> <br>

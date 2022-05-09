@@ -12,11 +12,13 @@ export class AssignCourseDashboardComponent implements OnInit {
   constructor(private ActivatedRoute: ActivatedRoute, private LearningService: LearningService) { }
 
   search: any;
-  ID: any;
-  result: any;
+  id: any;
+  assignList: any;
   count: any;
+  userid:any;
   ngOnInit(): void {
     this.GetEnroll();
+    this.userid = sessionStorage.getItem('userid');
   }
 public GetEnroll(){
   this.LearningService.GetEnroll().subscribe(
@@ -24,9 +26,9 @@ public GetEnroll(){
       debugger
       // this.result = data.filter(x => x.manager == this.manager );
       // this.result = data.filter(x => x.status == 'Manager Assigned' );
-      this.result =  data.filter(x => x.type == 'Manager Assign')
-      this.result=data;
-      this.count = this.result.length;
+      this.assignList =  data.filter(x => x.type == 'Manager Assign'&& x.manager == this.userid)
+      // this.assignList=data;
+      this.count = this.assignList.length;
     })
 }
 

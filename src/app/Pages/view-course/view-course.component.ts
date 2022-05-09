@@ -29,6 +29,10 @@ export class ViewCourseComponent implements OnInit {
   show: any;
   noattachments: any;
   loader:any;
+  managlist:any;
+  manageremail:any;
+  Emplist:any;
+  emplyphn:any;
   ngOnInit(): void {
     this.loader=false
     this.userid = sessionStorage.getItem('userid')
@@ -43,9 +47,14 @@ export class ViewCourseComponent implements OnInit {
     })
 
 
+   
     this.LearningService.GetMyDetails().subscribe(data => {
       debugger
-      this.stafflist = data.filter(x => x.id == this.userid);;
+      this.stafflist = data.filter(x => x.id == this.userid);
+      this.managlist = data.filter(x=>x.id==this.manager)    
+      this.manageremail=this.managlist[0].emailID
+      this.Emplist = data.filter(x=>x.id==this.userid)
+      this.emplyphn = this.Emplist[0].phoneNo
     });
   }
   // enroll() {
@@ -329,13 +338,14 @@ attachmentId:any;
             "status":'Manager Pending',
             "employeeName":name,
             "phoneNo":mobile,
-            "email":emailID  
+            "email":emailID  ,
+            "type":'Request to Manager'
           };
           this.LearningService.InsertEnroll(json).subscribe(
             data => {
               debugger
               let id = data;
-              Swal.fire("Saved Successfully");
+              // Swal.fire("Saved Successfully");
             location.href="#/Catalog"
             })
         Swal.fire(

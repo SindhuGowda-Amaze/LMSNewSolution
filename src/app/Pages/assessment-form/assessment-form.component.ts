@@ -75,13 +75,14 @@ export class AssessmentFormComponent implements OnInit {
     // this.show2 = 1;
   }
 
-
+  type:any
   public GetAssessments() {
     debugger
     this.LearningService.GetAssessments().subscribe(
       data => {
         debugger
         this.quetionlist = data;
+        this.type= this.quetionlist[0].type
         console.log("questionlist",this.quetionlist)
       
      
@@ -261,15 +262,20 @@ export class AssessmentFormComponent implements OnInit {
         // "TrainerID":this.assessmenrArray[i].TrainerID
       };
       debugger
-      this.LearningService.InsertAssessments(entity).subscribe(
-        data => {
-          debugger
-          let id = data;
-          Swal.fire("Saved Successfully!!");
-          this.tablecout = 0;
-          location.href = "#/Assessmentdashboard"
-        })      
-
+        this.LearningService.InsertAssessments(entity).subscribe(
+      (data:any) => {
+        debugger
+        let quetionlist = data;
+        if(data!=0)
+        {
+          Swal.fire("Saved Successfully");
+          location.href="#/Assessmentdashboard";
+        }
+        else{
+          Swal.fire("Name Already Exists");
+        }
+       
+      })
 
 
     }

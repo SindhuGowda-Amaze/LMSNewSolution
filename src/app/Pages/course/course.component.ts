@@ -44,9 +44,8 @@ export class CourseComponent implements OnInit {
     this.LearningService.GetCourse().subscribe(
       data => {
         debugger
-        this.result = data;
-        this.result = this.result.filter((x: { id: any; }) => x.id == Number(this.id));
-        this.categoryName = this.result[0].categoryName;
+        this.result = data.filter(x => x.id == this.id);
+        this.categoryid = this.result[0].categoryID;
         this.name = this.result[0].name;
         this.description = this.result[0].description;
         this.Course_Photo = this.result[0].photo;
@@ -66,9 +65,17 @@ export class CourseComponent implements OnInit {
 
   GetCategoryid(even: any) {
     debugger
-    var list = even.target.value.split(",");
-    this.categoryName = list[0]
-    this.categoryid = list[1];
+    // var list = even.target.value.split(",");
+    // this.categoryName = even.name
+    this.categoryid = even.target.value;
+
+    this.LearningService.GetCategoryMaster().subscribe(
+      data => {
+        debugger
+        let temp: any = data.filter(x => x.id == this.categoryid);
+        this.categoryName = temp[0].name;
+      })
+
   }
 
   GetTrainingType(even: any) {

@@ -14,13 +14,16 @@ export class MyAccountsettingModifyComponent implements OnInit {
   confirmpassword: any;
   newpassword: any;
   Currentpassword: any;
+  roleid:any;
 
   ngOnInit(): void {
+    this.roleid = sessionStorage.getItem('roleid');
     this.passvaild = true;
     this.LearningService.GetMyDetails().subscribe(data => {
       debugger
       let temp: any = data.filter(x => x.id == sessionStorage.getItem('userid'));
-      this.Currentpassword = temp[0].password;
+      // this.Currentpassword = temp[0].password;
+
     });
 
   }
@@ -47,13 +50,26 @@ export class MyAccountsettingModifyComponent implements OnInit {
         ID: sessionStorage.getItem('userid'),
         Password: this.confirmpassword,
       }
-      this.LearningService.UpdatePassword(entity).subscribe(data => {
-        Swal.fire("Updated Successfully");
-        this.newpassword = '';
-        this.confirmpassword = ''
-        this.ngOnInit();
-
-      })
+      if(this.roleid==4){
+        this.LearningService.UpdateTrainerPassword(entity).subscribe(data => {
+          Swal.fire("Updated Successfully");
+          this.Currentpassword='';
+          this.newpassword = '';
+          this.confirmpassword = ''
+          this.ngOnInit();
+        })
+      }
+      else{
+        this.LearningService.UpdatePassword(entity).subscribe(data => {
+          Swal.fire("Updated Successfully");
+          this.Currentpassword='';
+          this.newpassword = '';
+          this.confirmpassword = ''
+          this.ngOnInit();
+        })
+      
+      }
+     
     }
 
 

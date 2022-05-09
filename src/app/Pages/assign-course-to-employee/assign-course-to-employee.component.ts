@@ -28,12 +28,24 @@ export class AssignCourseToEmployeeComponent implements OnInit {
   count:any;
 
   ngOnInit(): void {
+    // this.GetEnroll();
+    this.GetCourse();
+    this.GetStaff();  
     this.name123=0;
-    this.coursename=0;
+    this.courseid=0;
     this.userid = sessionStorage.getItem('userid');
     this.manager = sessionStorage.getItem('UserName');
-    this.GetCourse();
-    this.GetStaff();
+
+    // this.ActivatedRoute.params.subscribe(params => {
+    //   debugger
+    //   this.id = params["id"];
+    //   if (this.id != null && this.id != undefined) {
+    //     this.GetEnroll();
+    //     this.GetCourse();
+    //     this.GetStaff();  
+    //   }
+    // })
+   
   }
 
 
@@ -50,7 +62,7 @@ export class AssignCourseToEmployeeComponent implements OnInit {
   public GetStaff() {
     this.LearningService.GetMyDetails().subscribe(data => {
       debugger
-      this.stafflist = data.filter(x => x.id != this.userid && x.role != 'Admin')
+      this.stafflist = data.filter(x => x.id != this.userid && x.role != 'Admin'&& x.supervisor==this.userid)
       this.count=this.stafflist.length;
       // this.name= this.stafflist[0].employeeName
       // this.mobile=this.stafflist[0].phoneNo
@@ -64,23 +76,32 @@ export class AssignCourseToEmployeeComponent implements OnInit {
   // public getcoureid(id: any) {
   //   this.staffId = id
   // }
+  employeeName:any;
+  public getdata(even: any) {
+    this.staffId = even.target.value;
 
-  public getdata(details: any) {
-    this.staffId = details.id
-    this.count = this.staffId.length;
+    this.LearningService.GetMyDetails().subscribe(
+      data => {
+        debugger
+        let temp: any = data.filter(x => x.id == this.staffId);
+        this.employeeName = temp[0].name;
+        this.mobile = temp[0].phoneNo;
+        this.emailID = temp[0].emailID;
+      
+      })
   }
 
   enroll() {
     debugger
-    if (this.name123 == undefined || this.coursename == undefined) {
+    if (this.name123 == undefined || this.courseid == undefined) {
       Swal.fire("Please fill all the fields");
     }
     else {
       var json = {
-        "employeeName": this.name123,
+        "employeeName": this.employeeName,
         // "name": this.coursename,
         "staffid": this.name123,
-        "manager": this.manager,
+        "manager": this.userid,
         "courseid": this.courseid,
         "status": 'Manager Assign',
         "phoneNo": this.mobile,
@@ -98,23 +119,35 @@ export class AssignCourseToEmployeeComponent implements OnInit {
        
     }
   }
+  // assignList:any;
+  // public GetEnroll(){
+  //   this.LearningService.GetEnroll().subscribe(
+  //     data => {
+  //       debugger
+  //       this.assignList =  data.filter(x => x.type == 'Manager Assign')
+  //       this.name123= this.assignList[0].staffId
+  //       this.courseid= this.assignList[0].courseid
+      
+  //     })
+  // }
+
 
   Update(){
     debugger
-     var json = {
-      "employeeName": this.name123,
-      "courseid": this.courseid ,
-      "status": 'Manager Assign',
-      "type": "Manager Assign"
-      };
+    //  var json = {
+    //   "employeeName": this.name123,
+    //   "courseid": this.courseid ,
+    //   "status": 'Manager Assign',
+    //   "type": "Manager Assign"
+    //   };
     
-      this.LearningService.UpdateEnroll(json).subscribe(
-        data => {
-        debugger
-        let id = data;
-        Swal.fire("Successfully Updated...!");
-        location.href="#/AssignCourseDashboard";
-      })
+    //   this.LearningService.UpdateEnroll(json).subscribe(
+    //     data => {
+    //     debugger
+    //     let id = data;
+    //     Swal.fire("Successfully Updated...!");
+    //     location.href="#/AssignCourseDashboard";
+    //   })
   }
 
 

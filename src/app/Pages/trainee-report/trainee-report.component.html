@@ -62,11 +62,13 @@
                             <td style="color:#0C275A">{{details.courseName}}</td>
                             <td style="color:#0C275A">{{details.modifiedDate|date}}</td>
                             <td style="color:#0C275A">{{details.completiondate|date}}</td>
-                            <td> {{details.obtainedMarks/details.totalmarks
-                                *100 | number : '1.2-2'}} </td>
+                            <td>
+                                <p>{{details.obtainedMarks/details.totalmarks
+                                    *100 | number : '1.2-2'}} </p>
+                                <!-- <p  *ngIf="details.obtainedMarks/details.totalmarks==0 || details.obtainedMarks/details.totalmarks==null">NA</p> </td> -->
                             <td style="color:#0C275A">
-                                <p  *ngIf="details.obtainedMarks/details.totalmarks==0 || details.obtainedMarks/details.totalmarks==null">On Going</p>
-                                <button class="Button" *ngIf="details.obtainedMarks/details.totalmarks!=0"  [routerLink]="['/CourseCertificateNew',details.id]"
+                                <!-- <p  *ngIf="details.obtainedMarks/details.totalmarks==0 || details.obtainedMarks/details.totalmarks==null">On Going</p> -->
+                                <button class="Button"  [routerLink]="['/CourseCertificateNew',details.id]"
                                 >View Certificate</button>
                             </td>
                             

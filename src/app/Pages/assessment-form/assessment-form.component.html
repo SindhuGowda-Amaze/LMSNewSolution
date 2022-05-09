@@ -90,10 +90,13 @@
                     <div class="col-lg-2">
                         <input class="form-control" placeholder="Weightage" [(ngModel)]="Weightage">
                     </div>
-                    <div class="col-lg-2">
-                        <ckeditor id="CorrectAnswer" name="CorrectAnswer" [(ngModel)]="CorrectAnswer" *ngIf="questionid==2"
+                    <div class="col-lg-6"  *ngIf="questionid==2">
+                        <ckeditor id="CorrectAnswer" name="CorrectAnswer" [(ngModel)]="CorrectAnswer"
                             data="<p>Enter Answer Here !</p>"></ckeditor>                           
-                        <select class="form-control"  (change)="getCorrectAnswer($event)" *ngIf="questionid==1" >
+                    
+                    </div>
+                    <div class="col-lg-2"  *ngIf="questionid==1">                    
+                        <select class="form-control"  (change)="getCorrectAnswer($event)" >
                             <option value="0">Select Options</option>
                             <option value="A">Option1</option>
                             <option value="B">Option2</option>
@@ -101,6 +104,7 @@
                             <option value="D">Option4</option>
                         </select>
                     </div>
+
                  
                 </div><br>
                 <div class="row">
@@ -116,7 +120,7 @@
                 <br>
                 <div class="row" *ngIf="tablecout==1">
                     <div class="col-lg-12 scroll">
-                        <table class="table" >
+                        <table class="table" *ngIf="questionid==1">
                             <thead>
                                 <tr class="head">
                                     <!-- <th>Training Name</th>
@@ -129,18 +133,50 @@
                                     <th>Option4</th>
                                     <th>Correct Answer</th>
                                     <th>Weightage</th>
-                                    <th>Actions</th>
+                                    <!-- <th>Actions</th> -->
                                 </tr>
                             <tr *ngFor="let details of assessmenrArray">
-                                <td>{{details.QuestionID}}</td>
+                                <td>
+                                    <p *ngIf="details.QuestionID==2">Subjective</p>
+                                    <p *ngIf="details.QuestionID==1">Objective</p>
+                                </td>
                                 <td>{{details.Question}}</td>
+                             
                                 <td>{{details.Option1}}</td>
                                 <td>{{details.Option2}}</td>
                                 <td>{{details.Option3}}</td>
                                 <td>{{details.Option4}}</td>
                                 <td>{{details.CorrectAnswer}}</td>
                                 <td>{{details.weightage}}</td>
-                                <td></td>
+                                <!-- <td></td> -->
+                               
+                            </tr>
+                            </thead>
+                        </table>
+
+                        <table class="table" *ngIf="questionid==2">
+                            <thead>
+                                <tr class="head">
+                                    <!-- <th>Training Name</th>
+                                    <th>Topic Name</th> -->
+                                    <th>QuestionType</th>
+                                    <th>Question</th>
+                                    
+                                    <th>Correct Answer</th>
+                                    <th>Weightage</th>
+                                    <!-- <th>Actions</th> -->
+                                </tr>
+                            <tr *ngFor="let details of assessmenrArray">
+                                <td>
+                                    <p *ngIf="details.QuestionID==2">Subjective</p>
+                                    <p *ngIf="details.QuestionID==1">Objective</p>
+                                </td>
+                                <td>{{details.Question}}</td>
+                             
+                                
+                                <td [innerHTML]="CorrectAnswer"></td>
+                                <td>{{details.weightage}}</td>
+                                <!-- <td></td> -->
                                
                             </tr>
                             </thead>

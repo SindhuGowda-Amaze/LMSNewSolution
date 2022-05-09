@@ -49,6 +49,12 @@ export class TrainerCourseMappingFormComponent implements OnInit {
     })
 
     this.GetCourse();
+
+    this.LearningService.GetCourse().subscribe(
+      data => {
+        debugger
+        this.CourseList = data;
+      })
     // this.ActivatedRoute.params.subscribe(params => {
     //   debugger
     //   this.id = params["id"];
