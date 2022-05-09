@@ -50,7 +50,7 @@ export class TrainerCourseMappingFormComponent implements OnInit {
 
     this.GetCourse();
 
-    this.LearningService.GetCourse().subscribe(
+    this.LearningService.GetCourseDropdown().subscribe(
       data => {
         debugger
         this.CourseList = data;

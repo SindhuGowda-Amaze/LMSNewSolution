@@ -148,8 +148,8 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('roleid', '2');
           sessionStorage.setItem("clickname", "Employee Dashboard")
           this.Insertattdnace(this.result.id)
-          location.href = "/Dashboard";
-          this.loader = false;
+          // location.href = "/Dashboard";
+          // this.loader = false;
         }
         else {
 
@@ -178,8 +178,8 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("clickname", "Manager Dashboard")
           location.href = "#/ManagerDashboard";
           this.Insertattdnace(this.result.id)
-          location.reload();
-          this.loader = false;
+          // location.reload();
+          // this.loader = false;
         }
         else {
           Swal.fire('Username or Password is invalid');
@@ -209,8 +209,8 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("clickname", "Assessment Dashboard")
           location.href = "#/Assessmentdashboard";
           this.Insertattdnace(this.result.id)
-          location.reload();
-          this.loader = false;
+          // location.reload();
+          // this.loader = false;
         }
         else {
           Swal.fire('Username or Password is invalid');
