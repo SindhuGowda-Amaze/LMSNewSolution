@@ -114,6 +114,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("clickname", "Admin Dashboard")
           this.router.navigate(['/Dashboard']).then(() => {
             location.reload();
+            this.loader=false;
           });
         }
         else {
