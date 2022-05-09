@@ -148,8 +148,8 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('roleid', '2');
           sessionStorage.setItem("clickname", "Employee Dashboard")
           this.Insertattdnace(this.result.id)
-          location.href = "/Dashboard";
-          this.loader = false;
+          // location.href = "/Dashboard";
+          // this.loader = false;
         }
         else {
 

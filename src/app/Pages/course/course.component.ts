@@ -16,11 +16,21 @@ export class CourseComponent implements OnInit {
   password: any;
   userName: any;
   trainingLink: any
+  categoryid: any;
+  categoryName: any;
+  name: any;
+  description: any;
+  duration: any;
+  fee: any;
+  entryCriteria: any;
+  exitCriteria: any;
+  trainingType: any;
+
   ngOnInit(): void {
     this.categoryName = 0;
     this.trainingType = 0;
     this.GetCategoryMaster();
-
+    this.GetCourse();
     this.ActivatedRoute.params.subscribe(params => {
       debugger
       this.id = params["id"];
@@ -31,16 +41,7 @@ export class CourseComponent implements OnInit {
 
   }
 
-  categoryName: any;
-  name: any;
-  description: any;
-  duration: any;
-  fee: any;
-  entryCriteria: any;
-  exitCriteria: any;
-  trainingType: any;
-
-  public GetCourse() {
+   public GetCourse() {
     this.LearningService.GetCourse().subscribe(
       data => {
         debugger
@@ -61,7 +62,6 @@ export class CourseComponent implements OnInit {
       }
     )
   }
-  categoryid: any;
 
   GetCategoryid(even: any) {
     debugger
@@ -97,6 +97,7 @@ export class CourseComponent implements OnInit {
         "description": this.description,
         "photo": this.Course_Photo,
         "duration": this.duration,
+        "fee":this.fee,
         "entryCriteria": this.entryCriteria,
         "exitCriteria": this.exitCriteria,
         "CategoryID": this.categoryid,

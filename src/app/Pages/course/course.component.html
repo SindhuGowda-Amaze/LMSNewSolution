@@ -142,8 +142,8 @@
             <div class="col-lg-9"></div>
             <div class="col-lg-1">
                 <!-- <button class="form-control button1">Save</button> -->
-                <button class="form-control cancel" *ngIf="id==null || id==undefined" (click)="Save()">Save</button>
-                <button class="form-control cancel" *ngIf="id!=null || id!=undefined" (click)="Update()">Update</button>
+                <button class="form-control cancel" *ngIf="id==undefined" (click)="Save()">Save</button>
+                <button class="form-control cancel" *ngIf="id!=undefined" (click)="Update()">Update</button>
             </div>
             <div class="col-lg-1">
                 <button class="form-control  cancel " (click)="cancel()">Cancel</button>
