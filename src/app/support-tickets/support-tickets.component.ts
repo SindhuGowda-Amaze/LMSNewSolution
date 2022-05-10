@@ -171,11 +171,11 @@ export class SupportTicketsComponent implements OnInit {
         Swal.fire("Updated Sucessfully");
         location.href = "#/SupportTicketsDashboard";
 
-        // this.date = '';
-        // this.time = '';
-        // this.typeofissue = '';
-        // this.prority = '';
-        // this.comments = '';
+        this.date = '';
+        this.time = '';
+        this.typeofissue = '';
+        this.prority = '';
+        this.comments = '';
 
       }
     )
