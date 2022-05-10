@@ -25,17 +25,19 @@ export class SupportTicketsComponent implements OnInit {
   id:any;
   staffID:any;
   ticketlist: any;
+  files: File[] = [];
+  files1: File[] = [];
+
   ngOnInit(): void {
     this.staffID = sessionStorage.getItem('userid');
     this.typeofissue="0";
     this.prority="0"
     const format = 'dd-MM-yyyy';
-
     const myDate = new Date();
     const locale = 'en-US';
     this.todaydate = new Date().toISOString().split("T")[0];
     // this.todaydate = formatDate(myDate, format, locale);
-
+    this.GetSupportTickets();
     this.ActivatedRoute.params.subscribe(params => {
       debugger
       this.id = params["id"];
@@ -56,14 +58,12 @@ export class SupportTicketsComponent implements OnInit {
           this.prority = this.ticketlist[0].priority,
           this.screenShot[0] = this.ticketlist[0].screenShot,
           this.comments = this.ticketlist[0].comment
-
       }
     )
   }
 
 
-  files: File[] = [];
-  files1: File[] = [];
+ 
   onSelect(event: { addedFiles: any; }) {
     debugger
     console.log(event);
@@ -149,7 +149,8 @@ export class SupportTicketsComponent implements OnInit {
     }
   }
 
-  public Update() {
+  Update() {
+    debugger
     var entity = {
       "id": this.id,
       "Date": this.date,
@@ -179,6 +180,7 @@ export class SupportTicketsComponent implements OnInit {
       }
     )
   }
+
   public cancel(){
     location.href="#/SupportTicketsDashboard";
   }

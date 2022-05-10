@@ -76,6 +76,8 @@ export class TraineeReportComponent implements OnInit {
       data => {
         debugger
         this.departmentlist = data;
+        this.count= this.departmentlist.length
+        console.log("this.departmentlist.length",this.count)
       })
   }
 
