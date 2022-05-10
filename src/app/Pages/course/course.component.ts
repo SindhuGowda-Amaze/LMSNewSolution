@@ -100,7 +100,7 @@ export class CourseComponent implements OnInit {
         "fee":this.fee,
         "entryCriteria": this.entryCriteria,
         "exitCriteria": this.exitCriteria,
-        "CategoryID": this.categoryid,
+        // "CategoryID": this.categoryid,
         "trainingLink": this.trainingLink,
         "userName": this.userName,
         "password": this.password,
