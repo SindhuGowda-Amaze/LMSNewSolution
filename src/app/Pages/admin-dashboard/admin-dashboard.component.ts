@@ -13,7 +13,14 @@ export class AdminDashboardComponent implements OnInit {
   showenrolment: any;
   roleid: any;
   countlist: any;
-
+  courseCount: any;
+  coursedetails: any;
+  assesmentlist: any;
+  trainerlist: any;
+  chapterlist: any;
+  coursedetails1:any;
+  Assigntrainerlist:any;
+  
   ngOnInit(): void {
     this.userid = sessionStorage.getItem('userid')
     this.roleid = sessionStorage.getItem('roleid')
@@ -60,12 +67,6 @@ export class AdminDashboardComponent implements OnInit {
 
   }
 
-  coursedetails: any;
-  assesmentlist: any;
-  trainerlist: any;
-  chapterlist: any;
-  coursedetails1:any;
-  Assigntrainerlist:any;
   public GetCourse() {
     debugger
     if (this.userid == 10348) {
@@ -168,11 +169,6 @@ export class AdminDashboardComponent implements OnInit {
 
   }
 
-
-
-
-
-  courseCount: any;
   public GetApproveCourse() {
     debugger
         this.LearningService.GetApproveCourse(this.userid).subscribe(data => {
