@@ -16,8 +16,8 @@
                         </div>
                         <hr class="new4">
                         <div class="backflip">
-                            <button class="bcakbtn">BACK</button>
-                            <button class="viewall" routerLink="/MyCourseDashboard">VIEW ALL</button>
+                            <!-- <button class="bcakbtn">BACK</button> -->
+                            <button class="clickbutton1" routerLink="/MyCourseDashboard">View My Training</button>
                         </div>
                     </div>
                     <div class="front">
@@ -35,8 +35,7 @@
                         <div class="row">
                             <div class="col-lg-4"></div>
                             <div class="col-lg-4">
-                                <h6 class="Number">{{coursedetails.length}}</h6>
-                                
+                                <h6 class="Number">{{countlist.courseCount}}</h6>
                             </div>
                             <div class="col-lg-4"></div>
                         </div><br><br><br>
@@ -141,7 +140,7 @@
                             <div class="col-lg-4"></div>
                         </div><br><br><br>
                         <button class="clickbutton1" data-toggle="modal"
-                            data-target="#enroll3">VIEW
+                            data-target="#enroll2">VIEW
                             DETAILS</button>
                     </div>
                 </div>
@@ -201,7 +200,7 @@
                                     <p class="Number">{{countlist.trainersCount}}</p>
                                 </div>
                                 <div class="col-lg-4"></div>
-                            </div><br><br><br>
+                            </div><br>
                             <button class="clickbutton1" data-toggle="modal"
                                 data-target="#enroll3">VIEW DETAILS</button>
                         </div>
@@ -325,7 +324,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content" style="text-align: left;">
             <div class="modal-header" style="text-align: left;">
-                <h4 class="modal-title">Trainer Name and Training Name</h4>
+                <h4 class="modal-title">Assign Trainer List</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -337,7 +336,7 @@
                                 <th>Trainer Name</th>
                                 <th>Training Name</th>
                             </tr>
-                            <tr *ngFor="let details of trainerlist" style="text-align: left;">
+                            <tr *ngFor="let details of Assigntrainerlist" style="text-align: left;">
                                 <!-- <td style="text-align: left;">{{details.staffName}}</td> -->
                                 <td style="text-align: left;">{{details.trainerName}}</td>
                                 <td style="text-align: left;">{{details.courseName}}</td>

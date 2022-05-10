@@ -65,9 +65,9 @@ body {
   .backflip {
     display: flex;
     justify-content: space-between;
-    padding-left: 30px;
-    padding-right: 30px;
-    margin-top: -6px;
+    padding-left: 20px;
+    padding-right: 70px;
+    margin-top: 6px;
   }
   
   .backflip1 {
@@ -91,7 +91,7 @@ body {
     height: 30px;
     border: none;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 10px;
     background-color: #3247D5;
     font-weight: white;
     color: white;

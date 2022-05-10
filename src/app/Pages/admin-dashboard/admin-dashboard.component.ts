@@ -20,7 +20,7 @@ export class AdminDashboardComponent implements OnInit {
     this.temp = sessionStorage.getItem('temp');
     this.GetAllCounts();
     this.GetCourse();
-    if (this.userid == undefined) {
+    if (this.userid == 10348) {
       this.showenrolment = 1;
     }
     else {
@@ -43,7 +43,7 @@ export class AdminDashboardComponent implements OnInit {
 
   public GetAllCounts() {
     debugger
-    if (this.userid != undefined) {
+    if (this.userid != 10348) {
       this.LearningService.GetAllCounts(this.userid, 2).subscribe(
         data => {
           debugger
@@ -51,7 +51,7 @@ export class AdminDashboardComponent implements OnInit {
         })
     }
     else {
-      this.LearningService.GetAllCounts(0, 1).subscribe(
+      this.LearningService.GetAllCounts(10348, 1).subscribe(
         data => {
           debugger
           this.countlist = data[0];
@@ -64,15 +64,24 @@ export class AdminDashboardComponent implements OnInit {
   assesmentlist: any;
   trainerlist: any;
   chapterlist: any;
+  coursedetails1:any;
+  Assigntrainerlist:any;
   public GetCourse() {
     debugger
-    if (this.userid != undefined) {
-      this.LearningService.GetEnroll().subscribe(
-        data => {
-          debugger
-          this.coursedetails = data.filter(x => x.staffID == this.userid && x.status == 'Manager Approved');
-          console.log(" this.coursedetails", this.coursedetails.length)
-        })
+    if (this.userid == 10348) {
+      // this.LearningService.GetEnroll().subscribe(
+      //   data => {
+      //     debugger
+      //     this.coursedetails = data.filter(x => x.staffID == this.userid && x.status == 'Manager Approved');
+      //     console.log(" this.coursedetails", this.coursedetails.length)
+      //   })
+
+        this.LearningService.GetCourseDropdown().subscribe(
+          data => {
+            debugger
+            this.coursedetails = data
+            console.log(" this.coursedetails", this.coursedetails.length)
+          })
 
       this.LearningService.GetTrainerCourseMappingByEnroll().subscribe(
         data => {
@@ -87,12 +96,30 @@ export class AdminDashboardComponent implements OnInit {
         
         })
 
-      this.LearningService.GetEnrollCourseChaptersAssessment().subscribe(
-        data => {
-          debugger
-          this.assesmentlist = data.filter(x => x.staffID == this.userid && x.status == 'Manager Approved');
-          debugger
-        })
+        this.LearningService.GetChapter().subscribe(
+          data => {
+            debugger
+            this.chapterlist = data;
+          })
+
+        this.LearningService.GetTrainerCourseMappingDashboard().subscribe(
+          data => {
+            debugger
+         
+              this.Assigntrainerlist = data;
+              console.log(this.Assigntrainerlist)
+         
+          })
+
+
+      
+
+        this.LearningService.GetChapterAssessment().subscribe(
+          data => {
+            debugger
+            this.assesmentlist = data;
+            debugger
+          })
 
       this.LearningService.GetEnrollCourseChapters().subscribe(
         data => {
@@ -100,17 +127,20 @@ export class AdminDashboardComponent implements OnInit {
           this.chapterlist = data.filter(x => x.staffID == this.userid && x.status == 'Manager Approved');
         })
     }
+
     else {
-      this.LearningService.GetCourse().subscribe(
+      this.LearningService.GetCourseDropdown().subscribe(
         data => {
           debugger
           this.coursedetails = data;
         })
-      this.LearningService.GetChapter().subscribe(
-        data => {
-          debugger
-          this.chapterlist = data;
-        })
+
+        this.LearningService.GetEnrollCourseChapters().subscribe(
+          data => {
+            debugger
+            this.chapterlist = data.filter(x => x.staffID == this.userid && x.status == 'Manager Approved');
+          })
+  
 
 
       this.LearningService.GetTrainerCourseMappingByEnroll().subscribe(
@@ -119,12 +149,14 @@ export class AdminDashboardComponent implements OnInit {
           this.trainerlist = data;
         })
 
-      this.LearningService.GetChapterAssessment().subscribe(
-        data => {
-          debugger
-          this.assesmentlist = data;
-          debugger
-        })
+        this.LearningService.GetEnrollCourseChaptersAssessment().subscribe(
+          data => {
+            debugger
+            this.assesmentlist = data.filter(x => x.staffID == this.userid && x.status == 'Manager Approved');
+            debugger
+          })
+
+
 
       // this.LearningService.GetEnroll().subscribe(
       //   data => {
