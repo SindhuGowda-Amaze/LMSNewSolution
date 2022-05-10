@@ -31,7 +31,7 @@ export class TrainerCourseMappingFormComponent implements OnInit {
     this.BatchName=0;
     this.GetTrainer();
     this.GetBatch();
-
+    
     // this.ActivatedRoute.params.subscribe(params => {
     //   debugger
     //   this.id = params["id"];
@@ -47,13 +47,14 @@ export class TrainerCourseMappingFormComponent implements OnInit {
         this.GetTrainerCourseMapping();
       }
     })
+    this.GetTrainerCourseMapping();
 
-    this.GetCourse();
+    // this.GetCourse();
 
     this.LearningService.GetCourseDropdown().subscribe(
       data => {
         debugger
-        this.CourseList = data;
+        this.CourseList = data
       })
     // this.ActivatedRoute.params.subscribe(params => {
     //   debugger
@@ -149,14 +150,14 @@ export class TrainerCourseMappingFormComponent implements OnInit {
     debugger
     this.CourseID=even.target.value;
   }
-  public GetCourse() {
-    debugger
-    this.LearningService.GetCourse().subscribe(
-      data => {
-        debugger
-        this.CourseList = data;
-      })
-  }
+  // public GetCourse() {
+  //   debugger
+  //   this.LearningService.GetCourse().subscribe(
+  //     data => {
+  //       debugger
+  //       this.CourseList = data;
+  //     })
+  // }
 
   // BatchName:any;
   getBatchName(even:any)
@@ -184,7 +185,7 @@ TrainerID:any
     this.LearningService.GetTrainer().subscribe(
       data => {
         debugger
-        this.trainerlist = data;
+        this.trainerlist = data.filter(x=>x.id!=this.TrainerID);
       })
   }
 
