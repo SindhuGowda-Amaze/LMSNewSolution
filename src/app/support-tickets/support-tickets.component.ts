@@ -33,7 +33,8 @@ export class SupportTicketsComponent implements OnInit {
 
     const myDate = new Date();
     const locale = 'en-US';
-    this.todaydate = formatDate(myDate, format, locale);
+    this.todaydate = new Date().toISOString().split("T")[0];
+    // this.todaydate = formatDate(myDate, format, locale);
 
     this.ActivatedRoute.params.subscribe(params => {
       debugger

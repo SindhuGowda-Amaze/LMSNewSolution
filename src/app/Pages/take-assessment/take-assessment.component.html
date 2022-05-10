@@ -98,27 +98,28 @@
                         <div class="row" *ngIf="list.questionID==1">
                             <div class="col-lg-6">
                                 <div class="inputoption">
-                                    <input type="radio" value="{{list.option1}}" name="{{list.option1}}"
-                                        id="{{list.option1}}" [(ngModel)]='list.userAnswer'>&nbsp;
+                                    <input type="radio" value="{{list.id+'$@'+list.option1}}"
+                                        name="{{list.id+'$@'+list.Option1}}" id="{{list.id+'$@'+list.Option1}}"
+                                        [(ngModel)]='list.userAnswer'>&nbsp;
                                     <div [innerHtml]="list.option1"></div>
                                 </div>
                                 <div class="inputoption ">
-                                    <input type="radio" value="{{list.option2}}" name="{{list.option2}}"
-                                        id="{{list.option2}}" [(ngModel)]='list.userAnswer'>
+                                    <input type="radio" value="{{list.id+'$@'+list.option2}}" name="{{list.id+'$@'+list.option2}}"
+                                        id="{{list.id+'$@'+list.option2}}" [(ngModel)]='list.userAnswer'>
                                     &nbsp;
                                     <div [innerHtml]="list.option2"></div>
                                 </div>
                             </div> <br>
                             <div class="col-lg-6">
                                 <div class="inputoption ">
-                                    <input type="radio" value="{{list.option3}}" name="{{list.option3}}"
-                                        id="{{list.option3}}" [(ngModel)]='list.userAnswer'>&nbsp;
+                                    <input type="radio" value="{{list.id+'$@'+list.option3}}" name="{{list.id+'$@'+list.option3}}"
+                                        id="{{list.id+'$@'+list.option3}}" [(ngModel)]='list.userAnswer'>&nbsp;
                                     <div [innerHtml]="list.option3"></div>
 
                                 </div>
                                 <div class="inputoption ">
-                                    <input type="radio" value="{{list.option4}}" name="{{list.option4}}"
-                                        id="{{list.option4}}" [(ngModel)]='list.userAnswer'>&nbsp;
+                                    <input type="radio" value="{{list.id+'$@'+list.option4}}" name="{{list.id+'$@'+list.option4}}"
+                                        id="{{list.id+'$@'+list.option4}}" [(ngModel)]='list.userAnswer'>&nbsp;
                                     <div [innerHtml]="list.option4"></div>
 
                                 </div>

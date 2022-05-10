@@ -38,16 +38,16 @@ export class TraineeReportComponent implements OnInit {
    public GetTrainerReport(){
      debugger
      this.LearningService.GetTrainerReport(0,0).subscribe(data=>{
-      this.employeereportlist=data.filter(x=>x.trainerID==this.userid);
-      //  if(this.roleid==4){
-      //   this.employeereportlist=data.filter(x=>x.completed==1);
-      //  }
-      //  else{
-      //   this.employeereportlist=data
-      //  }
+      // this.employeereportlist=data.filter(x=>x.trainerID==this.userid);
+       if(this.roleid==4){
+        this.employeereportlist=data.filter(x=>x.completed==1);
+       }
+       else{
+        this.employeereportlist=data
+       }
    
-      //  this.dummemployeereportlist=data;
-      //  this.traininglist=data;
+       this.dummemployeereportlist=data;
+       this.traininglist=data;
      }
       )
    }

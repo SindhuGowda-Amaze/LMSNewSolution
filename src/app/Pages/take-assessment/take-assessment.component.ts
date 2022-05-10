@@ -215,7 +215,7 @@ export class TakeAssessmentComponent implements OnInit {
       this.wrongansers=0;
       for (var i = 0; i < this.questionList.length; i++) {
         if(this.questionList[i].questionID==1){
-          if (this.questionList[i].correctAnswer == this.questionList[i].userAnswer) {
+          if (this.questionList[i].correctAnswer == this.questionList[i].userAnswer.split("$@")[1]) {
             this.marks = this.marks +  this.questionList[i].weightage;
            this.correctansers= this.correctansers +1;
           }
