@@ -46,11 +46,10 @@ export class AssessmentFormComponent implements OnInit {
 
   ngOnInit(): void {
     // this.GetAssessments();
-    // this.courseid=0;
-    // this.chapterid=0;
-    // this.questionid=0;
+    this.courseid=0;
+    this.chapterid=0;
+    this.questionid=0;
     this.userid = sessionStorage.getItem('userid');
-
     this.GetAssessments();
     this.ActivatedRoute.params.subscribe(params => {
       debugger
@@ -241,10 +240,10 @@ export class AssessmentFormComponent implements OnInit {
           debugger
           let id = data;
           // this.GetAssessments();
-         console.log("quetionlist",id)
          Swal.fire("Updated Successfully!!");
          location.href = "#/Assessmentdashboard"
-        })      
+        })  
+        // this.ngOnInit();    
         // this.tablecout = 0;  
   }
 }
