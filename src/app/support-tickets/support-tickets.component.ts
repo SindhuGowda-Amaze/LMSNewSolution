@@ -29,11 +29,12 @@ export class SupportTicketsComponent implements OnInit {
     this.staffID = sessionStorage.getItem('userid');
     this.typeofissue="0";
     this.prority="0"
-    const format = 'dd-MM-dd';
+     const format = 'dd-MM-yyyy';
 
     const myDate = new Date();
     const locale = 'en-US';
-    this.todaydate = formatDate(myDate, format, locale);
+    this.todaydate = new Date().toISOString().split("T")[0];
+    // this.todaydate = formatDate(myDate, format, locale);
 
     this.ActivatedRoute.params.subscribe(params => {
       debugger
