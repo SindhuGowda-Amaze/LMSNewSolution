@@ -27,6 +27,7 @@ export class CourseComponent implements OnInit {
   trainingType: any;
 
   ngOnInit(): void {
+    this.categoryid = 0;
     this.categoryName = 0;
     this.trainingType = 0;
     this.GetCategoryMaster();
@@ -87,7 +88,7 @@ export class CourseComponent implements OnInit {
     if (this.name == undefined || this.description == undefined || this.categoryName == undefined ||
       this.Course_Photo == undefined || this.duration == undefined || this.entryCriteria ==
       undefined || this.exitCriteria == undefined  || this.trainingType
-      == undefined) {
+      == undefined||this.categoryid == undefined || this.duration=="" || this.trainingType=="") {
       Swal.fire("Please fill all the fields");
     }
     else {
