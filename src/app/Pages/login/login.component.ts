@@ -163,12 +163,15 @@ export class LoginComponent implements OnInit {
 
     else if (this.roleID == 3) {
       debugger
-      let userNameCopy = this.userName.toLowerCase();
+      // let userNameCopy = this.userName.toLowerCase();
       this.LearningService.GetMyDetails().subscribe(data => {
         let temp: any = data.filter(x => (x.emailID.toUpperCase() === this.userName.toUpperCase() || x.phoneNo == this.userName) && x.password == this.password);
-        this.result = temp[0];
+        if (temp.length == 0) {
+          Swal.fire('Incorrect Username Or Password')
+        }
+      this.result = temp[0];
         debugger;
-        this.loader = true;
+        // this.loader = true;
         if (this.result != undefined || this.result != null || this.roleID == 3) {
           sessionStorage.setItem('UserName', this.result.name);
           sessionStorage.setItem('userid', this.result.id);
@@ -193,9 +196,12 @@ export class LoginComponent implements OnInit {
     else if (this.roleID == 4) {
 
       debugger
-      let userNameCopy = this.userName.toLowerCase();
+      // let userNameCopy = this.userName.toLowerCase();
       this.LearningService.GetTrainer().subscribe(data => {
         let temp: any = data.filter(x => (x.phoneNo == this.userName || x.email.toUpperCase() === this.userName.toUpperCase()) && x.password == this.password);
+        if (temp.length == 0) {
+          Swal.fire('Incorrect Username Or Password')
+        }
         this.result = temp[0];
         debugger;
         // this.loader = true;
@@ -223,13 +229,13 @@ export class LoginComponent implements OnInit {
 
     }
 
-    else {
+    // else {
 
-      Swal.fire('Username or Password is invalid');
-      this.userName = "";
-      this.password = "";
-      this.loader = false;
-    }
+    //   Swal.fire('Username or Password is invalid');
+    //   this.userName = "";
+    //   this.password = "";
+    //   this.loader = false;
+    // }
   }
 
 
