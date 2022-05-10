@@ -116,6 +116,7 @@ const routes: Routes = [
   {path:'MyAccountsettingModify',component: MyAccountsettingModifyComponent},
   {path:'Help',component: HelpComponent},
   {path:'SupportTickets',component: SupportTicketsComponent},
+  {path:'SupportTickets/:id',component: SupportTicketsComponent},
   {path:'Loader',component: LoaderComponent},
   {path:'SupportTicketsDashboard',component: SupportTicketsDashboardComponent},
   {path:'CertificateDashboard',component: CertificateDashboardComponent},
