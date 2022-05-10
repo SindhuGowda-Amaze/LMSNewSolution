@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LearningService } from 'src/app/learning.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute } from '@angular/router';
-import { formatDate } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-support-tickets',
@@ -11,7 +11,7 @@ import { formatDate } from '@angular/common';
 })
 export class SupportTicketsComponent implements OnInit {
 
-  constructor(public LearningService: LearningService,public ActivatedRoute: ActivatedRoute) { }
+  constructor(public LearningService: LearningService,public ActivatedRoute: ActivatedRoute,public datepipe:DatePipe) { }
   todaydate:any
   date: any;
   time: any;
@@ -36,6 +36,7 @@ export class SupportTicketsComponent implements OnInit {
     const myDate = new Date();
     const locale = 'en-US';
     this.todaydate = new Date().toISOString().split("T")[0];
+    this.date=this.todaydate
     // this.todaydate = formatDate(myDate, format, locale);
     this.GetSupportTickets();
     this.ActivatedRoute.params.subscribe(params => {
@@ -52,7 +53,7 @@ export class SupportTicketsComponent implements OnInit {
     this.LearningService.GetSupportTickets().subscribe(
       data => {
         this.ticketlist = data.filter(x => x.applicationName == 'DigiLearning and Management' && x.id==this.id);
-        this.date = this.ticketlist[0].date,
+        this.date = this.datepipe.transform(this.ticketlist[0].date, 'yyyy-MM-dd');
           this.time = this.ticketlist[0].time1,
           this.typeofissue = this.ticketlist[0].typeOfApplicationIssues,
           this.prority = this.ticketlist[0].priority,
@@ -142,7 +143,7 @@ export class SupportTicketsComponent implements OnInit {
       }
       this.LearningService.InsertAttachment(entity).subscribe(
         data => {
-          Swal.fire("Saved Successfully");
+          Swal.fire("Updated Successfully");
 
         }
       )

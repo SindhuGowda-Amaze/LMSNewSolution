@@ -130,11 +130,19 @@ export class AdminDashboardComponent implements OnInit {
     }
 
     else {
-      this.LearningService.GetCourseDropdown().subscribe(
-        data => {
-          debugger
-          this.coursedetails = data;
-        })
+      // this.LearningService.GetCourseDropdown().subscribe(
+      //   data => {
+      //     debugger
+      //     this.coursedetails = data;
+      //   })
+    
+            this.LearningService.GetApproveCourse(this.userid).subscribe(data => {
+            debugger
+            this.coursedetails = data;
+            this.courseCount = this.coursedetails.length;
+            debugger
+          })
+      
 
         this.LearningService.GetEnrollCourseChapters().subscribe(
           data => {

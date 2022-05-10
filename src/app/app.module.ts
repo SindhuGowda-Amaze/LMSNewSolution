@@ -71,6 +71,7 @@ import { SupportTicketsDashboardComponent } from './support-tickets-dashboard/su
 import { CertificateDashboardComponent } from './certificate-dashboard/certificate-dashboard.component';
 import { EmployeeAssessmentReportComponent } from './employee-assessment-report/employee-assessment-report.component';
 import { EmployeeReportComponent } from './employee-report/employee-report.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -155,7 +156,7 @@ const ngWizardConfig: NgWizardConfig = {
    
   
   ],
-  providers: [],
+  providers: [ DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

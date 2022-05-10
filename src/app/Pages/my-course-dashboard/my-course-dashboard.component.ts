@@ -104,7 +104,7 @@ export class MyCourseDashboardComponent implements OnInit {
     this.loader = true;
     this.show = value;
     if (value == 1) {
-      this.GetCourse();
+      this.GetApproveCourse();
     }
     else if (value == 2) {
       debugger
