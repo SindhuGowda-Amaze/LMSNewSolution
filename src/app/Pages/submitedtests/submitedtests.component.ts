@@ -16,7 +16,7 @@ export class SubmitedtestsComponent implements OnInit {
   search: any;
   date:any;
  count:any;
-
+resultemployee:any;
   ngOnInit(): void {
 
     this.staffid = sessionStorage.getItem('userid');
@@ -25,8 +25,8 @@ export class SubmitedtestsComponent implements OnInit {
       data => {
         debugger
         this.result = data.filter(x => x.checked == 1);
-        // this.result = data;
-        // this.count = this.result.length;
+        this.resultemployee = this.result;
+        this.count = this.result.length;
       })
   }
   public getdate(even:any){
@@ -43,6 +43,18 @@ this.filterdate();
         this.result = data.filter(x => x.checked == 1 && x.modifiedDate==this.date);
         this.count = this.result.length;
       })
+  }
+
+  public filterSubmittedEmployee() {
+    debugger
+    let searchCopy = this.search.toLowerCase();
+    this.result = this.resultemployee.filter((x: { staffname: string, coursename:string, chaptername:string, 
+      emailID:string }) => (x.staffname.toLowerCase().includes(searchCopy))||
+    (x.coursename.toLowerCase().includes(searchCopy))||(x.chaptername.toLowerCase().includes(searchCopy))||
+    (x.emailID.toLowerCase().includes(searchCopy)));
+    
+    this.count = this.result.length;
+    // location.reload();
   }
 
 

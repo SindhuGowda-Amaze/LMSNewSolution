@@ -36,13 +36,15 @@ export class CertificateDashboardComponent implements OnInit {
   dumdeptlist: any
   departmentlist: any;
   date:any;
+  employeeFilterReportList:any;
 
    public GetTrainerReport(){
      debugger
      this.LearningService.GetTestResponse().subscribe(data=>{
        this.employeereportlist=data.filter(x=>x.userID== this.userid )
        this.dummemployeereportlist=data;
-   
+       this.employeeFilterReportList = this.employeereportlist;
+       this.count = this.employeereportlist.length;
      }
       )
    }
@@ -95,6 +97,16 @@ export class CertificateDashboardComponent implements OnInit {
       else{
         this.GetTrainerReport();
       }
+    }
+
+    public filterNameOfCerticate() {
+      debugger
+      let searchCopy = this.search.toLowerCase();
+      this.employeereportlist = this.employeeFilterReportList.filter((x: { coursename: string , chaptername:
+      string , trainer: string }) => 
+      (x.coursename.toLowerCase().includes(searchCopy)) || (x.chaptername.toLowerCase().includes(searchCopy)) 
+      || (x.trainer.toLowerCase().includes(searchCopy)));
+      this.count = this.employeereportlist.length;
     }
 
 

@@ -16,6 +16,7 @@ export class AssignCourseDashboardComponent implements OnInit {
   assignList: any;
   count: any;
   userid:any;
+  dummassignList:any
   ngOnInit(): void {
     this.GetEnroll();
     this.userid = sessionStorage.getItem('userid');
@@ -27,7 +28,7 @@ public GetEnroll(){
       // this.result = data.filter(x => x.manager == this.manager );
       // this.result = data.filter(x => x.status == 'Manager Assigned' );
       this.assignList =  data.filter(x => x.type == 'Manager Assign'&& x.manager == this.userid)
-      // this.assignList=data;
+       this.dummassignList=this.assignList;
       this.count = this.assignList.length;
     })
 }
@@ -58,6 +59,14 @@ public Ondelete(ID:any) {
 edit(ID: any) {
   debugger
   location.href = "#/AssignCourseToEmployee/" + ID;
+}
+
+public filterAssignTraining() {
+  debugger
+  let searchCopy = this.search.toLowerCase();
+  this.assignList = this.dummassignList.filter((x: { employeeName: string}) => (x.employeeName.toLowerCase().includes(searchCopy)));
+  this.count = this.assignList.length;
+  // location.reload();
 }
 
 }
