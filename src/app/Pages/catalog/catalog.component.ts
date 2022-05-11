@@ -209,7 +209,7 @@ loader:any
     }
   }
 
-  public filtercourse(name: any,value:any) {
+  public filtercourse(value:any) {
     debugger
     this.LearningService.GetCoursesByUserID(this.userid).subscribe(
       data => {

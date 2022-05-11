@@ -120,7 +120,7 @@ export class CourseDashboardComponent implements OnInit {
     debugger
     this.categoryid=even.target.value;
     if(even.target.value !=0){
-      this.result = this.dummresult.filter((x: { categoryName: any; }) => x.categoryName == this.categoryid)
+      this.result = this.dummresult.filter((x: { categoryID: any; }) => x.categoryID == this.categoryid)
       this.count = this.result.length;
     }
     else{
