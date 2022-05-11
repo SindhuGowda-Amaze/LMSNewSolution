@@ -289,6 +289,13 @@ export class LearningService {
     return this.http.get<any[]>(
       this.baseURL + '/Master/GetCourse');
   }
+
+  public GetUnmappedCourseDropdown() {
+    debugger;
+    return this.http.get<any[]>(
+      this.baseURL + '/Master/GetUnmappedCourseDropdown');
+  }
+  
   public InsertCourse(data: any) {
     debugger;
     this.url = this.baseURL + '/Master/InsertCourse';
@@ -544,7 +551,10 @@ export class LearningService {
     return this.http.get<any[]>(this.baseURL + "/Master/GetTrainerCourseMappingDashboard");
   }
 
+  public GetUnmappedTrainer() {
 
+    return this.http.get<any[]>(this.baseURL + "/Master/GetUnmappedTrainer");
+  }
 
   public GetAllCounts(staffid: any, typeid: any) {
 
