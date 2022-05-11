@@ -27,16 +27,16 @@ export class MyCourseDashboardComponent implements OnInit {
 
 
 
-    //  this.Showcards(2);
-    //   this.LearningService.GetMyDetails().subscribe(data => {
-    //     debugger
-    //     this.stafflist = data.filter(x => x.id == this.userid);
-    //     this.managlist = data.filter(x=>x.id==this.manager)    
-    //     this.manageremail=this.managlist[0].emailID
+     this.Showcards(2);
+      this.LearningService.GetMyDetails().subscribe(data => {
+        debugger
+        this.stafflist = data.filter(x => x.id == this.userid);
+        this.managlist = data.filter(x=>x.id==this.manager)    
+        this.manageremail=this.managlist[0].emailID
 
-    //   });
+      });
 
-    // this.show=2;
+    this.show=2;
 
 
     this.GetAllCounts();
@@ -108,10 +108,11 @@ export class MyCourseDashboardComponent implements OnInit {
     }
     else if (value == 2) {
       debugger
-      this.LearningService.GetCourse().subscribe(data => {
-        debugger
-        this.coursedetails = data.filter((x: { staffID: any; completed: number }) => x.completed == 0 && x.staffID == this.userid);
-      });
+      // this.LearningService.GetEnroll().subscribe(data => {
+      //   debugger
+      //   this.coursedetails = data.filter((x: { staffID: any; completed: number }) => x.completed == 0 && x.staffID == this.userid);
+      // });
+      this.GetApproveCourse();
     }
     else if (value == 3) {
       debugger
@@ -141,7 +142,7 @@ export class MyCourseDashboardComponent implements OnInit {
     debugger
     this.LearningService.GetApproveCourse(this.userid).subscribe(data => {
       debugger
-      this.coursedetails = data.filter(x => x.completed == 0 && x.enrollid != 0);
+      this.coursedetails = data.filter(x => x.completed == 0 && x.enrollid != 0 && x.staffid==this.userid);
       this.latestcoursedetails = data[0];
       if (this.latestcoursedetails.length = 0) {
         this.lastassigned = 0;

@@ -10,23 +10,23 @@ import Swal from 'sweetalert2';
 export class AssessmentdashboardComponent implements OnInit {
 
   constructor(private ActivatedRoute: ActivatedRoute, private LearningService: LearningService) { }
-  result:any;
-  search:any;
-  count:any;
-  courseid:any;
-  coursedetails:any;
-  dummcoursedetails:any;
-  question:any;
-  quetionlist:any;
+  result: any;
+  search: any;
+  count: any;
+  courseid: any;
+  coursedetails: any;
+  dummcoursedetails: any;
+  question: any;
+  quetionlist: any;
   p: any = 1;
   count1: any = 10;
-  correctAnswers:any
+  correctAnswers: any
   ngOnInit(): void {
-   this. GetAssessmentResult()
+    this.GetAssessmentResult()
     this.GetAssessments();
     this.GetCourse();
-    this. GetQuestionMaster();
-    this.question1=0;
+    this.GetQuestionMaster();
+    this.question1 = 0;
     this.course = 0;
 
     this.LearningService.GetTestResponse().subscribe(
@@ -37,41 +37,55 @@ export class AssessmentdashboardComponent implements OnInit {
       })
   }
 
-  course:any;
-  question1:any;
+  course: any;
+  question1: any;
 
 
   getcourseid(even: any) {
     debugger
-    this.courseid = even.target.value;
-    if (this.course != 0 && this.question1 == 0) {
+    this.course = even.target.value;
+    if (this.course == 0) {
       debugger
-      this.quetionlist = this.dummquetionlist.filter((x: { courseID: any; }) => x.courseID == this.course)
-    }
-    else if (this.course == 0 && this.question1 != 0) {
-      debugger
-      this.quetionlist = this.dummquetionlist.filter((x: { questionID: any; }) => x.questionID == this.question1)
-    }
-    else{
-      this.quetionlist = this.dummquetionlist.filter((x: { questionID: any,courseID:any }) => x.questionID == this.question1 &&  x.courseID == this.course)
+      this.LearningService.GetAssessments().subscribe(
+        data => {
+          debugger
+          this.quetionlist = data;
+          console.log("questionlist", this.quetionlist)
+          this.dummquetionlist = data;
+          this.count = this.quetionlist.length;
+        })
+
     }
 
-    this.GetFilteredCourseID();
+    else {
+      this.LearningService.GetAssessments().subscribe(
+        data => {
+          debugger
+          this.quetionlist = this.dummquetionlist.filter((x: { questionID: any, courseID: any }) => x.courseID == this.course)
+          console.log("questionlist", this.quetionlist)
+          this.dummquetionlist = data;
+
+          this.count = this.quetionlist.length;
+        })
+
+    }
+
+   // this.GetFilteredCourseID();
 
   }
- 
+
   public GetFilteredCourseID() {
     this.LearningService.GetAssessments().subscribe(data => {
       debugger
       this.quetionlist = data.filter(x => x.courseID == this.courseid)
-    
+
     })
   }
 
 
- 
 
-  courselist:any;
+
+  courselist: any;
   public GetCourse() {
     debugger
     this.LearningService.GetCourseDropdown().subscribe(
@@ -82,19 +96,19 @@ export class AssessmentdashboardComponent implements OnInit {
   }
 
 
-  questiontype:any;
-  dummquestiontype:any;
+  questiontype: any;
+  dummquestiontype: any;
   public GetQuestionMaster() {
     debugger
     this.LearningService.GetQuestionMaster().subscribe(
       data => {
         debugger
         this.questiontype = data;
-        this.correctAnswers= this.quetionlist[0].correctAnswers
+
       })
   }
 
-  assessmentlist:any;
+  assessmentlist: any;
   public GetAssessmentResult() {
     debugger
     this.LearningService.GetAssessmentResult().subscribe(
@@ -106,21 +120,20 @@ export class AssessmentdashboardComponent implements OnInit {
 
 
 
-  dummquetionlist:any;
+  dummquetionlist: any;
   public GetAssessments() {
     debugger
     this.LearningService.GetAssessments().subscribe(
       data => {
         debugger
         this.quetionlist = data;
-        console.log("questionlist",this.quetionlist)
+        console.log("questionlist", this.quetionlist)
         this.dummquetionlist = data;
-        this.correctAnswers= this.quetionlist[0].correctAnswers
         this.count = this.quetionlist.length;
       })
   }
 
- public Ondelete(id:any) {
+  public Ondelete(id: any) {
     Swal.fire({
       title: 'Are You Sure ',
       text: "Do you want to delete the Selected Record",
@@ -132,38 +145,53 @@ export class AssessmentdashboardComponent implements OnInit {
     }).then((result) => {
       if (result.value == true) {
         this.LearningService.DeleteAssessments(id).subscribe(
-      data => {
-        debugger
-        this.GetAssessments();
-      }
-    )
-    Swal.fire('Successfully Deleted...!');
-    this.ngOnInit();
+          data => {
+            debugger
+            this.GetAssessments();
+          }
+        )
+        Swal.fire('Successfully Deleted...!');
+        this.ngOnInit();
       }
     });
   }
 
 
-  checkbutton(){
-    location.href="/Checkanswer"
+  checkbutton() {
+    location.href = "/Checkanswer"
   }
 
 
-  getquestion(even:any){
-    if(even.target.value !=0){
-      this.question=even.target.value;
-      debugger
-      this.quetionlist = this.dummquetionlist.filter((x: { questionID: any; }) => x.questionID == this.question);
-      this.count=this.quetionlist.length;
-      this.correctAnswers= this.quetionlist[0].correctAnswers
+  getquestion(even: any) {
+    if (even.target.value == 0) {
+      this.LearningService.GetAssessments().subscribe(
+        data => {
+          debugger
+          this.quetionlist = this.dummquetionlist.filter((x: { questionID: any, courseID: any }) => x.courseID == this.course)
+          console.log("questionlist", this.quetionlist)
+          this.dummquetionlist = data;
+
+          this.count = this.quetionlist.length;
+        })
+
+
+
     }
-    else{
-      this.GetAssessments();
+    else {
+      this.LearningService.GetAssessments().subscribe(
+        data => {
+          debugger
+          this.quetionlist = this.dummquetionlist.filter((x: { questionID: any, courseID: any }) => x.questionID == this.question1 && x.courseID == this.course)
+          console.log("questionlist", this.quetionlist)
+          this.dummquetionlist = data;
+
+          this.count = this.quetionlist.length;
+        })
     }
   }
 
 
- 
+
 
 
 

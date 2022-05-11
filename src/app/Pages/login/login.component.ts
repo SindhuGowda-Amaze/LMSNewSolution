@@ -129,7 +129,7 @@ export class LoginComponent implements OnInit {
       debugger
       // let userNameCopy = this.userName.toLowerCase();
       this.LearningService.GetMyDetails().subscribe(async data => {
-        let temp: any = data.filter(x => (x.emailID.toUpperCase() === this.userName.toUpperCase() || x.phoneNo == this.userName) && x.password == this.password);
+        let temp: any = data.filter(x => (x.emailID.toUpperCase() === this.userName.toUpperCase() || x.phoneNo == this.userName) && x.password == this.password  && x.roleType == 6);
         if (temp.length == 0) {
           Swal.fire('Incorrect Username Or Password')
         }
@@ -165,7 +165,7 @@ export class LoginComponent implements OnInit {
       debugger
       // let userNameCopy = this.userName.toLowerCase();
       this.LearningService.GetMyDetails().subscribe(data => {
-        let temp: any = data.filter(x => (x.emailID.toUpperCase() === this.userName.toUpperCase() || x.phoneNo == this.userName) && x.password == this.password);
+        let temp: any = data.filter(x => (x.emailID.toUpperCase() === this.userName.toUpperCase() || x.phoneNo == this.userName) && x.password == this.password  && x.roleType == 2);
         if (temp.length == 0) {
           Swal.fire('Incorrect Username Or Password')
         }
