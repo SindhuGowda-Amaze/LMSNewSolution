@@ -51,7 +51,7 @@ export class TrainerCourseMappingFormComponent implements OnInit {
 
     // this.GetCourse();
 
-    this.LearningService.GetCourseDropdown().subscribe(
+    this.LearningService.GetUnmappedCourseDropdown().subscribe(
       data => {
         debugger
         this.CourseList = data
@@ -182,7 +182,7 @@ TrainerID:any
   }
   public GetTrainer() {
     debugger
-    this.LearningService.GetTrainer().subscribe(
+    this.LearningService.GetUnmappedTrainer().subscribe(
       data => {
         debugger
         this.trainerlist = data.filter(x=>x.id!=this.TrainerID);
