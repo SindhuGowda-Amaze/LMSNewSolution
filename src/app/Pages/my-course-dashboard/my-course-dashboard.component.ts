@@ -143,6 +143,7 @@ export class MyCourseDashboardComponent implements OnInit {
     this.LearningService.GetApproveCourse(this.userid).subscribe(data => {
       debugger
       this.coursedetails = data.filter(x => x.completed == 0 && x.enrollid != 0 && x.staffid==this.userid);
+      console.log( this.coursedetails)
       this.latestcoursedetails = data[0];
       if (this.latestcoursedetails.length = 0) {
         this.lastassigned = 0;

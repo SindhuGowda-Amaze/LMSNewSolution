@@ -17,9 +17,16 @@ export class LearningPathDashboardComponent implements OnInit {
   result1: any;
   result2: any;
   roleid:any;
-  
+  result3:any;
+  result4:any;
+  userid: any;
+  latestcoursedetails: any;
+  lastassigned: any;
+  show:any;
+
   ngOnInit(): void {
     this.roleid = sessionStorage.getItem('roleid');
+    this.userid = sessionStorage.getItem('userid')
     this.GetEmployee();
     this.GetCourse();
     this.GetTrainerCourseMapping();
@@ -49,13 +56,50 @@ export class LearningPathDashboardComponent implements OnInit {
         this.result1 = data;
       })
   }
+
+  // public GetTrainerCourseMapping() {
+  //   debugger
+  //   this.LearningService.GetTrainerCourseMapping().subscribe(
+  //     data => {
+  //       debugger
+  //       this.result2 = data;
+  //     })
+  // }
+
   public GetTrainerCourseMapping() {
     debugger
     this.LearningService.GetTrainerCourseMapping().subscribe(
       data => {
         debugger
-        this.result2 = data;
+        this.GetApproveCourse();
       })
+  }
+
+  public GetTrainerCourseMappingForProgress() {
+    debugger
+    this.LearningService.GetCourse().subscribe(
+      data => {
+        debugger
+        this.result3 = data.filter((x: { staffID: any; completed: number; enrollid: number; }) => x.completed != 1 && x.enrollid == 0);
+        
+      })
+    }
+
+    public GetTrainerCourseMappingForCompleted() {
+      debugger
+      this.LearningService.GetCourse().subscribe(
+        data => {
+          debugger
+          this.result4 = data.filter(x => x.completed == 1 && x.enrollid != 0 && x.staffID == this.userid);
+        })
+      }
+
+  public GetApproveCourse() {
+    debugger
+    this.LearningService.GetApproveCourse(this.userid).subscribe(data => {
+      debugger
+      this.result2 = data.filter(x => x.completed == 0 && x.enrollid != 0 && x.staffid==this.userid);
+    })
   }
 
 
