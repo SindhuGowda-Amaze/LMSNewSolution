@@ -126,8 +126,10 @@ loader:any
           'success'
         );
         location.href = "#/Catalog";
+       
       }
     });
+   
   }
 
   // showcards(){

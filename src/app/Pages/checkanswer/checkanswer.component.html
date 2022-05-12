@@ -31,15 +31,15 @@
                         <button *ngIf="list.type==2" class="submit1" (click)="getdetailslist(list)" data-toggle="modal"
                             data-target="#myModal">View Answer</button>
                         <div *ngIf="list.type==1" style="margin-bottom: 10px; margin-left: 100px;">
-                            {{list.userAnswer.split("$@")[1]}}
+                            {{list.userAnswer}}
                         </div>
                     </div>
                     <div class="col-lg-2">
-                        <div style="margin-bottom: 10px;" *ngIf="list.userAnswer.split('$@')[1]==list.correctAnswer &&
+                        <div style="margin-bottom: 10px;" *ngIf="list.userAnswer==list.correctAnswer &&
                             list.type==1">
                             {{list.weightage}} &nbsp;&#9989;</div>
                         <div style="margin-bottom: 10px;"
-                            *ngIf="list.userAnswer.split('$@')[1]!=list.correctAnswer  && list.type==1">0
+                            *ngIf="list.userAnswer!=list.correctAnswer  && list.type==1">0
                             &nbsp;&#10060;
                         </div>
                         <div style="margin-bottom: 10px;" *ngIf="list.type==2">

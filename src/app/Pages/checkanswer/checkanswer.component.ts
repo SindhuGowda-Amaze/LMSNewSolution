@@ -59,7 +59,7 @@ export class CheckanswerComponent implements OnInit {
     debugger
     this.AmazeService.GetTestResponseDetails().subscribe(data => {
       debugger
-      this.finalresult = data.filter(x => x.testResponseID == this.id);
+      this.finalresult = data.filter(x => x.testResponseID == this.id );
       let total: any = 0;
       this.finalresult.forEach((x: { weightage: any; }) => {
         total += Number(x.weightage);

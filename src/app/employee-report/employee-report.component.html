@@ -47,8 +47,8 @@
                         </tr>
                         <tr *ngFor="let details of employeereportlist|filter :search">
                             <td style="color:#0C275A">{{details.courseName}}</td>
-                            <td style="color:#0C275A">{{details.modifiedDate}}</td>
-                            <td style="color:#0C275A">{{details.completiondate}}</td>
+                            <td style="color:#0C275A">{{details.modifiedDate|date}}</td>
+                            <td style="color:#0C275A">{{details.completiondate|date}}</td>
                             <td style="color:#0C275A">
                                 <p *ngIf="details.testResult==null">Ongoing</p>
                                 <p *ngIf="details.testResult!=null">Completed</p>

@@ -26,9 +26,7 @@ export class TrainerCourseMappingFormComponent implements OnInit {
    
     this.maxdate = new Date().toISOString().split("T")[0];
  
-    this.TrainerID=0;
-    this.CourseID=0;
-    this.BatchName=0;
+
     this.GetTrainer();
     this.GetBatch();
     
@@ -48,7 +46,10 @@ export class TrainerCourseMappingFormComponent implements OnInit {
       }
     })
     this.GetTrainerCourseMapping();
-
+    this.TrainerID=0;
+    this.CourseID=0;
+    
+    this.BatchName=0;
     // this.GetCourse();
 
     this.LearningService.GetUnmappedCourseDropdown().subscribe(

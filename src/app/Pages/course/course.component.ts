@@ -25,6 +25,7 @@ export class CourseComponent implements OnInit {
   entryCriteria: any;
   exitCriteria: any;
   trainingType: any;
+  updatephoto:any;
 
   ngOnInit(): void {
     this.categoryid = 0;
@@ -47,6 +48,7 @@ export class CourseComponent implements OnInit {
       data => {
         debugger
         this.result = data.filter(x => x.id == this.id);
+        this.updatephoto = this.result[0].updatephoto;
         this.categoryid = this.result[0].categoryID;
         this.name = this.result[0].name;
         this.description = this.result[0].description;
@@ -120,23 +122,47 @@ export class CourseComponent implements OnInit {
 
   Update() {
     debugger
-    var json = {
-      'ID': this.id,
-      // "categoryName": this.categoryName,
-      "name": this.name,
-      "description": this.description,
-      "photo": this.Course_Photo,
-      "duration": this.duration,
-      "fee": this.fee,
-      "entryCriteria": this.entryCriteria,
-      "exitCriteria": this.exitCriteria,
-      "CategoryID": this.categoryid,
-      "trainingLink": this.trainingLink,
-      "userName": this.userName,
-      "password": this.password,
-      "venue": this.venue,
-      "trainingType": this.trainingType
-    };
+    if(this.Course_Photo.includes('http://103.133.214.197/')){
+      var json = {
+        'ID': this.id,
+        // "categoryName": this.categoryName,
+        "name": this.name,
+        "description": this.description,
+        "photo": this.updatephoto,
+        "duration": this.duration,
+        "fee": this.fee,
+        "entryCriteria": this.entryCriteria,
+        "exitCriteria": this.exitCriteria,
+        "CategoryID": this.categoryid,
+        "trainingLink": this.trainingLink,
+        "userName": this.userName,
+        "password": this.password,
+        "venue": this.venue,
+        "trainingType": this.trainingType
+      };
+  
+    }
+    else{
+      var json = {
+        'ID': this.id,
+        // "categoryName": this.categoryName,
+        "name": this.name,
+        "description": this.description,
+        "photo": this.Course_Photo,
+        "duration": this.duration,
+        "fee": this.fee,
+        "entryCriteria": this.entryCriteria,
+        "exitCriteria": this.exitCriteria,
+        "CategoryID": this.categoryid,
+        "trainingLink": this.trainingLink,
+        "userName": this.userName,
+        "password": this.password,
+        "venue": this.venue,
+        "trainingType": this.trainingType
+      };
+    }
+   
+    
 
     this.LearningService.UpdateCourse(json).subscribe(
       data => {

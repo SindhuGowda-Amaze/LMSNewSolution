@@ -522,6 +522,11 @@ export class LearningService {
     return this.http.get<any[]>(
       this.baseURL + "/Master/DeleteTrainingEnrollment?ID=" + ID);
   }
+  public DeleteTestResponseDetails(ID: any) {
+    return this.http.get<any[]>(
+      this.baseURL + "/Master/DeleteTestResponseDetails?ID=" + ID);
+  }
+  
 
   public UpdateErollmentStatusApproved(data: any) {
     debugger;

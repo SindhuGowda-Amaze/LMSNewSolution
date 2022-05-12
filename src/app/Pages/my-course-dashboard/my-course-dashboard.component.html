@@ -25,11 +25,11 @@
         </div>
         <div class="col-lg-3">
             <div class="card1" style="background-color: white; height:290px;width: 290px; border-radius: 10px;">
-                <img *ngIf="show==1" class="card-img-top" style="width: 95%; height: 125px; margin-left: 7px; margin-top: 5px;"
+                <img class="card-img-top" style="width: 95%; height: 125px; margin-left: 7px; margin-top: 5px;"
                      src="{{latestcoursedetails.photo}}" alt="Not yet assigned">
                      
                      <img *ngIf="show==0" class="card-img-top" style="width: 95%; height: 125px; margin-left: 7px; margin-top: 5px;"
-                     src="../../../assets/Images/125.png" alt="Not yet assigned"> 
+                     src="assets/Images/125.png" alt="Not yet assigned"> 
                 <div class="card-body">
                     <div class="row">
                         <p class="lastassigned">Last Assigned</p> <br>
@@ -267,7 +267,7 @@
                                     Enroll</button>
 
                                     <button class="edit" 
-                                    *ngIf="details.completed==1" (click)="getenrollid(details.enrollid)"  [routerLink]="['/CourseCertificate',details.id]">Completed
+                                    *ngIf="details.completed==1" (click)="getenrollid(details.enrollid)"  [routerLink]="['/CourseCertificateNew',details.id]">Completed
                                     </button> 
                                 <!-- <button class="Button1" *ngIf="show==4" (click)="getcourseid(details.id)">
                                     Completed</button> -->

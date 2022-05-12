@@ -80,7 +80,7 @@ const routes: Routes = [
   { path: 'ViewCourse/:id', component: ViewCourseComponent },
   { path: 'MyCourseDashboard', component: MyCourseDashboardComponent },
   { path: 'TakeAssessment', component: TakeAssessmentComponent },
-  { path: 'TakeAssessment/:courseid/:chapterid', component: TakeAssessmentComponent },
+  { path: 'TakeAssessment/:courseid/:chapterid/:testtype', component: TakeAssessmentComponent },
   { path: 'AssessmentResult/:id', component: AssessmentResultComponent },
   { path: 'CourseCertificate', component: CourseCertificateComponent },
   { path: 'StartMyCourse', component: StartMyCourseComponent },

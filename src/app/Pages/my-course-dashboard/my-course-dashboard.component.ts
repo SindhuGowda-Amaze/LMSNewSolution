@@ -117,7 +117,7 @@ export class MyCourseDashboardComponent implements OnInit {
     else if (value == 3) {
       debugger
       //  this.coursedetails = this.trainerCourseMapList.filter((x: { staffID: any; completed: number; enrollid: number; })=> x.staffID==this.userid && x.completed!=1 && x.enrollid==0);
-      this.LearningService.GetCourse().subscribe(data => {
+      this.LearningService.GetTrainerCourseMapping().subscribe(data => {
         debugger
         this.coursedetails = data.filter((x: { staffID: any; completed: number; enrollid: number; }) => x.completed != 1 && x.enrollid == 0);
       });

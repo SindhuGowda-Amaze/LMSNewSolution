@@ -30,3 +30,6 @@ div.cls_007{font-family:Poppins;font-size:22.5px;color:rgb(85,79,76);font-weight
     float: right;
     margin-right: 10px;
   }
+  .wrap{
+     word-wrap: break-word;
+  }

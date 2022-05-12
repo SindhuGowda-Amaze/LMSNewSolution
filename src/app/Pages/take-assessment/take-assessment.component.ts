@@ -44,6 +44,8 @@ export class TakeAssessmentComponent implements OnInit {
   Email: any;
   email: any;
   emailID: any;
+  testtype:any;
+  testResponseID1:any;
   constructor(private AmazeService: LearningService, private ActivatedRoute: ActivatedRoute, private elementRef: ElementRef,public router:Router) {
   }
   courseid:any;
@@ -75,6 +77,16 @@ export class TakeAssessmentComponent implements OnInit {
       debugger
        this.courseid = params['courseid'];
        this.chapterid = params['chapterid'];
+       this.testtype = params['testtype'];
+
+       if(this.testtype==1){
+        
+        this.AmazeService.GetTestResponse().subscribe(data => {
+          debugger
+  let temp:any=data.filter(x=>x.userID==sessionStorage.getItem('userid')&&x.courseID== this.courseid&&x.chapterID==this.chapterid);
+  this.testResponseID1=temp[0].id;
+           })
+       }
 
        this.AmazeService.GetAssessments().subscribe(data => {
         debugger
@@ -256,24 +268,56 @@ export class TakeAssessmentComponent implements OnInit {
           Swal.fire('You Already took this Test');
           this.ngOnInit();
         }else{
-          for (var i = 0; i < this.questionList.length; i++) {
-            var ett = {
-              'QuestionID': this.questionList[i].id,
-              'CorrectAnswer': this.questionList[i].correctAnswer,
-              'UserAnswer': this.questionList[i].userAnswer,
-              'TestResponseID': this.testResponseID,
-              'ObtainedMarks':  this.questionList[i].correctAnswer==this.questionList[i].userAnswer?this.questionList[i].weightage:0
-            }
-            this.AmazeService.InsertTestResponseDetails(ett).subscribe(data => {
+
+          if(this.testtype==1){
+
+            this.AmazeService.DeleteTestResponseDetails(this.testResponseID1).subscribe(data => {
+              debugger
+              for (var i = 0; i < this.questionList.length; i++) {
+                var ett = {
+                  'QuestionID': this.questionList[i].id,
+                  'CorrectAnswer': this.questionList[i].correctAnswer,
+                  'UserAnswer': this.questionList[i].userAnswer.split("$@")[1],
+                  'TestResponseID': this.testResponseID1,
+                  'ObtainedMarks':  this.questionList[i].correctAnswer==this.questionList[i].userAnswer.split("$@")[1]?this.questionList[i].weightage:0
+                }
+                this.AmazeService.InsertTestResponseDetails(ett).subscribe(data => {
+                });
+              }
+              // Swal.fire('You have submited test successfully...');
+             
+              this.show = 0;
+              this.startTest = "";
+            //  this.router.navigate(['/AssessmentResult', this.testResponseID]);
+            // this.router.navigate(['#/MyCourseDashboard']);
+             location.href="#/MyCourseDashboard";
+           
+              // .filter(x => x.checked == 1);
             });
+            
+
+          }else{
+            for (var i = 0; i < this.questionList.length; i++) {
+              var ett = {
+                'QuestionID': this.questionList[i].id,
+                'CorrectAnswer': this.questionList[i].correctAnswer,
+                'UserAnswer': this.questionList[i].userAnswer.split("$@")[1],
+                'TestResponseID': this.testResponseID,
+                'ObtainedMarks':  this.questionList[i].correctAnswer==this.questionList[i].userAnswer.split("$@")[1]?this.questionList[i].weightage:0
+              }
+              this.AmazeService.InsertTestResponseDetails(ett).subscribe(data => {
+              });
+            }
+            // Swal.fire('You have submited test successfully...');
+           
+            this.show = 0;
+            this.startTest = "";
+          //  this.router.navigate(['/AssessmentResult', this.testResponseID]);
+          // this.router.navigate(['#/MyCourseDashboard']);
+           location.href="#/MyCourseDashboard";
           }
-          // Swal.fire('You have submited test successfully...');
-         
-          this.show = 0;
-          this.startTest = "";
-        //  this.router.navigate(['/AssessmentResult', this.testResponseID]);
-        // this.router.navigate(['#/MyCourseDashboard']);
-         location.href="#/MyCourseDashboard";
+          
+        
         }
        
       })
