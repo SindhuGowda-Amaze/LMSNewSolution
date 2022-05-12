@@ -4,7 +4,7 @@
             <p class="headings">Certificate</p>
         </div>
         <div class="col-lg-2">
-            <p class="count">Count:{{employeereportlist.length}} </p>
+            <p class="count">Count:{{count}} </p>
         </div>
     </div>
     <div class="card">
@@ -21,7 +21,7 @@
             </div>
             <div class="col-lg-2">
                 <input type="search" class="form-control search" placeholder="Search for Name.." [(ngModel)]="search"
-                    name="search">
+                    name="search" (ngModelChange)="filterNameOfCerticate()">
             </div>
             <div class="col-lg-2">
                 <input type="date" class="form-control" id="date" name="date" [(ngModel)]="date">

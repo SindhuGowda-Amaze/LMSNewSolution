@@ -12,7 +12,7 @@
                     <p class="headings">Test Submitted </p>
                 </div>
                 <div class="col-lg-2">
-                    <p class="count">Count: {{result.length}}</p>
+                    <p class="count">Count: {{count}}</p>
                 </div>
             </div>
 
@@ -26,7 +26,7 @@
                         <input type="date" class="form-control search" placeholder="Search"  id="date" name="date" [(ngModel)]="date" (change)="getdate($event)">
                     </div>
                     <div class="col-lg-3">
-                        <input class="form-control search" placeholder="Search" [(ngModel)]="search">
+                        <input class="form-control search" placeholder="Search" [(ngModel)]="search" (ngModelChange)="filterSubmittedEmployee()">
                     </div>
                     <div class="col-lg-3">
                     </div>

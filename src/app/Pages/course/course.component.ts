@@ -98,6 +98,7 @@ export class CourseComponent implements OnInit {
         // "categoryName": this.categoryName,
         "name": this.name,
         "description": this.description,
+        
         "photo": this.Course_Photo,
         "duration": this.duration,
         "fee":this.fee,
