@@ -135,45 +135,17 @@
                         <div class="row">
                             <div class="col-lg-4"></div>
                             <div class="col-lg-4" style="text-align: center;">
-                                <h6 class="Number">{{countlist.trainersCount}}</h6>
+                                <h6 class="Number">{{countAssignTrainer}}</h6>
                             </div>
                             <div class="col-lg-4"></div>
                         </div><br><br><br>
                         <button class="clickbutton1" data-toggle="modal"
-                            data-target="#enroll2">VIEW
+                            data-target="#enroll3">VIEW
                             DETAILS</button>
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="col-lg-3" *ngIf="showenrolment=='0'">
-                <div class="card1" style="background-color: white;  height: 325px;width: 275px;">
-                    <div class="front">
-                        <br>
-                        <div class="row title_outer1 top1">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-1">
-                                <i class="fa fa-calendar calend" aria-hidden="true"></i>
-                            </div>
-                            <div class="col-lg-9">
-                                <p class="font">Trainers</p>
-                            </div>
-                        </div><br><br>
-                        <div class="row">
-                            <div class="col-lg-4"></div>
-                            <div class="col-lg-4" style="text-align: center;">
-                                <h6 class="Number">{{countlist.trainersCount}}</h6>
-                            </div>
-                            <div class="col-lg-4"></div>
-                        </div><br><br><br>
-                        <button class="clickbutton1" data-toggle="modal" data-target="#enroll2">
-                            VIEW DETAILS</button>
-                    </div>
-                </div>
-            </div> -->
-
-
-
+            
         </div>
 
 
@@ -197,7 +169,7 @@
                             <div class="row">
                                 <div class="col-lg-4"></div>
                                 <div class="col-lg-4" style="text-align: center;">
-                                    <p class="Number">{{countlist.trainersCount}}</p>
+                                    <p class="Number">{{countAdminTrainercourse}}</p>
                                 </div>
                                 <div class="col-lg-4"></div>
                             </div><br>
@@ -275,9 +247,6 @@
             </div>
             <div class="modal-footer">
                 <hr>
-                <!-- <div class="col-lg-2">
-                    <button data-dismiss="modal" class="CloseBTN">Close</button>
-                </div> -->
             </div>
         </div>
     </div>
@@ -311,9 +280,6 @@
             </div>
             <div class="modal-footer">
                 <hr>
-                <!-- <div class="col-lg-2">
-                    <button data-dismiss="modal" class="CloseBTN">Close</button>
-                </div> -->
             </div>
         </div>
     </div>
@@ -332,12 +298,10 @@
                     <div class="col-lg-12">
                         <table style="width: 100%;">
                             <tr style="font-size: 16px;">
-                                <!-- <th>Employee Name</th> -->
                                 <th>Trainer Name</th>
                                 <th>Training Name</th>
                             </tr>
                             <tr *ngFor="let details of Assigntrainerlist" style="text-align: left;">
-                                <!-- <td style="text-align: left;">{{details.staffName}}</td> -->
                                 <td style="text-align: left;">{{details.trainerName}}</td>
                                 <td style="text-align: left;">{{details.courseName}}</td>
                             </tr>
@@ -348,9 +312,6 @@
             </div>
             <div class="modal-footer">
                 <hr>
-                <!-- <div class="col-lg-2">
-                    <button data-dismiss="modal" class="CloseBTN">Close</button>
-                </div> -->
             </div>
         </div>
     </div>

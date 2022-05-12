@@ -20,6 +20,8 @@ export class AdminDashboardComponent implements OnInit {
   chapterlist: any;
   coursedetails1:any;
   Assigntrainerlist:any;
+  countAssignTrainer:any;
+  countAdminTrainercourse:any;
   
   ngOnInit(): void {
     this.userid = sessionStorage.getItem('userid')
@@ -109,7 +111,7 @@ export class AdminDashboardComponent implements OnInit {
          
               this.Assigntrainerlist = data;
               console.log(this.Assigntrainerlist)
-         
+         this.countAdminTrainercourse =this.Assigntrainerlist.length;
           })
 
 
@@ -164,6 +166,15 @@ export class AdminDashboardComponent implements OnInit {
             this.assesmentlist = data.filter(x => x.staffID == this.userid && x.status == 'Manager Approved');
             debugger
           })
+
+          this.LearningService.GetTrainerCourseMappingDashboard().subscribe(
+            data => {
+              debugger
+           
+                this.Assigntrainerlist = data.filter(x => x.staffID == this.userid);
+                console.log(this.Assigntrainerlist)
+           this.countAssignTrainer=this.Assigntrainerlist.length;
+            })
 
 
 

@@ -15,17 +15,6 @@ export class CertificateDashboardComponent implements OnInit {
   constructor(private LearningService:LearningService,private ActivatedRoute:ActivatedRoute ) { }
   userid:any
   courseList:any;
-  ngOnInit(): void {
-    this.userid = sessionStorage.getItem('userid');
-    this.GetTrainerReport();
-    this.GetDepartmentMaster();
-
-    this.LearningService.GetCourse().subscribe(
-      data => {
-        debugger
-        this.courseList = data;
-      })
-  }
   search:any;
   dummemployeereportlist: any;
   traininglist: any;
@@ -37,6 +26,17 @@ export class CertificateDashboardComponent implements OnInit {
   departmentlist: any;
   date:any;
   employeeFilterReportList:any;
+
+  ngOnInit(): void {
+    this.userid = sessionStorage.getItem('userid');
+    this.GetTrainerReport();
+    this.GetDepartmentMaster();
+    this.LearningService.GetCourseDropdown().subscribe(
+      data => {
+        debugger
+        this.courseList = data;
+      })
+  }
 
    public GetTrainerReport(){
      debugger
@@ -91,7 +91,7 @@ export class CertificateDashboardComponent implements OnInit {
       debugger
       this.courseid=even.target.value;
       if(even.target.value !=0){
-        this.employeereportlist = this.dummemployeereportlist.filter((x: { courseName: any; }) => x.courseName == this.courseid)
+        this.employeereportlist = this.dummemployeereportlist.filter((x: { courseID: any; userID:any;}) => x.courseID == this.courseid && x.userID== this.userid )
         this.count = this.employeereportlist.length;
       }
       else{
@@ -108,6 +108,7 @@ export class CertificateDashboardComponent implements OnInit {
       || (x.trainer.toLowerCase().includes(searchCopy)));
       this.count = this.employeereportlist.length;
     }
+    
 
 
 

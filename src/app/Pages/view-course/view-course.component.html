@@ -79,8 +79,10 @@
                     <div class="card chapter" *ngFor="let details of chapterdetails">
                         <div class="row" >
                             <div class="col-lg-10 chapter">
-                                <a href="" class="chapter" style="font-size: 18px;" (click)="GetDetails(details.name)">
-                                    <u>{{details.name}}</u> </a>
+                                <!-- <a href="" class="chapter" style="font-size: 18px;" (click)="GetDetails(details.name)">
+                                    <u>{{details.name}}</u> </a> -->
+                                    <a class="chapter" style="font-size: 18px;" (click)="GetDetails(details.name)">
+                                        <u>{{details.name}}</u> </a>
                             </div>
                             <div>
                                 <div class="row">
