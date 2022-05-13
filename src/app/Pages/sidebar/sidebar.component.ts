@@ -75,10 +75,10 @@ export class SidebarComponent implements OnInit {
     sessionStorage.setItem("clickname", "TOPIC")
   }
 
-  // trainer() {
-  //   this.active = 'trainer'
-  //   sessionStorage.setItem("clickname", "TRAINER")
-  // }
+  trainer() {
+    this.active = 'trainer'
+    sessionStorage.setItem("clickname", "TRAINER")
+  }
 
   assigntrainer() {
     this.active = 11;
