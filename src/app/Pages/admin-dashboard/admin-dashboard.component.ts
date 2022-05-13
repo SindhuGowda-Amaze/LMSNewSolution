@@ -171,7 +171,7 @@ export class AdminDashboardComponent implements OnInit {
             data => {
               debugger
            
-                this.Assigntrainerlist = data.filter(x => x.staffID == this.userid);
+                this.Assigntrainerlist = data.filter(x => x.staffID == this.userid && x.status == 'Manager Approved');
                 console.log(this.Assigntrainerlist)
            this.countAssignTrainer=this.Assigntrainerlist.length;
             })

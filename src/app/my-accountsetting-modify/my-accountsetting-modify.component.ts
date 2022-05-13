@@ -14,19 +14,37 @@ export class MyAccountsettingModifyComponent implements OnInit {
   confirmpassword: any;
   newpassword: any;
   Currentpassword: any;
+  Currentpwd:any;
+  pwd:any;
   roleid:any;
 
   ngOnInit(): void {
     this.roleid = sessionStorage.getItem('roleid');
     this.passvaild = true;
+    this.curpassvaild = true;
+   
+
+  }
+  
+  curpassvaild: any;
+   public checkcurpassword(event: any) {
+    debugger
+    this.Currentpwd = event.target.value;
     this.LearningService.GetMyDetails().subscribe(data => {
       debugger
       let temp: any = data.filter(x => x.id == sessionStorage.getItem('userid'));
-      // this.Currentpassword = temp[0].password;
+       this.Currentpassword = temp[0].password;
 
     });
+    if (this.Currentpassword === this.Currentpwd) {
+      this.curpassvaild = true;
+    } else {
+      this.curpassvaild = false;
+    }
 
   }
+
+
   passvaild: any;
   public checkpassword(event: any) {
     debugger

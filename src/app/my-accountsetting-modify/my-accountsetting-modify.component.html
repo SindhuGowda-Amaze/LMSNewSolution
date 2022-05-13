@@ -73,8 +73,9 @@
                                             </span>Current Password</p>
                                     </div>
                                     <div class="col-lg-4">
-                                        <input class="form-control" id="Currentpassword" name="Currentpassword"
-                                            [(ngModel)]="Currentpassword" placeholder="Current Password">
+                                        <input class="form-control" id="pwd" name="pwd"
+                                        (keyup)="checkcurpassword($event)"   placeholder="Current Password"   [(ngModel)]="pwd"  >
+                                        <span *ngIf="!curpassvaild" class="span">Password Incorrect</span>
                                     </div>
                                 </div><br>
                                 <div class="row">

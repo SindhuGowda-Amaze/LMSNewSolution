@@ -23,13 +23,17 @@ export class LearningPathDashboardComponent implements OnInit {
   latestcoursedetails: any;
   lastassigned: any;
   show:any;
+  loader: any;
 
   ngOnInit(): void {
+    this.loader = false;
     this.roleid = sessionStorage.getItem('roleid');
     this.userid = sessionStorage.getItem('userid')
     this.GetEmployee();
     this.GetCourse();
     this.GetTrainerCourseMapping();
+    this.GetTrainerCourseMappingForProgress();
+    this.GetTrainerCourseMappingForCompleted();
     this.ActivatedRoute.params.subscribe(params => {
       debugger
       this.id = params["id"];
@@ -68,10 +72,10 @@ export class LearningPathDashboardComponent implements OnInit {
 
   public GetTrainerCourseMapping() {
     debugger
-    this.LearningService.GetTrainerCourseMapping().subscribe(
+    this.LearningService.GetTrainerCourseMappingDashboard().subscribe(
       data => {
         debugger
-        this.GetApproveCourse();
+        this.result2 =  data.filter(x => x.staffID == this.userid && x.status == 'Manager Approved');
       })
   }
 
@@ -80,14 +84,16 @@ export class LearningPathDashboardComponent implements OnInit {
     this.LearningService.GetCourse().subscribe(
       data => {
         debugger
-        this.result3 = data.filter((x: { staffID: any; completed: number; enrollid: number; }) => x.completed != 1 && x.enrollid == 0);
+        this.result3 = data.filter((x: { staffID: any; completed: number; enrollid: number; notStarted:number;}) => 
+        x.completed != 1 && x.enrollid != 0&&x.notStarted!=0);
+        console.log("result3",this.result3)
         
       })
     }
 
     public GetTrainerCourseMappingForCompleted() {
       debugger
-      this.LearningService.GetCourse().subscribe(
+      this.LearningService.GetTestResponse().subscribe(
         data => {
           debugger
           this.result4 = data.filter(x => x.completed == 1 && x.enrollid != 0 && x.staffID == this.userid);
@@ -99,9 +105,9 @@ export class LearningPathDashboardComponent implements OnInit {
     this.LearningService.GetApproveCourse(this.userid).subscribe(data => {
       debugger
       this.result2 = data.filter(x => x.completed == 0 && x.enrollid != 0 && x.staffid==this.userid);
+      console.log("result2",this.result2)
     })
   }
-
 
   enroll(){
     Swal.fire({
