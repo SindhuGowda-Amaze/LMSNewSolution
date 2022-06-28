@@ -23,11 +23,12 @@ export class TrainerCourseMappingFormComponent implements OnInit {
   constructor(public LearningService:LearningService, public ActivatedRoute:ActivatedRoute) { }
   trainerlist:any;
   ngOnInit(): void {
-   
+    this.TrainerID = 0;
+    this.CourseID = 0;
     this.maxdate = new Date().toISOString().split("T")[0];
  
 
-    this.GetTrainer();
+   
     this.GetBatch();
     
     // this.ActivatedRoute.params.subscribe(params => {
@@ -51,12 +52,35 @@ export class TrainerCourseMappingFormComponent implements OnInit {
     
     this.BatchName=0;
     // this.GetCourse();
-
+    if(this.id==undefined || this.id==null){
     this.LearningService.GetUnmappedCourseDropdown().subscribe(
       data => {
         debugger
         this.CourseList = data
       })
+    }
+    else{
+      this.LearningService.GetCourseDropdown().subscribe(
+        data => {
+          debugger
+          this.CourseList = data
+        })
+    }
+
+    if(this.id==undefined || this.id==null){
+      this.LearningService.GetUnmappedTrainer().subscribe(
+        data => {
+          debugger
+          this.trainerlist = data.filter(x=>x.id!=this.TrainerID);
+        })
+      }
+      else{
+        this.LearningService.GetTrainer().subscribe(
+          data => {
+            debugger
+            this.trainerlist = data
+          })
+      }
     // this.ActivatedRoute.params.subscribe(params => {
     //   debugger
     //   this.id = params["id"];
@@ -181,14 +205,9 @@ TrainerID:any
     debugger
     this.TrainerID=even.target.value;
   }
-  public GetTrainer() {
-    debugger
-    this.LearningService.GetUnmappedTrainer().subscribe(
-      data => {
-        debugger
-        this.trainerlist = data.filter(x=>x.id!=this.TrainerID);
-      })
-  }
+
+
+ 
 
   cancel() {
     location.href = "#/TrainerCourseMapping";
