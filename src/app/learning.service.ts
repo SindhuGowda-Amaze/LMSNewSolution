@@ -7,7 +7,7 @@ import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 })
 export class LearningService {
   // public baseURL = "http://localhost:4199/";
-  public baseURL = "http://103.133.214.197/LearningandDevelopment/";
+  public baseURL = "http://103.133.214.197/LearningandDevelopmentdemo/";
   // public host1 = "https://digioffice.amazeone.co/digiofficeapi";
   public host = "https://digioffice.amazeone.co/DigiOfficeAPI"
   
